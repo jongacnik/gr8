@@ -10,10 +10,6 @@ exports.abbreviateProp = (prop = '') => {
     : abbreviate(prop)
 }
 
-// exports.flatten = (a = [], b) => {
-//   return Array.isArray(b) ? [...a, ...b] : [...a, b]
-// }
-
 exports.flatten = (a = [], b) => {
   return a.concat(b)
 }
@@ -26,14 +22,16 @@ exports.sanitize = val => {
   return isNumeric(val) ? depunct(val) : abbreviate(val)
 }
 
-exports.hasOnlyObjects = (obj, type) => {
-  return Object.keys(obj).every(key => {
-    return typeof obj[key] === 'object' && !(obj[key] instanceof Array)
-  })
-}
-
-exports.objToArr = obj => {
-  return Object.keys(obj).map(key => obj[key])
+exports.isUtil = obj => {
+  var utilKeys = [
+    'prefix',
+    'prop',
+    'unit',
+    'vals',
+    'transform',
+    'declaration'
+  ]
+  return Object.keys(obj).some(key => (utilKeys.indexOf(key) > -1))
 }
 
 exports.alwaysArr = val => {
@@ -43,3 +41,7 @@ exports.alwaysArr = val => {
 exports.strip = (str = '') => {
   return str.replace(/(\r\n|\n|\r|\t|\s{2,})/gm,'').trim()
 }
+
+exports.removeEmpty = util => util
+
+exports.prefill = count => [...Array(count + 1).keys()]

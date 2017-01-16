@@ -5,19 +5,27 @@ var {
   sanitize,
   strip,
   flatten,
-  hasOnlyObjects,
-  objToArr,
-  alwaysArr
+  isUtil,
+  alwaysArr,
+  removeEmpty
 } = require('./src/helpers')
 
 var gr8 = (utils, options = {}) => {
   var opts = merge(options, defaults)
 
   // flattens deep utils:
-  // { padding: {}, paddingX: {}, paddingY: {} }
-  // -> [{}, {}, {}]
+  // { padding: {}, paddingX: {}, special: opts => [ {}, {} ] }
+  // -> [{}, {}, {}, {}]
   function flattenDeepUtils (util) {
-    return hasOnlyObjects(util) ? objToArr(util) : util
+    return Object.keys(util).map(key => {
+      return typeof util[key] === 'function'
+        ? util[key](opts)
+        : util[key]
+    }).reduce(flatten, [])
+  }
+
+  function formatUtils (util) {
+    return isUtil(util) ? util : flattenDeepUtils(util)
   }
 
   function setVals (util) {
@@ -25,10 +33,9 @@ var gr8 = (utils, options = {}) => {
   }
 
   function getPrefixVal (val) {
-    var value = val.abr !== undefined && (val.abr === '' || val.abr)
+    return val.abr !== undefined && (val.abr === '' || val.abr)
       ? val.abr
-      : val
-    return sanitize(value)
+      : sanitize(val)
   }
 
   function fallbackUnit (unit) {
@@ -87,11 +94,12 @@ var gr8 = (utils, options = {}) => {
 
   function generate (utils) {
     return utils
-      .map(flattenDeepUtils)
+      .map(formatUtils)
       .reduce(flatten, [])
       .map(setVals)
       .map(makeStyles)
       .reduce(flatten, [])
+      .filter(removeEmpty)
   }
 
   var styles = utils ? generate(utils) : ''
