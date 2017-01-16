@@ -10,5 +10,13 @@ module.exports = {
   fontSize: [6.4, 3.2, 2.4, 1.6, 1.2, 1.0],
   textColumns: [1, 2, 3, 4],
   unit: 'rem',
-  nested: false
+  nested: false,
+  responsive: false,
+  max: false,
+  breakpoints: {
+		xl: '1439px',
+		lg: '1260px',
+		md: '1023px',
+		sm: '767px'
+	}
 }

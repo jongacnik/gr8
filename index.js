@@ -1,22 +1,22 @@
 var defaults = require('./src/defaults')
 var {
   merge,
-  abbreviateProp,
-  sanitize,
-  strip,
   flatten,
   isUtil,
+  sanitize,
+  abbreviate,
   alwaysArr,
+  strip,
   removeEmpty
 } = require('./src/helpers')
 
-var gr8 = (utils, options = {}) => {
+module.exports = (utils, options = {}) => {
   var opts = merge(options, defaults)
 
   // flattens deep utils:
   // { padding: {}, paddingX: {}, special: opts => [ {}, {} ] }
   // -> [{}, {}, {}, {}]
-  function flattenDeepUtils (util) {
+  function formatDeepUtil (util) {
     return Object.keys(util).map(key => {
       return typeof util[key] === 'function'
         ? util[key](opts)
@@ -24,64 +24,76 @@ var gr8 = (utils, options = {}) => {
     }).reduce(flatten, [])
   }
 
-  function formatUtils (util) {
-    return isUtil(util) ? util : flattenDeepUtils(util)
+  function formatUtil (util) {
+    return isUtil(util) ? util : formatDeepUtil(util)
   }
 
-  function setVals (util) {
-    return opts[util.option] ? merge(util, { vals: opts[util.option] }) : util
+  function setDefaults (util) {
+    return opts[util.option]
+      ? merge(util, { vals: opts[util.option] })
+      : util
+  }
+
+  function hasVals (vals) {
+    return vals || vals === 0
+  }
+
+  function hasAbr (val) {
+    return val.abr !== undefined && (val.abr === '' || val.abr)
   }
 
   function getPrefixVal (val) {
-    return val.abr !== undefined && (val.abr === '' || val.abr)
-      ? val.abr
-      : sanitize(val)
+    return hasAbr(val) ? val.abr : sanitize(val)
   }
 
-  function fallbackUnit (unit) {
+  function getFallbackUnit (unit) {
     return unit === true ? opts.unit : (unit || '')
   }
 
   function makePrefixer (prefix, prop, hyphenate) {
-    return (val = '') => {
-      return (prefix ? prefix : abbreviateProp(prop))
-        + (hyphenate ? '-' : '')
-        + val
-    }
+    return val => [
+      prefix || abbreviate(prop),
+      val || ''
+    ].join(hyphenate ? '-' : '')
   }
 
   function makeDeclarationBlock (util, val) {
     var { prop, unit, transform } = util
-    var transformedVal = transform ? transform(val) : val
-    var finalVal = `${transformedVal}${val ? fallbackUnit(unit) : ''}`
+    var valTransformed = transform ? transform(val) : val
+    var valUnit = val ? getFallbackUnit(unit) : ''
+    var valString = valTransformed + valUnit
 
     return Array.isArray(prop)
-      ? prop.map(prop => makeDeclaration(prop, finalVal)).join(';')
-      : makeDeclaration(prop, finalVal)
+      ? prop.map(prop => makeDeclaration(prop, valString)).join(';')
+      : makeDeclaration(prop, valString)
   }
 
   function makeDeclaration (prop, val) {
-    return `${prop}:${val}`
+    return prop + ':' + val
   }
 
   function makeRule (prefix, declarationBlock) {
-    return `.${prefix}{${declarationBlock}}`
+    return '.' + prefix + '{' + declarationBlock + '}'
   }
 
   function makeStyle (util) {
     var { declaration, prefix, hyphenate, prop, vals } = util
-    var makePrefix = makePrefixer(prefix, prop, hyphenate)
 
-    return (vals || vals === 0) ? alwaysArr(vals).map(val => {
-          var selectorPrefix = makePrefix(getPrefixVal(val))
-          var declarationBlock = declaration
-            ? declaration(val.val || val)
-            : makeDeclarationBlock(util, (val.val || val))
+    if (hasVals(vals)) {
+      var makePrefix = makePrefixer(prefix, prop, hyphenate)
+      return alwaysArr(vals).map(val => {
+        var selectorPrefix = makePrefix(getPrefixVal(val))
+        var declarationBlock = declaration
+          ? declaration(val.val || val)
+          : makeDeclarationBlock(util, (val.val || val))
 
-          return makeRule(selectorPrefix, strip(declarationBlock))
-        })
-      : (prefix && declaration) ? makeRule(prefix, strip(declaration))
-      : ''
+        return makeRule(selectorPrefix, strip(declarationBlock))
+      })
+    } else {
+      return (prefix && declaration)
+        ? makeRule(prefix, strip(declaration))
+        : ''
+    }
   }
 
   function makeStyles (util) {
@@ -92,14 +104,50 @@ var gr8 = (utils, options = {}) => {
       : makeStyle(util)
   }
 
+  function formatBreakpoints (breakpoints, max) {
+    return Object.keys(breakpoints)
+      .map(breakpoint => ({
+        key: breakpoint,
+        value: breakpoints[breakpoint]
+      }))
+      .sort((a, b) => {
+        if (max) {
+          return parseInt(a.value, 10) > parseInt(b.value, 10) ? -1 : 1
+        } else {
+          return parseInt(a.value, 10) < parseInt(b.value, 10) ? -1 : 1
+        }
+      })
+  }
+
+  function makeResponsive (styles) {
+    if (!opts.breakpoints) return styles
+    var breakpoints = formatBreakpoints(opts.breakpoints, opts.max)
+    var minmax = opts.max ? 'max' : 'min'
+    var responsiveStyles = breakpoints.map(breakpoint => {
+      var mediaQuery = '@media (' + minmax + '-width: ' + breakpoint.value + ')'
+      return [`${mediaQuery}{`].concat(styles.map(style => {
+        return style.replace(
+          /^\.?(.+?)(?=[{:])/,
+          `[${breakpoint.key}~="$1"]`
+        )
+      }), ['}'])
+    })
+
+    return styles.concat(responsiveStyles).reduce(flatten, [])
+  }
+
   function generate (utils) {
-    return utils
-      .map(formatUtils)
+    var styles = utils
+      .map(formatUtil)
       .reduce(flatten, [])
-      .map(setVals)
+      .map(setDefaults)
       .map(makeStyles)
       .reduce(flatten, [])
       .filter(removeEmpty)
+
+    return opts.responsive
+      ? makeResponsive(styles)
+      : styles
   }
 
   var styles = utils ? generate(utils) : ''
@@ -123,9 +171,3 @@ var gr8 = (utils, options = {}) => {
     attach: attach
   }
 }
-
-// test
-var utils = require('./utils')
-var styles = gr8(utils)
-
-console.log(styles.toString())

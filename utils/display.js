@@ -1,5 +1,4 @@
-exports.display = {
-  prefix: 'd',
+module.exports = {
   prop: 'display',
   vals: [
     'flex',

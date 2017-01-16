@@ -16,6 +16,15 @@ exports.fontStyle = {
   ]
 }
 
+// exports.fontStyle = {
+//   prefix: 'fs',
+//   values: [
+//     'normal',
+//     'italic'
+//   ],
+//   method: val => `font-style:${val}`
+// }
+
 exports.fontWeight = {
   prop: 'font-weight',
   vals: [

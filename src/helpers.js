@@ -1,13 +1,13 @@
 exports.merge = (...props) => Object.assign({}, ...props)
 
-var abbreviate = (str = '') => {
+var abbreviation = (str = '') => {
   return str.split('-').map(piece => piece[0]).join('')
 }
 
-exports.abbreviateProp = (prop = '') => {
+exports.abbreviate = (prop = '') => {
   return Array.isArray(prop)
-    ? abbreviate(prop.join('-'))
-    : abbreviate(prop)
+    ? abbreviation(prop.join('-'))
+    : abbreviation(prop)
 }
 
 exports.flatten = (a = [], b) => {
@@ -19,7 +19,7 @@ var depunct = val => String(val).replace('.', '-')
 var isNumeric = n => !isNaN(parseFloat(n)) && isFinite(n)
 
 exports.sanitize = val => {
-  return isNumeric(val) ? depunct(val) : abbreviate(val)
+  return isNumeric(val) ? depunct(val) : abbreviation(val)
 }
 
 exports.isUtil = obj => {

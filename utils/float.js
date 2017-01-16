@@ -1,5 +1,4 @@
 exports.float = {
-  prefix: 'f',
   prop: 'float',
   vals: [
     'left',

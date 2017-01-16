@@ -1,4 +1,4 @@
-exports.displayFlex = {
+exports.display = {
   prefix: 'x',
   declaration: `display:flex`
 }
