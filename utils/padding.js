@@ -1,32 +1,35 @@
 exports.padding = {
-  opt: 'spacing',
+  option: 'spacing',
   prop: [
     'padding',
     'padding-top',
     'padding-right',
     'padding-bottom',
     'padding-left'
-  ]
+  ],
+  unit: true
 }
 
 exports.paddingX = {
-  opt: 'spacing',
+  option: 'spacing',
   prefix: 'px',
   prop: [
     [
       'padding-left',
       'padding-right'
     ]
-  ]
+  ],
+  unit: true
 }
 
 exports.paddingY = {
-  opt: 'spacing',
+  option: 'spacing',
   prefix: 'py',
   prop: [
     [
       'padding-top',
       'padding-bottom'
     ]
-  ]
+  ],
+  unit: true
 }

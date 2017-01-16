@@ -1,5 +1,13 @@
 module.exports = {
   spacing: [0, 1, 2, 3],
-  opacity: [0, 2.5, 5, 7.5, 1],
+  opacity: [0, 25, 50, 75, 100],
+  viewport: 100,
+  aspect: [0, 20, 50, 75, 100],
+  size: [0, 100],
+  order: [0, 1, 2, 3, 4],
+  zIndex: [0, 1, 2, 3, 4],
+  lineHeight: [1, 1.5],
+  fontSize: [6.4, 3.2, 2.4, 1.6, 1.2, 1.0],
+  textColumns: [1, 2, 3, 4],
   unit: 'rem'
 }
