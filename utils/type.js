@@ -1,6 +1,7 @@
 exports.fontSize = {
   option: 'fontSize',
-  prop: 'font-size'
+  prop: 'font-size',
+  unit: true
 }
 
 exports.lineHeight = {
