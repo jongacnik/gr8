@@ -245,3 +245,204 @@ A more realistic example is how column classes are constructed. You'll notice an
 .c11{width:91.66666666666666%}
 .c12{width:100%}
 ```
+
+
+
+# More Examples
+
+```js
+{
+  prop: 'line-height',
+  vals: [ 1, 1.5 ] // decimals will be sanitized with hyphens in selector
+}
+
+// .lh1 { line-height: 1 }
+// .lh1-5 { line-height: 1.5 }
+
+{
+  prop: 'margin-top',
+  vals: [ 0, 1, 2, 3, 4 ],
+  unit: true // true indicates default unit, can also pass specific unit
+}
+
+{
+  prop: ['margin-top'],
+  vals: [ 0, 1, 2, 3, 4 ],
+  unit: true // true indicates default unit, can also pass specific unit
+}
+
+// .mt0 { margin-top: 0 }
+// .mt1 { margin-top: 1rem }
+// .mt2 { margin-top: 2rem }
+// .mt3 { margin-top: 3rem }
+// .mt4 { margin-top: 4rem }
+
+{
+  prop: 'display',
+  vals: [ 'block', 'hidden', 'inline-block' ]
+}
+
+// .db { display: block }
+// .dh { display: block }
+// .dib { display: inline-block }
+
+{
+  prefix: 'ps', // if prefix, this used instead of abbreviated prop
+  prop: 'position',
+  vals: [ 'relative', 'absolute', 'fixed', 'static' ]
+}
+
+// .psr { position: relative }
+// .psa { position: absolute }
+// .psf { position: fixed }
+// .pss { position: static }
+
+{
+  prefix: 'bgs',
+  prop: 'background-size',
+  vals: [
+    { c: 'cover' }, // if object used as val, key is used in selector
+    { ct: 'contain' }
+  ]
+}
+
+// .bgsc { background-size: cover }
+// .bgsct { background-size: contain }
+
+{
+  prefix: 'op',
+  prop: 'opacity',
+  vals: [ 0, 25, 50, 75, 100 ],
+  transform: val => val / 100 // function which modifies val in declaration
+}
+
+// .op0 { opacity: 0 }
+// .op25 { opacity: .25 }
+// .op50 { opacity: .5 }
+// .op75 { opacity: .75 }
+// .op100 { opacity: 1 }
+
+{
+  prefix: 'ar',
+  suffix: ':after',
+  vals: [ 50, 100 ],
+  declaration: val => `
+    content: "";
+    display: block;
+    padding-top: ${val}%
+  ` // declaration function can be used instead of prop for more complex rules
+}
+
+// .ar50:after {
+//   content:"";
+//   display:block;
+//   padding-top:50%
+// }
+// .ar100:after {
+//   content:"";
+//   display:block;
+//   padding-top:100%
+// }
+
+{
+  prefix: 'cf',
+  suffix: ':after',
+  declaration: `
+    content:"";
+    display:block;
+    clear:both
+  ` // can also simply pass a string for specific styles, no value iteration
+}
+
+// .cf:after {
+//   content:"";
+//   display:block;
+//   clear:both
+// }
+
+{
+  prefix: 'c',
+  prop: 'width',
+  vals: [...Array(13).keys()],
+  unit: '%',
+  transform: val => (val / 12) * 100
+}
+
+// .c0{width:0}
+// .c1{width:8.333333333333332%}
+// .c2{width:16.666666666666664%}
+// .c3{width:25%}
+// .c4{width:33.33333333333333%}
+// .c5{width:41.66666666666667%}
+// .c6{width:50%}
+// .c7{width:58.333333333333336%}
+// .c8{width:66.66666666666666%}
+// .c9{width:75%}
+// .c10{width:83.33333333333334%}
+// .c11{width:91.66666666666666%}
+// .c12{width:100%}
+
+{
+  prefix: ['c2', 'c1'],
+  declaration: `width:50%`
+}
+
+// .c2 .c1 { width: 50% }
+
+
+// flattens deep utils:
+// { padding: {}, paddingX: {}, special: options => [ {}, {} ] }
+// -> [{}, {}, {}, {}]
+
+var utils = [
+  require('./utils/background').size,
+  require('./utils/background').position,
+  require('./utils/background').repeat,
+  require('./utils/column').column,
+  require('./utils/column').offset,
+  require('./utils/column').nestedColumn,
+  require('./utils/column').nestedOffset,
+  require('./utils/display'),
+  require('./utils/flex').display,
+  require('./utils/flex').align,
+  require('./utils/flex').direction,
+  require('./utils/flex').justify,
+  require('./utils/flex').wrap,
+  require('./utils/flex').flex,
+  require('./utils/flex').order,
+  require('./utils/float').float,
+  require('./utils/float').clear,
+  require('./utils/index'),
+  require('./utils/margin').margin,
+  require('./utils/margin').marginX,
+  require('./utils/margin').marginY,
+  require('./utils/misc').cursor,
+  require('./utils/misc').userSelect,
+  require('./utils/misc').pointerEvents,
+  require('./utils/opacity'),
+  require('./utils/overflow'),
+  require('./utils/padding').padding,
+  require('./utils/padding').paddingX,
+  require('./utils/padding').paddingY,
+  require('./utils/positioning').position,
+  require('./utils/positioning').placement,
+  require('./utils/positioning').zindex,
+  require('./utils/size').size,
+  require('./utils/size').viewportWidth,
+  require('./utils/size').viewportHeight,
+  require('./utils/size').viewportMinWidth,
+  require('./utils/size').viewportMinHeight,
+  require('./utils/size').viewportMaxWidth,
+  require('./utils/size').viewportMaxHeight,
+  require('./utils/size').aspect,
+  require('./utils/type').fontSize,
+  require('./utils/type').lineHeight,
+  require('./utils/type').fontStyle,
+  require('./utils/type').fontWeight,
+  require('./utils/type').textAlign,
+  require('./utils/type').textDecoration,
+  require('./utils/type').textTransform,
+  require('./utils/type').verticalAlign,
+  require('./utils/type').textColumn
+]
+```

@@ -9,22 +9,26 @@ var colors = {
 module.exports = [
   {
     prefix: 'dev',
-    declaration: `outline:1px solid ${colors.purp}`
+    declaration: 'outline:1px solid ' + colors.purp
   },
   {
-    prefix: 'dev > *',
-    declaration: `outline:1px solid ${colors.blue}`
+    prefix: 'dev',
+    suffix: ' > *',
+    declaration: 'outline:1px solid ' + colors.blue
   },
   {
-    prefix: 'dev > * > *',
-    declaration: `outline:1px solid ${colors.teal}`
+    prefix: 'dev',
+    suffix: ' > * > *',
+    declaration: 'outline:1px solid ' + colors.teal
   },
   {
-    prefix: 'dev > * > * > *',
-    declaration: `outline:1px solid ${colors.red}`
+    prefix: 'dev',
+    suffix: ' > * > * > *',
+    declaration: 'outline:1px solid ' + colors.red
   },
   {
-    prefix: 'dev > * > * > * > *',
-    declaration: `outline:1px solid ${colors.lime}`
+    prefix: 'dev',
+    suffix: ' > * > * > * > *',
+    declaration: 'outline:1px solid ' + colors.lime
   }
 ]

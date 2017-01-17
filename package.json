@@ -1,0 +1,21 @@
+{
+  "name": "great",
+  "version": "1.0.0",
+  "description": "gr8 is both a **set** of functional css utilities, as well as a **tool** for generating functional css utilities.",
+  "main": "index.js",
+  "dependencies": {
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://amongiants@bitbucket.org/amongiants/gr8.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/amongiants/gr8#readme"
+}

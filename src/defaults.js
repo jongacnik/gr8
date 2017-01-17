@@ -12,6 +12,7 @@ module.exports = {
   unit: 'rem',
   nested: false,
   responsive: false,
+  attribute: true,
   max: false,
   breakpoints: {
 		xl: '1439px',

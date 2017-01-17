@@ -1,47 +1,141 @@
-exports.merge = (...props) => Object.assign({}, ...props)
-
-var abbreviation = (str = '') => {
-  return str.split('-').map(piece => piece[0]).join('')
+function isFcn (val) {
+  return typeof val === 'function'
 }
 
-exports.abbreviate = (prop = '') => {
-  return Array.isArray(prop)
+function isStr (val) {
+  return typeof val === 'string'
+}
+
+function isArr (val) {
+  return Array.isArray(val)
+}
+
+function isObj (val) {
+  return typeof val === 'object' && !(val instanceof Array)
+}
+
+function isNum (val) {
+  return !isNaN(parseFloat(val)) && isFinite(val)
+}
+
+function exists (val) {
+  return val !== undefined && (val === '' || val === 0 || val)
+}
+
+function flatten (a, b) {
+  a = a || []
+  return a.concat(b)
+}
+
+function removeEmpty (util) {
+  return util
+}
+
+function first (arr) {
+  arr = arr || []
+  return arr.shift()
+}
+
+function firstKeyVal (obj) {
+  obj = obj || {}
+  var firstKey = first(Object.keys(obj))
+  return {
+    key: firstKey,
+    val: obj[firstKey]
+  }
+}
+
+// given: { super: 'awsm' }
+// -> { key: 'super', val: 'awsm' }
+// given: 'super'
+// -> { val: 'super' }
+function getValObj (val) {
+  return isObj(val) ? firstKeyVal(val) : { val: val }
+}
+
+function objToArr (obj) {
+  return isObj(obj) ? Object.keys(obj).map(function (key) {
+    return obj[key]
+  }) : obj
+}
+
+// expects: { key: 'nice', val: 'cool' } or { val: 'cool' }
+function getKeyOrVal (obj) {
+  obj = obj || {}
+  return exists(obj.key) ? obj.key : sanitize(obj.val)
+}
+
+function abbreviation (str) {
+  str = str || ''
+  return str.split('-').map(function (piece) {
+    return piece[0]
+  }).join('')
+}
+
+function abbreviate (prop) {
+  prop = prop || ''
+  return isArr(prop)
     ? abbreviation(prop.join('-'))
     : abbreviation(prop)
 }
 
-exports.flatten = (a = [], b) => {
-  return a.concat(b)
+function depunct (val) {
+  return String(val).replace('.', '-')
 }
 
-var depunct = val => String(val).replace('.', '-')
-
-var isNumeric = n => !isNaN(parseFloat(n)) && isFinite(n)
-
-exports.sanitize = val => {
-  return isNumeric(val) ? depunct(val) : abbreviation(val)
+function sanitize (val) {
+  return isNum(val) ? depunct(val) : abbreviation(val)
 }
 
-exports.isUtil = obj => {
+// Determines if an object is a gr8 util object
+// by checking if specific object keys exist.
+function isUtil (obj) {
+  if (!isObj(obj)) return false
   var utilKeys = [
-    'prefix',
-    'prop',
-    'unit',
-    'vals',
-    'transform',
-    'declaration'
+    'prefix', 'prop', 'unit', 'vals', 'transform', 'declaration'
   ]
-  return Object.keys(obj).some(key => (utilKeys.indexOf(key) > -1))
+  return Object.keys(obj).some(function (key) {
+    return (utilKeys.indexOf(key) > -1)
+  })
 }
 
-exports.alwaysArr = val => {
-  return Array.isArray(val) ? val : [val]
+// always returns an array
+function alwaysArr (val) {
+  return isArr(val) ? val : [val]
 }
 
-exports.strip = (str = '') => {
+// custom whitespace strip for pretty css
+function strip (str) {
+  str = str || ''
   return str.replace(/(\r\n|\n|\r|\t|\s{2,})/gm,'').trim()
 }
 
-exports.removeEmpty = util => util
+function prefill (start, end) {
+  var arr = []
+  for (var i = start; i <= end; i++) {
+    arr.push(i)
+  }
+  return arr
+}
 
-exports.prefill = count => [...Array(count + 1).keys()]
+module.exports = {
+  isFcn: isFcn,
+  isStr: isStr,
+  isArr: isArr,
+  isObj: isObj,
+  isUtil: isUtil,
+  exists: exists,
+  flatten: flatten,
+  removeEmpty: removeEmpty,
+  first: first,
+  firstKeyVal: firstKeyVal,
+  abbreviate: abbreviate,
+  depunct: depunct,
+  sanitize: sanitize,
+  strip: strip,
+  alwaysArr: alwaysArr,
+  prefill: prefill,
+  getKeyOrVal: getKeyOrVal,
+  objToArr: objToArr,
+  getValObj: getValObj
+}

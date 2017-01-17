@@ -16,15 +16,6 @@ exports.fontStyle = {
   ]
 }
 
-// exports.fontStyle = {
-//   prefix: 'fs',
-//   values: [
-//     'normal',
-//     'italic'
-//   ],
-//   method: val => `font-style:${val}`
-// }
-
 exports.fontWeight = {
   prop: 'font-weight',
   vals: [
@@ -66,10 +57,7 @@ exports.textTransform = {
 exports.verticalAlign = {
   prop: 'vertical-align',
   vals: [
-    {
-      abr: 'bl',
-      val: 'baseline'
-    },
+    { bl: 'baseline' },
     'top',
     'middle',
     'bottom'

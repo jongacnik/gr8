@@ -49,9 +49,11 @@ exports.viewportMaxHeight = {
 exports.aspect = {
   option: 'aspect',
   prefix: 'ar',
-  declaration: val => `
-    content:'';
-    display:block;
-    padding-top:${val}${val ? '%' : ''}
-  `
+  declaration: function (val) {
+    return '\
+      content:"";\
+      display:block;\
+      padding-top:' + val + (val ? '%' : '') + '\
+    '
+  }
 }

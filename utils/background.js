@@ -2,14 +2,8 @@ exports.size = {
   prefix: 'bgs',
   prop: 'background-size',
   vals: [
-    {
-      abr: 'c',
-      val: 'cover'
-    },
-    {
-      abr: 'ct',
-      val: 'contain'
-    }
+    { c: 'cover' },
+    { ct: 'contain' }
   ]
 }
 
@@ -30,13 +24,7 @@ exports.repeat = {
   prop: 'background-repeat',
   vals: [
     'none',
-    {
-      abr: 'x',
-      val: 'repeat-x'
-    },
-    {
-      abr: 'y',
-      val: 'repeat-y'
-    }
+    { x: 'repeat-x' },
+    { y: 'repeat-y' }
   ]
 }

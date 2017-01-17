@@ -1,14 +1,18 @@
-var { prefill, flatten } = require('../src/helpers')
+var flatten = require('../src/helpers').flatten
+var prefill = require('../src/helpers').prefill
 
 var columns = 12
-var columnsVals = prefill(columns)
+var columnsVals = prefill(1, columns)
+var nestedColumnsVals = prefill(1, columns - 1)
 
 exports.column = {
   prefix: 'c',
   prop: 'width',
   unit: '%',
   vals: columnsVals,
-  transform: val => (val / columns) * 100
+  transform: function (val) {
+    return (val / columns) * 100
+  }
 }
 
 exports.offset = {
@@ -16,7 +20,9 @@ exports.offset = {
   prop: 'margin-left',
   unit: '%',
   vals: columnsVals,
-  transform: val => (val / columns) * 100
+  transform: function (val) {
+    return (val / columns) * 100
+  }
 }
 
 /**
@@ -26,22 +32,26 @@ exports.offset = {
  * generated using prefix/declaration.
  */
 
-exports.nestedColumn = opts => opts.nested ? columnsVals.map(val => {
-  var cols = [...Array(val).keys()].map(x => ++x)
-  return cols.map(col => {
-    return {
-      prefix: `c${val} .c${col}`,
-      declaration: `width:${(col / val) * 100}%`
-    }
-  })
-}).reduce(flatten, []) : false
+exports.nestedColumn = function (opts) {
+  return opts.nested ? nestedColumnsVals.map(function (val) {
+    var cols = prefill(1, val)
+    return cols.map(function (col) {
+      return {
+        prefix: ['c' + val, 'c' + col],
+        declaration: 'width:' + ((col / val) * 100) + '%'
+      }
+    })
+  }).reduce(flatten, []) : []
+}
 
-exports.nestedOffset = opts => opts.nested ? columnsVals.map(val => {
-  var cols = [...Array(val).keys()].map(x => ++x)
-  return cols.map(col => {
-    return {
-      prefix: `co${val} .co${col}`,
-      declaration: `margin-left:${(col / val) * 100}%`
-    }
-  })
-}).reduce(flatten, []) : false
+exports.nestedOffset = function (opts) {
+  return opts.nested ? nestedColumnsVals.map(function (val) {
+    var cols = prefill(1, val)
+    return cols.map(function (col) {
+      return {
+        prefix: ['co' + val, 'co' + col],
+        declaration: 'margin-left:' + ((col / val) * 100) + '%'
+      }
+    })
+  }).reduce(flatten, []) : []
+}

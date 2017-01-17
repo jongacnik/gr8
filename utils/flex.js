@@ -1,6 +1,6 @@
 exports.display = {
   prefix: 'x',
-  declaration: `display:flex`
+  declaration: 'display:flex'
 }
 
 exports.align = {
@@ -31,38 +31,20 @@ exports.justify = {
   prop: 'justify-content',
   vals: [
     'center',
-    {
-      abr: 'b',
-      val: 'space-between'
-    },
-    {
-      abr: 'a',
-      val: 'space-around'
-    },
-    {
-      abr: 's',
-      val: 'flex-start'
-    },
-    {
-      abr: 'e',
-      val: 'flex-end'
-    }
+    { b: 'space-between' },
+    { a: 'space-around' },
+    { s: 'flex-start' },
+    { e: 'flex-end' }
   ]
 }
 
 exports.wrap = {
-  prefix: 'xw',
+  prefix: 'x',
   prop: 'flex-wrap',
   vals: [
-    {
-      abr: '',
-      val: 'wrap'
-    },
-    {
-      abr: 'r',
-      val: 'wrap-reverse'
-    },
-    'nowrap'
+    { w: 'wrap' },
+    { wr: 'wrap-reverse' },
+    { wn: 'nowrap'}
   ]
 }
 
@@ -71,10 +53,7 @@ exports.flex = {
   prop: 'flex',
   vals: [
     'initial',
-    {
-      abr: 'x',
-      val: '1'
-    },
+    { x: '1' },
     'auto',
     'none'
   ]
@@ -90,13 +69,7 @@ exports.orderSpecial = {
   prefix: 'xo',
   prop: 'order',
   vals: [
-    {
-      abr: 't',
-      val: -1
-    },
-    {
-      abr: 'b',
-      val: 99
-    }
+    { t: -1 },
+    { b: 99 }
   ]
 }

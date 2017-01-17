@@ -11,6 +11,6 @@ module.exports = [
   require('./positioning'),
   require('./size'),
   require('./type'),
-  require('./misc')
-  // require('./dev'),
+  require('./misc'),
+  require('./dev')
 ]

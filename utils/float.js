@@ -8,7 +8,8 @@ exports.float = {
 }
 
 exports.clear = {
-  prefix: 'cf:after',
+  prefix: 'cf',
+  suffix: ':after',
   declaration: `
     content:"";
     display:block;

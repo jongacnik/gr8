@@ -2,5 +2,7 @@ module.exports = {
   option: 'opacity',
   prefix: 'op',
   prop: 'opacity',
-  transform: val => val / 100
+  transform: function (val) {
+    return val / 100
+  }
 }
