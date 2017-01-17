@@ -2,13 +2,18 @@
   "name": "great",
   "version": "1.0.0",
   "description": "gr8 is both a **set** of functional css utilities, as well as a **tool** for generating functional css utilities.",
-  "main": "index.js",
-  "dependencies": {
+  "main": "dist/gr8.js",
+  "devDependencies": {
+    "browserify": "^13.3.0",
+    "budo": "^9.4.5",
+    "uglify-js": "^2.7.5",
     "xtend": "^4.0.1"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "budo test.js -l",
+    "dist-js": "browserify src/index.js -s gr8 | uglifyjs -m -c > dist/gr8.js",
+    "dist-css": "node bin/gnr8.js",
+    "dist": "npm run dist-js && npm run dist-css"
   },
   "repository": {
     "type": "git",

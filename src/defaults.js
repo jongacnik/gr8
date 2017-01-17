@@ -13,7 +13,7 @@ module.exports = {
   nested: false,
   responsive: false,
   attribute: true,
-  max: false,
+  max: true,
   breakpoints: {
 		xl: '1439px',
 		lg: '1260px',

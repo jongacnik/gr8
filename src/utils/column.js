@@ -1,5 +1,5 @@
-var flatten = require('../src/helpers').flatten
-var prefill = require('../src/helpers').prefill
+var flatten = require('../helpers').flatten
+var prefill = require('../helpers').prefill
 
 var columns = 12
 var columnsVals = prefill(1, columns)

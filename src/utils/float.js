@@ -10,9 +10,9 @@ exports.float = {
 exports.clear = {
   prefix: 'cf',
   suffix: ':after',
-  declaration: `
-    content:"";
-    display:block;
-    clear:both
-  `
+  declaration: '\
+    content:"";\
+    display:block;\
+    clear:both\
+  '
 }

@@ -1,8 +1,9 @@
 var x = require('xtend')
-var utils = require('../utils')
+var utils = require('./utils')
 var defaults = require('./defaults')
 var lib = require('./helpers')
 var breakpoints = require('./breakpoints')
+var variables = require('./variables')
 
 module.exports = function (options) {
   options = x(defaults, options)
@@ -159,6 +160,7 @@ module.exports = function (options) {
         bp.close
       ].join('\n')
     }).join('')
+      .replace(/^\s*[\r\n]/gm, '')
   }
 
   /**
@@ -179,9 +181,20 @@ module.exports = function (options) {
     document.head.appendChild(styleNode)
   }
 
+  function vars (options) {
+    // format utils w/o generating
+    var formattedUtils = utils
+      .map(format)
+      .reduce(lib.flatten, [])
+      .filter(lib.removeEmpty)
+      .map(setOptions)
+    return variables(formattedUtils, getUnit, options || {})
+  }
+
   return {
     add: add,
     toString: toString,
-    attach: attach
+    attach: attach,
+    vars: vars
   }
 }

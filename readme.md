@@ -1,5 +1,7 @@
 gr8 is both a **set** of functional css utilities, as well as a **tool** for generating functional css utilities.
 
+# Blah blah blah, these dox are just a data dump rn
+
 ## Usage
 
 The fastest way to use **gr8** is by including the provided stylesheet in your project:
