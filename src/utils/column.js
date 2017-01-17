@@ -3,6 +3,7 @@ var prefill = require('../helpers').prefill
 
 var columns = 12
 var columnsVals = prefill(1, columns)
+var offsetsVals = prefill(0, columns)
 var nestedColumnsVals = prefill(1, columns - 1)
 
 exports.column = {
@@ -19,7 +20,7 @@ exports.offset = {
   prefix: 'co',
   prop: 'margin-left',
   unit: '%',
-  vals: columnsVals,
+  vals: offsetsVals,
   transform: function (val) {
     return (val / columns) * 100
   }
