@@ -23,7 +23,7 @@ exports.repeat = {
   prefix: 'bgr',
   prop: 'background-repeat',
   vals: [
-    'none',
+    { n: 'no-repeat' },
     { x: 'repeat-x' },
     { y: 'repeat-y' }
   ]

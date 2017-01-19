@@ -105,7 +105,7 @@
 .bgpr{background-position:right}
 .bgpb{background-position:bottom}
 .bgpl{background-position:left}
-.bgrn{background-repeat:none}
+.bgrn{background-repeat:no-repeat}
 .bgrx{background-repeat:repeat-x}
 .bgry{background-repeat:repeat-y}
 .x{display:flex}
