@@ -65,6 +65,18 @@ function getKeyOrVal (obj) {
   return exists(obj.key) ? obj.key : sanitize(obj.val)
 }
 
+function extend (target, source){
+  target = target || {}
+  for (var prop in source) {
+    if (typeof source[prop] === 'object' && !source[prop] instanceof Array) {
+      target[prop] = extend(target[prop], source[prop])
+    } else {
+      target[prop] = source[prop]
+    }
+  }
+  return target
+}
+
 function abbreviation (str) {
   str = str || ''
   return str.split('-').map(function (piece) {
@@ -144,6 +156,7 @@ module.exports = {
   isUtil: isUtil,
   exists: exists,
   flatten: flatten,
+  extend: extend,
   removeEmpty: removeEmpty,
   first: first,
   firstKeyVal: firstKeyVal,

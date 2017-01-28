@@ -6,8 +6,7 @@
   "devDependencies": {
     "browserify": "^13.3.0",
     "budo": "^9.4.5",
-    "uglify-js": "^2.7.5",
-    "xtend": "^4.0.1"
+    "uglify-js": "^2.7.5"
   },
   "scripts": {
     "test": "budo test.js -l",

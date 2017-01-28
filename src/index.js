@@ -1,31 +1,15 @@
-var x = require('xtend')
-var utils = require('./utils')
-var defaults = require('./defaults')
 var lib = require('./helpers')
-var breakpoints = require('./breakpoints')
-var variables = require('./variables')
+var utilities = require('./utils')
+var defaults = require('./defaults')
+var getVariables = require('./variables')
+var getBreakpoints = require('./breakpoints')
 
-module.exports = function (options) {
-  options = x(defaults, options)
-
-  function format (util) {
-    if (lib.isUtil(util)) {
-      return util
-    } else if (lib.isFcn(util)) {
-      return lib.alwaysArr(util(options)).map(format)
-    } else if (lib.isArr(util) || lib.isObj(util)) {
-      return lib.objToArr(util).map(format).reduce(lib.flatten, [])
-    }
-  }
-
-  function setOptions (util) {
-    return options[util.option]
-      ? x(util, { vals: options[util.option] })
-      : util
-  }
+module.exports = function (opts) {
+  opts = lib.extend(defaults, opts)
 
   function getFallbackUnit (unit) {
-    return unit === true ? options.unit : (unit || '')
+    unit = unit || ''
+    return unit === true ? opts.unit : unit
   }
 
   function getUnit (val, unit) {
@@ -41,38 +25,37 @@ module.exports = function (options) {
   }
 
   function makeDeclarationBlock (util) {
-    var thisTrans = getTransformedVal(util.val, util.transform)
-    var thisUnit = getUnit(util.val, util.unit)
-    var thisVal = thisTrans + thisUnit
+    var val = getTransformedVal(util.val, util.transform)
+    var unit = getUnit(util.val, util.unit)
 
     return lib.alwaysArr(util.prop).map(function (prop) {
-      return makeDeclaration(prop, thisVal)
+      return makeDeclaration(prop, (val + unit))
     }).join(';')
   }
 
-  function makeClassSelector (bp, sel) {
-    return '.' + (bp ? bp + '-' + sel : sel)
+  function makeClassSelector (scope, prefix) {
+    return '.' + (scope ? scope + '-' + prefix : prefix)
   }
 
-  function makeAttrSelector (bp, sel) {
-    return '[' + bp + '~="' + sel + '"]'
+  function makeAttrSelector (scope, prefix) {
+    return '[' + scope + '~="' + prefix + '"]'
   }
 
-  function makeSelector (prefix, breakpoint) {
+  function makeSelector (prefix, scope) {
     return lib.alwaysArr(prefix).map(function (p) {
-      if (breakpoint && options.attribute) {
-        return makeAttrSelector(breakpoint, p)
+      if (scope && opts.attribute) {
+        return makeAttrSelector(scope, p)
       } else {
-        return makeClassSelector(breakpoint, p)
+        return makeClassSelector(scope, p)
       }
     }).join(' ')
   }
 
-  function makeRule (opts, breakpoint) {
-    return makeSelector(opts.prefix, breakpoint)
-      + opts.suffix
+  function makeRule (util, scope) {
+    return makeSelector(util.prefix, scope)
+      + util.suffix
       + '{'
-      + lib.strip(opts.declaration)
+      + lib.strip(util.declaration)
       + '}'
   }
 
@@ -90,10 +73,12 @@ module.exports = function (options) {
     }
   }
 
-  function canGenerate(util) {
-    // util must have values and prefix/prop
-    return lib.exists(util.vals) &&
-      (lib.exists(util.prefix) || lib.exists(util.prop))
+  function canGenerate (util) {
+    function hasPrefixOrProp () {
+      return lib.exists(util.prefix) || lib.exists(util.prop)
+    }
+
+    return lib.exists(util.vals) && hasPrefixOrProp()
   }
 
   function makePrefixer (util) {
@@ -112,7 +97,7 @@ module.exports = function (options) {
         var thisPrefix = makePrefix(thisValObj)
         var thisDeclaration = lib.isFcn(util.declaration)
           ? util.declaration(thisValObj.val)
-          : makeDeclarationBlock(x(util, { val: thisValObj.val }))
+          : makeDeclarationBlock(lib.extend(util, { val: thisValObj.val }))
         return makeRuleObj(thisPrefix, util.suffix, thisDeclaration)
       })
     } else {
@@ -120,81 +105,94 @@ module.exports = function (options) {
         Unable to generate styles for ' + JSON.stringify(util) + '.\
         Missing values, prefix, or prop.\
       ')
-   }
-  }
-
-  function makeUtil (util) {
-    return simpleUtil(util) || complexUtil(util)
-  }
-
-  function generate (util) {
-    if (lib.isArr(util.prop)) {
-      return util.prop.map(function (prop) {
-        return makeUtil(x(util, { prop: prop }))
-      }).reduce(lib.flatten, [])
-    } else {
-      return makeUtil(util)
     }
   }
 
-  function ruleObjects (utils) {
-    return utils
-      .map(format)
+  function getUtil (util) {
+    return simpleUtil(util) || complexUtil(util)
+  }
+
+  function expandUtil (util) {
+    if (lib.isUtil(util)) {
+      return util
+    } else if (lib.isFcn(util)) {
+      return lib.alwaysArr(util(opts)).map(expandUtil)
+    } else if (lib.isArr(util) || lib.isObj(util)) {
+      return lib.objToArr(util).map(expandUtil).reduce(lib.flatten, [])
+    }
+  }
+
+  function setUtilOption (util) {
+    return opts[util.option]
+      ? lib.extend(util, { vals: opts[util.option]})
+      : util
+  }
+
+  function formatUtil (util) {
+    if (lib.isArr(util.prop)) {
+      return util.prop.map(function (prop) {
+        return getUtil(lib.extend(util, { prop: prop }))
+      }).reduce(lib.flatten, [])
+    } else {
+      return getUtil(util)
+    }
+  }
+
+  function getFormattedUtils () {
+    var utils = utilities
+      .map(expandUtil)
       .reduce(lib.flatten, [])
       .filter(lib.removeEmpty)
-      .map(setOptions)
-      .map(generate)
+      .map(setUtilOption)
+      .map(formatUtil)
       .reduce(lib.flatten, [])
-      .filter(lib.removeEmpty) || []
+      .filter(lib.removeEmpty)
+
+    return utils ? utils : []
   }
 
   function makeCss () {
-    var rules = ruleObjects(utils)
-    var bps = breakpoints(options)
-    return bps.map(function (bp) {
+    var utils = getFormattedUtils()
+    var brpts = getBreakpoints(opts)
+
+    var css = brpts.map(function (bp) {
       return [
         bp.open,
-        rules.map(function (rule) {
-          return makeRule(rule, bp.key)
+        utils.map(function (util) {
+          return makeRule(util, bp.key)
         }).join('\n'),
         bp.close
       ].join('\n')
     }).join('')
-      .replace(/^\s*[\r\n]/gm, '')
+
+    return css.replace(/^\s*[\r\n]/gm, '')
   }
 
-  /**
-   * Public
-   */
+  // gr8 public api
+  var api = {}
 
-  function add (util) {
+  api.add = function (util) {
     utils.push(util)
   }
 
-  function toString () {
+  api.string = function () {
     return makeCss()
   }
 
-  function attach () {
+  api.attach = function () {
     var styleNode = document.createElement('style')
     styleNode.innerHTML = makeCss()
     document.head.appendChild(styleNode)
   }
 
-  function vars (options) {
-    // format utils w/o generating
-    var formattedUtils = utils
-      .map(format)
+  api.vars = function (opts) {
+    var utils = utilities
+      .map(expandUtil)
       .reduce(lib.flatten, [])
       .filter(lib.removeEmpty)
-      .map(setOptions)
-    return variables(formattedUtils, getUnit, options || {})
+      .map(setUtilOption)
+    return getVariables(utils, getUnit, opts)
   }
 
-  return {
-    add: add,
-    toString: toString,
-    attach: attach,
-    vars: vars
-  }
+  return api
 }

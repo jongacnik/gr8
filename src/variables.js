@@ -1,4 +1,3 @@
-var x = require('xtend')
 var lib = require('./helpers')
 
 var defaults = {
@@ -12,18 +11,18 @@ var defaults = {
 
 var templates = {
   less: function (prefix, key, val, unit) {
-    return '@' + prefix + lib.depunct(key) + ': ' + val + unit
+    return '@' + prefix + lib.depunct(key) + ': ' + val + unit + ';'
   },
   sass: function (prefix, key, val, unit) {
-    return '$' + prefix + lib.depunct(key) + ': ' + val + unit
+    return '$' + prefix + lib.depunct(key) + ': ' + val + unit + ';'
   },
   css: function (prefix, key, val, unit) {
-    return '--' + prefix + lib.depunct(key) + ': ' + val + unit
+    return '--' + prefix + lib.depunct(key) + ': ' + val + unit + ';'
   }
 }
 
 module.exports = function (utils, getUnit, options) {
-  options = x(defaults, options)
+  options = lib.extend(defaults, options)
 
   var optObjs = options.opts.map(lib.getValObj)
   var optVals = optObjs.map(function (o) { return o.val })
@@ -54,7 +53,7 @@ module.exports = function (utils, getUnit, options) {
         ? templates[options.template](util.prefix, key, valObj.val, unit)
         : ''
     })
-    return ['/* ' + util.option + ' */'].concat(varArr, [''])
+    return varArr
   }).reduce(lib.flatten, [])
 
   if (options.template === 'css') {

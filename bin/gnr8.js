@@ -1,7 +1,7 @@
 var fs = require('fs')
 var gr8 = require('../src')
 
-var css = gr8().toString()
+var css = gr8().string()
 
 fs.writeFile('dist/gr8.css', css, function (err) {
   if (err) {
