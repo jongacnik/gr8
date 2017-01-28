@@ -174,7 +174,7 @@ module.exports = function (opts) {
     utilities.push(util)
   }
 
-  api.string = function () {
+  api.toString = function () {
     return makeCss()
   }
 
