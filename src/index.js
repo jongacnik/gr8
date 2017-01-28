@@ -171,7 +171,7 @@ module.exports = function (opts) {
   var api = {}
 
   api.add = function (util) {
-    utils.push(util)
+    utilities.push(util)
   }
 
   api.string = function () {
