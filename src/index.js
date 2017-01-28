@@ -1,7 +1,6 @@
 var lib = require('./helpers')
 var utilities = require('./utils')
 var defaults = require('./defaults')
-var getVariables = require('./variables')
 var getBreakpoints = require('./breakpoints')
 
 module.exports = function (opts) {
@@ -183,15 +182,6 @@ module.exports = function (opts) {
     var styleNode = document.createElement('style')
     styleNode.innerHTML = makeCss()
     document.head.appendChild(styleNode)
-  }
-
-  api.vars = function (opts) {
-    var utils = utilities
-      .map(expandUtil)
-      .reduce(lib.flatten, [])
-      .filter(lib.removeEmpty)
-      .map(setUtilOption)
-    return getVariables(utils, getUnit, opts)
   }
 
   return api
