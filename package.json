@@ -6,6 +6,7 @@
   "devDependencies": {
     "browserify": "^13.3.0",
     "colortape": "^0.1.2",
+    "onchange": "^3.2.1",
     "tape": "^4.6.3",
     "tape-run": "^2.1.5",
     "uglify-js": "^2.7.5"
@@ -14,7 +15,9 @@
     "test": "node tests/index.js | colortape && browserify tests/browser.js | tape-run | colortape",
     "dist-js": "browserify src/index.js -s gr8 | uglifyjs -m -c > dist/gr8.js",
     "dist-css": "node bin/gnr8.js",
-    "dist": "npm run dist-js && npm run dist-css"
+    "dox": "node bin/dox.js",
+    "watch-dox": "onchange 'bin/' -- npm run dox",
+    "dist": "npm run dist-js && npm run dist-css && npm run dox"
   },
   "repository": {
     "type": "git",

@@ -5,7 +5,7 @@ var getBreakpoints = require('./breakpoints')
 
 module.exports = function (options) {
   var opts = lib.extend(defaultOptions, options)
-  var utilities = defaultUtils.slice()
+  var utilities = lib.objToArr(defaultUtils)
 
   function getFallbackUnit (unit) {
     unit = unit || ''
@@ -184,6 +184,10 @@ module.exports = function (options) {
     styleNode.setAttribute('data-gr8-css', '')
     styleNode.innerHTML = makeCss()
     document.head.appendChild(styleNode)
+  }
+
+  api.empty = function () {
+    utilities = []
   }
 
   return api
