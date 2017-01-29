@@ -65,16 +65,20 @@ function getKeyOrVal (obj) {
   return exists(obj.key) ? obj.key : sanitize(obj.val)
 }
 
-function extend (target, source){
+function xtend (target, source){
   target = target || {}
   for (var prop in source) {
     if (typeof source[prop] === 'object' && !source[prop] instanceof Array) {
-      target[prop] = extend(target[prop], source[prop])
+      target[prop] = xtend(target[prop], source[prop])
     } else {
       target[prop] = source[prop]
     }
   }
   return target
+}
+
+function extend (target, source) {
+  return xtend(xtend({}, target), source)
 }
 
 function abbreviation (str) {

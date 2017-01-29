@@ -1,10 +1,11 @@
 var lib = require('./helpers')
-var utilities = require('./utils')
-var defaults = require('./defaults')
+var defaultUtils = require('./utils')
+var defaultOptions = require('./defaults')
 var getBreakpoints = require('./breakpoints')
 
-module.exports = function (opts) {
-  opts = lib.extend(defaults, opts)
+module.exports = function (options) {
+  var opts = lib.extend(defaultOptions, options)
+  var utilities = defaultUtils.slice()
 
   function getFallbackUnit (unit) {
     unit = unit || ''
@@ -180,6 +181,7 @@ module.exports = function (opts) {
 
   api.attach = function () {
     var styleNode = document.createElement('style')
+    styleNode.setAttribute('data-gr8-css', '')
     styleNode.innerHTML = makeCss()
     document.head.appendChild(styleNode)
   }
