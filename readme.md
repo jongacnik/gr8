@@ -1,4 +1,8 @@
-# gr8
+# ⓖⓡ⑧
+
+[![gr8.style](https://img.shields.io/badge/website-gr8.style-ff69b4.svg)]()
+[![NPM version](https://img.shields.io/npm/v/gr8.svg)]()
+[![Standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)]()
 
 FUNctional CSS shorthand utilities. `gr8` is both a handy **set** of functional css utilities, as well as a handy **tool** for generating functional css utilities.
 
@@ -7,10 +11,10 @@ npm i gr8
 ```
 
 ## Features
-- **super**: Makes structuring layouts fast without imposing limitations
+- **super**: Makes structuring layouts fast [without imposing limitations]()
 - **simple**: Single purpose utilities avoid specificity issues
-- **flexible**: Customize included utilities using options for breakpoints, spacing, units, etc...
-- **handy**: Add custom utilities using simple objects
+- **flexible**: Customize included utilities using [options]() for breakpoints, spacing, units, etc...
+- **handy**: Add [custom utilities]() using simple objects
 - **in-use**: [Folder Studio](http://folderstudio.com), [2Pac](http://www.2pac.com/), [Hardly Everything](https://hardlyeverything.com), [LA Forum](http://laforum.org), [Album Art IQ](http://daily.redbullmusicacademy.com/specials/2016-album-art-iq/), [Hassan Rahim](http://hassanrahim.com/), etc...
 
 ## Example
@@ -38,6 +42,10 @@ Now we can use the utilities in our app! [Click here to see a running example]()
 ```html
 <div class="c6 p2 fs1-5 tcr" sm="c12 p1">subarashīdesu!</div>
 ```
+
+## Options
+
+## Methods
 
 ## Utilities
 
@@ -346,6 +354,14 @@ Now we can use the utilities in our app! [Click here to see a running example]()
 .dev > * > * > * > *{outline:1px solid #00ff00}
 
 ```
+
+## Why?
+
+Tachyons, Basscss, and the like are incredible tools, and gravitons was the original inspiration for the initial naming structure of gr8 a couple years ago. However, the designs which we often execute in the studio can end up getting quite complex, and the configurability of some of the existing fxcss libs are not quite up to par.
+
+gr8 is a *very* tweakable set of functional css utilities. I've been using it, in various incarnations, for almost two years, and has certainly been used in production
+
+## Utility Design
 
 The anatomy of `gr8` utilities generally follow a simple and similar structure. For example:
 
