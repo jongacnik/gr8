@@ -184,6 +184,7 @@ module.exports = function (options) {
     styleNode.setAttribute('data-gr8-css', '')
     styleNode.innerHTML = makeCss()
     document.head.appendChild(styleNode)
+    return styleNode
   }
 
   api.empty = function () {
