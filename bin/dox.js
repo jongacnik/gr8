@@ -7,6 +7,8 @@ var css = gr8()
 
 var templates = {}
 
+templates['defaults'] = fs.readFileSync(__dirname + '/../src/defaults.js', 'utf8').replace('module.exports = ', '').trim()
+
 templates['utilityIndex'] = Object.keys(utils).map(function (key) {
   return '- [' + key + '](#' + key + ')'
 }).join('\n')
