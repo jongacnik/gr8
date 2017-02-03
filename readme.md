@@ -1,6 +1,5 @@
 # ⓖⓡ⑧
 
-[![gr8.style](https://img.shields.io/badge/website-gr8.style-ff69b4.svg)]()
 [![NPM version](https://img.shields.io/npm/v/gr8.svg)]()
 [![Standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)]()
 
@@ -10,14 +9,14 @@ FUNctional CSS shorthand utilities. `gr8` is both a handy [**set**](#utilities) 
 npm i gr8
 ```
 
-## Table of Contents
-
 ## Features
 - **super**: Makes structuring layouts fast [without imposing limitations](#faq)
 - **handy**: Utilities for columns, spacing, flexbox, typography, and more!
 - **flexible**: Customize included utilities using [options](#options) for breakpoints, spacing, units, etc...
 - **extensible**: Add [custom utilities](#custom-utilities-) using simple objects
 - **in-use**: [Folder Studio](http://folderstudio.com), [2Pac](http://www.2pac.com/), [Hardly Everything](https://hardlyeverything.com), [LA Forum](http://laforum.org), [Album Art IQ](http://daily.redbullmusicacademy.com/specials/2016-album-art-iq/), [Hassan Rahim](http://hassanrahim.com/), etc...
+
+**Skip straight to the [utilities](#utilities)! &nbsp;<span style="display:inline-block;transform:scale(-1,1)">🏃</span>**
 
 ## Example
 
@@ -39,102 +38,18 @@ css.add({
 css.attach()
 ```
 
-Now we can use the utilities in our app! [Click here to see a running example]().
+Now we can use the available css selectors in our app! [Click here to see a running example]().
 
 ```html
-<div class="c6 p2 fs1-5 tcr" sm="c12 p1">subarashīdesu!</div>
+<div class="c6 p2 fs1-5 tcr" sm="c12 p1 tcb">subarashīdesu!</div>
 ```
-
-## API
-
-The `gr8` api is very small and only contains 3 methods.
-
-### css = gr8(options)
-
-Initialize `gr8`. View all available [options](#options).
-
-### css.attach()
-
-Attach all utilities to the document head in a style tag. Returns style node.
-
-### css.toString()
-
-Returns all utilities as a `String` of css. Generally useful for [writing css to a file]().
-
-### css.add(options)
-
-Adds a `gr8` utility. This is quite powerful so it [gets its own section]().
-
-## Options
-
-This sections covers default options and provides details for what each option controls.
-
-```js
-var css = gr8({
-  spacing: [0, 1, 2, 3, 4],
-  fontSize: [6.4, 3.2, 2.4, 1.6, 1.2, 1.0],
-  lineHeight: [1, 1.5],
-  size: [0, 100],
-  viewport: 100,
-  zIndex: [0, 1, 2, 3, 4],
-  order: [0, 1, 2, 3, 4],
-  opacity: [0, 25, 50, 75, 100],
-  aspect: [0, 20, 50, 75, 100],
-  textColumns: [1, 2, 3, 4],
-  unit: 'rem',
-  nested: false,
-  responsive: false,
-  attribute: true,
-  max: true,
-  breakpoints: {
-    xl: '1439px',
-    lg: '1260px',
-    md: '1023px',
-    sm: '767px'
-  }
-})
-```
-
-| option | expects | controls |
-| --- | --- | --- |
-| spacing | (`Array`/`Number`) | [margin](#margin) & [padding](#padding) utilities |
-| fontSize | (`Array`/`Number`) | [font-size](#typography) utilities |
-| lineHeight | (`Array`/`Number`) | [line-height](#typography) utilities |
-| size | (`Array`/`Number`) | [width & height](#size) utilities |
-| viewport | (`Array`/`Number`) | [viewport](#size) utilities |
-| zIndex | (`Array`/`Number`) | [zIndex](#positioning) utilities |
-| order | (`Array`/`Number`) | [flex-order](#flex) utilities |
-| opacity | (`Array`/`Number`) | [opacity](#opacity) utilities |
-| aspect | (`Array`/`Number`) | [aspect ratio](#size) utilities |
-| textColumns | (`Array`/`Number`) | [text columns](#typography) utilities |
-| unit | (`String`) | default unit for numerical values |
-| nested | (`Bool`) | support for [nested columns](#nesting) ⚠️ &nbsp;increases size of css output ⚠️ |
-| responsive | (`Bool`) | support for [responsive utilities](#responsive) |
-| attribute | (`Bool`) | [breakpoint attribute selectors](#responsive) or prefixed class selectors? |
-| max | (`Bool`) | `max-width` (desktop-first) or `min-width` (mobile-first) breakpoints? |
-| breakpoints | (`Object`) | breakpoint keys and widths (only applies if using responsive utilities) |
-
 
 ## Utilities
 
 `gr8` default utilities:
 
-- [column](#column)
-- [margin](#margin)
-- [padding](#padding)
-- [opacity](#opacity)
-- [background](#background)
-- [flex](#flex)
-- [display](#display)
-- [float](#float)
-- [overflow](#overflow)
-- [positioning](#positioning)
-- [size](#size)
-- [typography](#typography)
-- [miscellaneous](#miscellaneous)
-- [development](#development)
-
-#### column
+<details id="column">
+<summary>column</summary>
 ```css
 .c1{width:8.333333333333332%}
 .c2{width:16.666666666666664%}
@@ -163,7 +78,9 @@ var css = gr8({
 .co12{margin-left:100%}
 
 ```
-#### margin
+</details>
+<details id="margin">
+<summary>margin</summary>
 ```css
 .m0{margin:0}
 .m1{margin:1rem}
@@ -202,7 +119,9 @@ var css = gr8({
 .my4{margin-top:4rem;margin-bottom:4rem}
 
 ```
-#### padding
+</details>
+<details id="padding">
+<summary>padding</summary>
 ```css
 .p0{padding:0}
 .p1{padding:1rem}
@@ -241,7 +160,9 @@ var css = gr8({
 .py4{padding-top:4rem;padding-bottom:4rem}
 
 ```
-#### opacity
+</details>
+<details id="opacity">
+<summary>opacity</summary>
 ```css
 .op0{opacity:0}
 .op25{opacity:0.25}
@@ -250,7 +171,9 @@ var css = gr8({
 .op100{opacity:1}
 
 ```
-#### background
+</details>
+<details id="background">
+<summary>background</summary>
 ```css
 .bgsc{background-size:cover}
 .bgsct{background-size:contain}
@@ -264,7 +187,9 @@ var css = gr8({
 .bgry{background-repeat:repeat-y}
 
 ```
-#### flex
+</details>
+<details id="flex">
+<summary>flex</summary>
 ```css
 .x{display:flex}
 .xac{align-items:center}
@@ -297,7 +222,9 @@ var css = gr8({
 .xob{order:99}
 
 ```
-#### display
+</details>
+<details id="display">
+<summary>display</summary>
 ```css
 .df{display:flex}
 .db{display:block}
@@ -309,7 +236,9 @@ var css = gr8({
 .dn{display:none}
 
 ```
-#### float
+</details>
+<details id="float">
+<summary>float</summary>
 ```css
 .fl{float:left}
 .fr{float:right}
@@ -317,7 +246,9 @@ var css = gr8({
 .cf:after{content:"";display:block;clear:both}
 
 ```
-#### overflow
+</details>
+<details id="overflow">
+<summary>overflow</summary>
 ```css
 .oh{overflow:hidden}
 .os{overflow:scroll}
@@ -327,7 +258,9 @@ var css = gr8({
 .oys{overflow-y:scroll}
 
 ```
-#### positioning
+</details>
+<details id="positioning">
+<summary>positioning</summary>
 ```css
 .psa{position:absolute}
 .psr{position:relative}
@@ -344,7 +277,9 @@ var css = gr8({
 .z4{z-index:4}
 
 ```
-#### size
+</details>
+<details id="size">
+<summary>size</summary>
 ```css
 .w0{width:0}
 .w100{width:100%}
@@ -363,7 +298,9 @@ var css = gr8({
 .ar100{content:"";display:block;padding-top:100%}
 
 ```
-#### typography
+</details>
+<details id="typography">
+<summary>typography</summary>
 ```css
 .fs6-4{font-size:6.4rem}
 .fs3-2{font-size:3.2rem}
@@ -399,7 +336,9 @@ var css = gr8({
 .tc4{columns:4}
 
 ```
-#### miscellaneous
+</details>
+<details id="miscellaneous">
+<summary>miscellaneous</summary>
 ```css
 .curp{cursor:pointer}
 .curd{cursor:default}
@@ -413,7 +352,9 @@ var css = gr8({
 .pea{pointer-events:auto}
 
 ```
-#### development
+</details>
+<details id="development">
+<summary>development</summary>
 ```css
 .dev{outline:1px solid #912eff}
 .dev > *{outline:1px solid #5497ff}
@@ -422,12 +363,84 @@ var css = gr8({
 .dev > * > * > * > *{outline:1px solid #00ff00}
 
 ```
+</details>
+
+
+## API
+
+The `gr8` api is very small and contains only 3 methods.
+
+### `css = gr8(options)`
+
+Initialize `gr8`. View all available [options](#options).
+
+### `css.attach()`
+
+Attach all utilities to the document head in a style tag. Returns style node.
+
+### `css.toString()`
+
+Returns all utilities as a `String` of css. Generally useful for [writing css to a file](#production).
+
+### `css.add(options)`
+
+Adds a `gr8` utility. This is quite powerful so it [gets its own section](#custom-utilities-).
+
+## Options
+
+Here are default options and details for what each option controls.
+
+```js
+var css = gr8({
+  spacing: [0, 1, 2, 3, 4],
+  fontSize: [6.4, 3.2, 2.4, 1.6, 1.2, 1.0],
+  lineHeight: [1, 1.5],
+  size: [0, 100],
+  viewport: 100,
+  zIndex: [0, 1, 2, 3, 4],
+  order: [0, 1, 2, 3, 4],
+  opacity: [0, 25, 50, 75, 100],
+  aspect: [0, 20, 50, 75, 100],
+  textColumns: [1, 2, 3, 4],
+  unit: 'rem',
+  nested: false,
+  responsive: false,
+  attribute: true,
+  max: true,
+  breakpoints: {
+    xl: '1439px',
+    lg: '1260px',
+    md: '1023px',
+    sm: '767px'
+  }
+})
+```
+
+| option | expects | controls |
+| --- | --- | --- |
+| spacing | `Array`/`Number` | [margin](#margin) & [padding](#padding) utilities |
+| fontSize | `Array`/`Number` | [font-size](#typography) utilities |
+| lineHeight | `Array`/`Number` | [line-height](#typography) utilities |
+| size | `Array`/`Number` | [width & height](#size) utilities |
+| viewport | `Array`/`Number` | [viewport](#size) utilities |
+| zIndex | `Array`/`Number` | [zIndex](#positioning) utilities |
+| order | `Array`/`Number` | [flex-order](#flex) utilities |
+| opacity | `Array`/`Number` | [opacity](#opacity) utilities |
+| aspect | `Array`/`Number` | [aspect ratio](#size) utilities |
+| textColumns | `Array`/`Number` | [text columns](#typography) utilities |
+| unit | `String` | default unit for numerical values |
+| nested | `Bool` | support for [nested columns](#nested-columns) ⚠️ &nbsp;increases size of css output ⚠️ |
+| responsive | `Bool` | support for [responsive utilities](#responsive) |
+| attribute | `Bool` | [breakpoint attribute selectors](#responsive) or prefixed class selectors? |
+| max | `Bool` | `max-width` (desktop-first) or `min-width` (mobile-first) breakpoints? |
+| breakpoints | `Object` | breakpoint keys and widths (only applies if using responsive utilities) |
+
 
 ## Custom Utilities ✨
 
-**The best way to learn how to write custom utilities is by reviewing the default utilities in [src/utils]()**
+**The best way to learn how to write custom utilities is by peeking at the default utilities in [src/utils]()!**
 
-Perhaps my favorite part about `gr8` is adding custom utilities because it makes it simple to think about *all* your styles for a project in a functional manner. Utilities are added by passing an object with options to the [`add`](#css-add-options-) method. Let's take a look at creating a `text-color` utility:
+Perhaps my favorite part about `gr8` is adding custom utilities because it makes it simple to think about *all* your styles for a project in a functional manner. Utilities are added by passing options to the [`add`](#css-add-options-) method. Let's take a look at creating a `text-color` utility:
 
 ```js
 css.add({
@@ -472,31 +485,116 @@ css.add({
 .bdw-lg:after{border-width:800px}
 ```
 
-While those specific utilities are not very useful, fancy utilties are possible by combining these options. [Review the default utilities to learn more]().
-
-#### Custom Utilities Options
-
-| option | expects | controls |
-| --- | --- | --- |
-| prefix | `String` | |
-| suffix | `String` | |
-| prop | `String` | |
-| vals | `Array`, `Number` | |
-| hyphenate | `Bool` | |
-| unit | `Bool`, `String` | |
-| transform | `Fcn` | |
-| declaration | `String` | |
-
+While those specific utilities are not very useful, fancy utilties are possible by combining these options.
 
 ## Responsive
 
+If the **responsive** option is set to `true`, breakpoint attribute utilities will be generated:
+
+```css
+@media (max-width: 1439px) {
+  [xl~="p0"]{padding:0}
+  [xl~="p1"]{padding:1rem}
+  [xl~="p2"]{padding:2rem}
+  [xl~="p3"]{padding:3rem}
+  [xl~="p4"]{padding:4rem}
+  /* etc... */
+}
+
+@media (max-width: 1260px) {
+  [lg~="p0"]{padding:0}
+  [lg~="p1"]{padding:1rem}
+  [lg~="p2"]{padding:2rem}
+  [lg~="p3"]{padding:3rem}
+  [lg~="p4"]{padding:4rem}
+  /* etc... */
+}
+
+@media (max-width: 1023px) {
+  [md~="p0"]{padding:0}
+  [md~="p1"]{padding:1rem}
+  [md~="p2"]{padding:2rem}
+  [md~="p3"]{padding:3rem}
+  [md~="p4"]{padding:4rem}
+  /* etc... */
+}
+
+@media (max-width: 767px) {
+  [sm~="p0"]{padding:0}
+  [sm~="p1"]{padding:1rem}
+  [sm~="p2"]{padding:2rem}
+  [sm~="p3"]{padding:3rem}
+  [sm~="p4"]{padding:4rem}
+  /* etc... */
+}
+```
+
+Now utilities can be applied to elements per breakpoint:
+
+```html
+<div class="p4" xl="p3" lg="p2" md="p1" sm="p0">My padding changes, groot!</div>
+```
+
+#### Prefixed Classes
+
+If breakpoint attributes aren't your style, you can set the **attribute** option to `false` to use prefixed class selectors instead:
+
+```css
+@media (max-width: 1439px) {
+  .xl-p0{padding:0}
+  /* etc... */
+}
+
+@media (max-width: 1260px) {
+  .lg-p0{padding:0}
+  /* etc... */
+}
+
+@media (max-width: 1023px) {
+  .md-p0{padding:0}
+  /* etc... */
+}
+
+@media (max-width: 767px) {
+  .sm-p0{padding:0}
+  /* etc... */
+}
+```
+
+#### Max vs. Min
+
+You can use `min-width` instead of `max-width` media queries by setting the **max** option to `false`.
+
 ## Nested Columns
 
-## FAQ (WIP)
+If the **nested** option is set to `true`, utilities will be generated for column nesting:
 
-### Huh?
+```css
+.c1{width:8.333333333333332%}
+.c1 .c1{width:100%}
+.c2{width:16.666666666666664%}
+.c2 .c1{width:50%}
+.c2 .c2{width:100%}
+.c3{width:25%}
+.c3 .c1{width:33.33333333333333%}
+.c3 .c2{width:66.66666666666666%}
+.c3 .c3{width:100%}
+/* etc... */
+```
 
+Now columns may be nested while retaining their actual size:
 
+```html
+<div class="c1">
+  <div class="c1">I'm 100% of my parent!</div>
+</div>
+<div class="c2">
+  <div class="c1">I'm 50% of my parent!</div>
+</div>
+<div class="c3">
+  <div class="c1">I'm 33.333% of my parent!</div>
+</div>
+```
 
 ## Utility Design
 
@@ -524,15 +622,13 @@ This structure is modified based on context and need of the utility. For example
 
 ## Production
 
-The `attach` method is handy, especially during development, but for production you might want to load your css in an external file, which is autoprefixed, minified, and maybe even [purified](https://www.npmjs.com/package/purify-css) (especially when using responsive utilities and nested columns!). The `toString` method returns all the css as a simple string, and we can leverage this in a node script to get a nice, production-ready css file:
+The `attach` method is handy, especially during development, but for production you might want to css loaded in an external file, which is autoprefixed, minified, and maybe even [purified](https://www.npmjs.com/package/purify-css) (especially when using responsive utilities and nested columns!). The `toString` method returns all the css as a simple string, and we can leverage this in a node script to save our css to a file:
 
 ```js
 var fs = require('fs')
 var gr8 = require('gr8')
-var postcss = require('postcss')
-var autoprefixer = require('autoprefixer')
 
-var css = gr8(/* pass in your options */)
+var css = gr8()
 var cssString = css.toString()
 
 fs.writeFile('gr8.css', cssString, function (err) {
@@ -540,16 +636,29 @@ fs.writeFile('gr8.css', cssString, function (err) {
     return console.log(err)
   }
 
-  console.log('production-ready gr8 build saved to gr8.css!')
+  console.log('gr8 saved to gr8.css!')
 })
 ```
 
-## Super!
+From there you may use whatever build process you like to get a nice, production-ready css file! **Example of this is coming soon...**
 
-<small>`gr8` is built and maintained by [Jon Gacnik](http://jongacnik.com) and used extensivley at [Folder Studio](http://folderstudio.com)</small>
+## FAQ
 
+**Work in progress...**
 
-estupendo!
-groot!
-groß!
-flott!
+### Why was this made?
+
+[f(css)](http://www.jon.gold/2015/07/functional-css/) is super and there are many solid approaches to functional css out there, `gr8` just happens to be my personal take. I like a system which is very flexible. Many of the sites which we make at [Folder Studio](http://folderstudio.com) would be quite tricky to pull off without quickly and easily adjusting utilities en masse.
+
+### Why not use..?
+
+Let me start by shouting out [gravitons](https://github.com/jxnblk/gravitons/), [basscss](https://github.com/jxnblk/basscss/),
+[tachyons](https://github.com/tachyons-css/tachyons/), and the like! These are all awesome tools, huge ups to their creators, and if you like 'em, use 'em. I've tried them all to varying degrees of success, I just happen to prefer `gr8` style 🙃
+
+## Fin!
+
+`gr8` is built and maintained by [Jon Gacnik](http://jongacnik.com) and used extensivley in projects at [Folder Studio](http://folderstudio.com).
+
+Shout out [Jon-Kyle Mohr](http://jon-kyle.com/) for using `gr8` for the past bits, totally tearing this thing apart and helping rebuild it in various past incarnations. This handy version is much thanks to him!
+
+Subarashīdesu!

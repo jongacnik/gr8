@@ -24,11 +24,12 @@ templates['utilitySections'] = Object.keys(utils).map(function (key) {
     ? Object.keys(utils[key]).join(', ')
     : key
   return [
-    '#### ' + key,
-    // 'includes: *' + subsections + '*',
+    '<details id="' + key + '">',
+    '<summary>' + key + '</summary>',
     '```css',
     css.toString(),
-    '```'
+    '```',
+    '</details>'
   ].join('\n')
 }).join('\n')
 
