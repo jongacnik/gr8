@@ -61,7 +61,7 @@ Attach all utilities to the document head in a style tag. Returns style node.
 
 Returns all utilities as a `String` of css. Generally useful for [writing css to a file]().
 
-### css.add(obj)
+### css.add(options)
 
 Adds a `gr8` utility. This is quite powerful so it [gets its own section]().
 
@@ -425,14 +425,9 @@ var css = gr8({
 
 ## Custom Utilities ✨
 
-This section is split into 2 parts, a how-to guide and a reference documenting options:
+**The best way to learn how to write custom utilities is by reviewing the default utilities in [src/utils]()**
 
-- [How-To]()
-- [Options Reference]()
-
-### How-To
-
-Perhaps my favorite part about `gr8` is adding custom utilities because it makes it simple to think about *all* your css for a project in a functional manner. Utilities are added by passing an object with options to the [`add`](#css-add-obj-) method. Let's take a look at creating a `text-color` utility:
+Perhaps my favorite part about `gr8` is adding custom utilities because it makes it simple to think about *all* your styles for a project in a functional manner. Utilities are added by passing an object with options to the [`add`](#css-add-options-) method. Let's take a look at creating a `text-color` utility:
 
 ```js
 css.add({
@@ -451,81 +446,35 @@ css.add({
 
 *Estupendo!*
 
-Under the hood, `gr8` tries to create sensible selectors using a [combination of abbreviated css properties and values](#utility-design). Of course, you can pass more options to the `add` method for more granular control. Let's say we want to specify our colors using `rgba` values, but still keep simple abbreviations in the utility name:
+Under the hood, `gr8` tries to create sensible selectors using a [combination of abbreviated css properties and values](#utility-design). We can also pass more options to the `add` method for granular control:
 
 ```js
 css.add({
-  prop: 'text-color',
+  prefix: 'bdw',
+  suffix: ':after',
+  prop: 'border-width',
   vals: [
-    { r: rgba(255, 0, 0, 0) },
-    { g: rgba(0, 255, 0, 0) },
-    { b: rgba(0, 0, 255, 0) }
-  ]
-})
-```
-
-```css
-.tcr{text-color:rgba(255, 0, 0, 0)}
-.tcg{text-color:rgba(0, 255, 0, 0)}
-.tcb{text-color:rgba(0, 0, 255, 0)}
-```
-
-Maybe we want to use our own prefix instead of `tc`. We also want a hyphen between the prefix and the value, and we want to use full color names instead of abbreviated versions:
-
-```js
-css.add({
-  prefix: 'color',
-  prop: 'text-color',
-  vals: [
-    { red: rgba(255, 0, 0, 0) },
-    { green: rgba(0, 255, 0, 0) },
-    { blue: rgba(0, 0, 255, 0) }
+    { sm: 1 },
+    { md: 4 },
+    { lg: 8 }
   ],
-  hyphenate: true
+  hyphenate: true,
+  unit: 'px',
+  transform: function (val) {
+    return val * 100
+  }
 })
 ```
 
 ```css
-.color-red{text-color:rgba(255, 0, 0, 0)}
-.color-green{text-color:rgba(0, 255, 0, 0)}
-.color-blue{text-color:rgba(0, 0, 255, 0)}
+.bdw-sm:after{border-width:100px}
+.bdw-md:after{border-width:400px}
+.bdw-lg:after{border-width:800px}
 ```
 
-*Nice!*
+While those specific utilities are not very useful, fancy utilties are possible by combining these options. [Review the default utilities to learn more]().
 
-We can also make numerical utilities:
-
-```js
-css.add({
-  prop: 'border-width',
-  vals: [1, 25.7, 100],
-  unit: true
-})
-```
-
-```css
-.bw1{border-width:1rem}
-.bw25-7{border-width:25.7rem}
-.bw100{border-width:100rem}
-```
-
-Notice how float values are made selector safe using hyphens. The values get appended with `rem` because that is the default unit set in the [options](#options). It's easy to override:
-
-```js
-css.add({
-  prop: 'border-width',
-  vals: [1, 25.7, 100],
-  unit: 'px'
-})
-```
-
-```css
-.bw1{border-width:1px}
-.bw25-7{border-width:25.7px}
-.bw100{border-width:100px}
-```
-
-### All Options
+#### Custom Utilities Options
 
 | option | expects | controls |
 | --- | --- | --- |
@@ -536,6 +485,7 @@ css.add({
 | hyphenate | `Bool` | |
 | unit | `Bool`, `String` | |
 | transform | `Fcn` | |
+| declaration | `String` | |
 
 
 ## Responsive
