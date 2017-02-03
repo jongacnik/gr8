@@ -1,7 +1,7 @@
 {
   "name": "gr8",
-  "version": "1.0.0",
-  "description": "gr8 is both a **set** of functional css utilities, as well as a **tool** for generating functional css utilities.",
+  "version": "2.0.0",
+  "description": "ⓖⓡ⑧ FUNctional CSS shorthand utilities",
   "main": "dist/gr8.js",
   "devDependencies": {
     "browserify": "^13.3.0",
@@ -21,11 +21,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://amongiants@bitbucket.org/amongiants/gr8.git"
+    "url": "git+https://github.com/jongacnik/gr8.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/amongiants/gr8#readme",
+  "author": "Jon Gacnik <jon@folderstudio.com> (http://jongacnik.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/jongacnik/gr8#readme",
   "dependencies": {}
 }
