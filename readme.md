@@ -496,13 +496,7 @@ While those specific utilities are not very useful, fancy utilties are possible 
 
 ### Huh?
 
-### Why not Tachyons or Basscss or...
 
-`gr8` was built because I like building my own tools. I've actually used many of the other toolkits including Tachyons, Basscss, Gravitons which are all fantastic and big big credit to their creators
-
-Tachyons, Basscss, and the like are incredible tools, and gravitons was the original inspiration for the initial naming structure of gr8 a couple years ago. However, the designs which we often execute in the studio can end up getting quite complex, and the configurability of some of the existing fxcss libs are not quite up to par.
-
-gr8 is a *very* tweakable set of functional css utilities. I've been using it, in various incarnations, for almost two years, and has certainly been used in production
 
 ## Utility Design
 
