@@ -1,5 +1,7 @@
 # ⓖⓡ⑧
 
+<span style="color:red">**WARNING: This 2.0 version not quite published to npm yet!**</span>
+
 [![NPM version](https://img.shields.io/npm/v/gr8.svg)]()
 [![Standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)]()
 
