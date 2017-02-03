@@ -4,17 +4,19 @@
 [![NPM version](https://img.shields.io/npm/v/gr8.svg)]()
 [![Standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)]()
 
-FUNctional CSS shorthand utilities. `gr8` is both a handy [**set**](#utilities) of functional css utilities, as well as a handy **tool** for generating functional css utilities.
+FUNctional CSS shorthand utilities. `gr8` is both a handy [**set**](#utilities) of functional css utilities, as well as a handy [**tool**](#custom-utilities-) for generating functional css utilities.
 
 ```
 npm i gr8
 ```
 
+## Table of Contents
+
 ## Features
-- **super**: Makes structuring layouts fast [without imposing limitations]()
-- **simple**: Single purpose utilities are easy to learn and avoid specificity issues
-- **flexible**: Customize included utilities using [options]() for breakpoints, spacing, units, etc...
-- **handy**: Add [custom utilities]() using simple objects
+- **super**: Makes structuring layouts fast [without imposing limitations](#faq)
+- **handy**: Utilities for columns, spacing, flexbox, typography, and more!
+- **flexible**: Customize included utilities using [options](#options) for breakpoints, spacing, units, etc...
+- **extensible**: Add [custom utilities](#custom-utilities-) using simple objects
 - **in-use**: [Folder Studio](http://folderstudio.com), [2Pac](http://www.2pac.com/), [Hardly Everything](https://hardlyeverything.com), [LA Forum](http://laforum.org), [Album Art IQ](http://daily.redbullmusicacademy.com/specials/2016-album-art-iq/), [Hassan Rahim](http://hassanrahim.com/), etc...
 
 ## Example
@@ -45,7 +47,7 @@ Now we can use the utilities in our app! [Click here to see a running example]()
 
 ## API
 
-The `gr8` api is very simple and only contains 3 methods.
+The `gr8` api is very small and only contains 3 methods.
 
 ### css = gr8(options)
 
@@ -57,35 +59,21 @@ Attach all utilities to the document head in a style tag. Returns style node.
 
 ### css.toString()
 
-Returns all utilities as a `String` of css. Generally used for [writing css to a file]().
+Returns all utilities as a `String` of css. Generally useful for [writing css to a file]().
 
 ### css.add(obj)
 
-Add your own `gr8` utility! This is really powerful so it [gets its own section]().
+Adds a `gr8` utility. This is quite powerful so it [gets its own section]().
 
 ## Options
 
-The following options are available for customizing `gr8` utilities:
+This sections covers default options and provides details for what each option controls.
 
 ```js
 var css = gr8({{ defaults }})
 ```
-- `spacing` values create [margin](#margin) and [padding](#padding) utilities
-- `fontSize` values create [font-size](#typography) utilities
-- `lineHeight` values create [line-height](#typography) utilities
-- `size` values create [width & height](#size) utilities
-- `viewport` values create [viewport](#size) utilities
-- `zIndex` values create [zIndex](#positioning) utilities
-- `order` values create [flex-order](#flex) utilities
-- `opacity` values create [opacity](#opacity) utilities
-- `aspect` values create [aspect ratio](#size) utilities
-- `textColumns` values create [text columns (css columns property)](#typography) utilities
-- `unit` is the default unit used for numerical values which do not have a specific unit defined (things like font-size, margin, padding, etc.)
-- `nested` adds support for [infinitely nestable columns](#nesting) which always retain actual size (⚠️ increases size of css output)
-- `responsive` adds support for [responsive utilities](#responsive)
-- `attribute` use `gr8` [breakpoint attribute selectors](#responsive) — set to false to use prefixed class selectors instead
-- `max` should breakpoints be `max-width` or `min-width` → desktop-first or mobile-first?
-- `breakpoints` for which to create responsive utilities (only applies if `responsive` is `true`)
+
+{{ optionsDetailsAlt }}
 
 ## Utilities
 
@@ -94,6 +82,125 @@ var css = gr8({{ defaults }})
 {{ utilityIndex }}
 
 {{ utilitySections }}
+
+## Custom Utilities ✨
+
+This section is split into 2 parts, a how-to guide and a reference documenting options:
+
+- [How-To]()
+- [Options Reference]()
+
+### How-To
+
+Perhaps my favorite part about `gr8` is adding custom utilities because it makes it simple to think about *all* your css for a project in a functional manner. Utilities are added by passing an object with options to the [`add`](#css-add-obj-) method. Let's take a look at creating a `text-color` utility:
+
+```js
+css.add({
+  prop: 'text-color',
+  vals: ['red', 'green', 'blue']
+})
+```
+
+...creates these utilities:
+
+```css
+.tcr{text-color:red}
+.tcg{text-color:green}
+.tcb{text-color:blue}
+```
+
+*Estupendo!*
+
+Under the hood, `gr8` tries to create sensible selectors using a [combination of abbreviated css properties and values](#utility-design). Of course, you can pass more options to the `add` method for more granular control. Let's say we want to specify our colors using `rgba` values, but still keep simple abbreviations in the utility name:
+
+```js
+css.add({
+  prop: 'text-color',
+  vals: [
+    { r: rgba(255, 0, 0, 0) },
+    { g: rgba(0, 255, 0, 0) },
+    { b: rgba(0, 0, 255, 0) }
+  ]
+})
+```
+
+```css
+.tcr{text-color:rgba(255, 0, 0, 0)}
+.tcg{text-color:rgba(0, 255, 0, 0)}
+.tcb{text-color:rgba(0, 0, 255, 0)}
+```
+
+Maybe we want to use our own prefix instead of `tc`. We also want a hyphen between the prefix and the value, and we want to use full color names instead of abbreviated versions:
+
+```js
+css.add({
+  prefix: 'color',
+  prop: 'text-color',
+  vals: [
+    { red: rgba(255, 0, 0, 0) },
+    { green: rgba(0, 255, 0, 0) },
+    { blue: rgba(0, 0, 255, 0) }
+  ],
+  hyphenate: true
+})
+```
+
+```css
+.color-red{text-color:rgba(255, 0, 0, 0)}
+.color-green{text-color:rgba(0, 255, 0, 0)}
+.color-blue{text-color:rgba(0, 0, 255, 0)}
+```
+
+*Nice!*
+
+We can also make numerical utilities:
+
+```js
+css.add({
+  prop: 'border-width',
+  vals: [1, 25.7, 100],
+  unit: true
+})
+```
+
+```css
+.bw1{border-width:1rem}
+.bw25-7{border-width:25.7rem}
+.bw100{border-width:100rem}
+```
+
+Notice how float values are made selector safe using hyphens. The values get appended with `rem` because that is the default unit set in the [options](#options). It's easy to override:
+
+```js
+css.add({
+  prop: 'border-width',
+  vals: [1, 25.7, 100],
+  unit: 'px'
+})
+```
+
+```css
+.bw1{border-width:1px}
+.bw25-7{border-width:25.7px}
+.bw100{border-width:100px}
+```
+
+### All Options
+
+| option | expects | controls |
+| --- | --- | --- |
+| prefix | `String` | |
+| suffix | `String` | |
+| prop | `String` | |
+| vals | `Array`, `Number` | |
+| hyphenate | `Bool` | |
+| unit | `Bool`, `String` | |
+| transform | `Fcn` | |
+
+
+## Responsive
+
+## Nested Columns
 
 ## FAQ (WIP)
 
@@ -154,3 +261,11 @@ fs.writeFile('gr8.css', cssString, function (err) {
 ```
 
 ## Super!
+
+<small>`gr8` is built and maintained by [Jon Gacnik](http://jongacnik.com) and used extensivley at [Folder Studio](http://folderstudio.com)</small>
+
+
+estupendo!
+groot!
+groß!
+flott!

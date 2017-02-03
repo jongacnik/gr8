@@ -15,8 +15,8 @@
     "test": "node tests/index.js | colortape && browserify tests/browser.js | tape-run | colortape",
     "dist-js": "browserify src/index.js -s gr8 | uglifyjs -m -c > dist/gr8.js",
     "dist-css": "node bin/gnr8.js",
-    "dox": "node bin/dox.js",
-    "watch-dox": "onchange 'bin/' -- npm run dox",
+    "dox": "node bin/dox/index.js",
+    "watch-dox": "onchange 'bin/dox/' -- npm run dox",
     "dist": "npm run dist-js && npm run dist-css && npm run dox"
   },
   "repository": {

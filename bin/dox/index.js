@@ -1,13 +1,17 @@
 var fs = require('fs')
-var gr8 = require('../src')
-var utils = require('../src/utils')
-var lib = require('../src/helpers')
+var gr8 = require('../../src')
+var utils = require('../../src/utils')
+var lib = require('../../src/helpers')
 
 var css = gr8()
 
 var templates = {}
 
-templates['defaults'] = fs.readFileSync(__dirname + '/../src/defaults.js', 'utf8').replace('module.exports = ', '').trim()
+templates['defaults'] = fs.readFileSync(__dirname + '/../../src/defaults.js', 'utf8')
+  .replace('module.exports = ', '').trim()
+
+templates['optionsDetails'] = fs.readFileSync(__dirname + '/options-list.md', 'utf8')
+templates['optionsDetailsAlt'] = fs.readFileSync(__dirname + '/options-table.md', 'utf8')
 
 templates['utilityIndex'] = Object.keys(utils).map(function (key) {
   return '- [' + key + '](#' + key + ')'
@@ -28,12 +32,17 @@ templates['utilitySections'] = Object.keys(utils).map(function (key) {
   ].join('\n')
 }).join('\n')
 
-var readme = fs.readFileSync(__dirname + '/dox.md', 'utf8')
+var readme = fs.readFileSync(__dirname + '/index.md', 'utf8')
 
-// replace {{ template }} with matching template
-readme = readme.replace(/\{\{(.+)\}\}/gi, function (match, contents) {
-  return templates[contents.trim()]
-})
+// d.i.y. {{ templates }}
+function tinyBars (str, data) {
+  var re = /\{\{(.+)\}\}/gi
+  return str.replace(re, function (match, val) {
+    return data[val.trim()] || ''
+  })
+}
+
+readme = tinyBars(readme, templates)
 
 fs.writeFile('readme.md', readme, function (err) {
   if (err) {
