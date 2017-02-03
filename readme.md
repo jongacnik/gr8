@@ -1,9 +1,7 @@
 # ⓖⓡ⑧
 
-<span style="color:red">**WARNING: This 2.0 version not quite published to npm yet!**</span>
-
-[![NPM version](https://img.shields.io/npm/v/gr8.svg)]()
-[![Standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)]()
+[![NPM version](https://img.shields.io/npm/v/gr8.svg)](https://www.npmjs.com/package/gr8)
+[![Standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 FUNctional CSS shorthand utilities. `gr8` is both a handy [**set**](#utilities) of functional css utilities, as well as a handy [**tool**](#custom-utilities-) for generating functional css utilities.
 
@@ -18,7 +16,7 @@ npm i gr8
 - **extensible**: Add [custom utilities](#custom-utilities-) using simple objects
 - **in-use**: [Folder Studio](http://folderstudio.com), [2Pac](http://www.2pac.com/), [Hardly Everything](https://hardlyeverything.com), [LA Forum](http://laforum.org), [Album Art IQ](http://daily.redbullmusicacademy.com/specials/2016-album-art-iq/), [Hassan Rahim](http://hassanrahim.com/), etc...
 
-**Skip straight to the [utilities](#utilities)! &nbsp;<span style="display:inline-block;transform:scale(-1,1)">🏃</span>**
+**Skip straight to the [utilities](#utilities)! 🏃**
 
 ## Example
 
@@ -40,7 +38,7 @@ css.add({
 css.attach()
 ```
 
-Now we can use the available css selectors in our app! [Click here to see a running example]().
+Now we can use the available css selectors in our app!
 
 ```html
 <div class="c6 p2 fs1-5 tcr" sm="c12 p1 tcb">subarashīdesu!</div>
@@ -431,7 +429,7 @@ var css = gr8({
 | aspect | `Array`/`Number` | [aspect ratio](#size) utilities |
 | textColumns | `Array`/`Number` | [text columns](#typography) utilities |
 | unit | `String` | default unit for numerical values |
-| nested | `Bool` | support for [nested columns](#nested-columns) ⚠️ &nbsp;increases size of css output ⚠️ |
+| nested | `Bool` | support for [nested columns](#nested-columns) ⚠️ increases size of css output ⚠️ |
 | responsive | `Bool` | support for [responsive utilities](#responsive) |
 | attribute | `Bool` | [breakpoint attribute selectors](#responsive) or prefixed class selectors? |
 | max | `Bool` | `max-width` (desktop-first) or `min-width` (mobile-first) breakpoints? |
@@ -440,7 +438,7 @@ var css = gr8({
 
 ## Custom Utilities ✨
 
-**The best way to learn how to write custom utilities is by peeking at the default utilities in [src/utils]()!**
+**The best way to learn how to write custom utilities is by peeking at the default utilities in [src/utils](https://github.com/jongacnik/gr8/tree/master/src/utils)!**
 
 Perhaps my favorite part about `gr8` is adding custom utilities because it makes it simple to think about *all* your styles for a project in a functional manner. Utilities are added by passing options to the [`add`](#css-add-options-) method. Let's take a look at creating a `text-color` utility:
 
@@ -487,7 +485,7 @@ css.add({
 .bdw-lg:after{border-width:800px}
 ```
 
-While those specific utilities are not very useful, fancy utilties are possible by combining these options.
+While those specific utilities are not very useful, fancy utilities are possible by combining these options.
 
 ## Responsive
 
@@ -615,7 +613,7 @@ The anatomy of `gr8` utilities generally follow a simple and similar structure. 
 ```
 
 - `prefix` is the shorthand identifier for what the utility does. Generally this will be an abbreviation of the respective css property (`font-size` → `fs`)
-- `selector value` is the specific identifier for the utility value. To make it css classname safe, decmials are replaced with hyphens (`1.5` → `1-5`)
+- `selector value` is the specific identifier for the utility value. To make it css classname safe, decimals are replaced with hyphens (`1.5` → `1-5`)
 - `property` is the css property name which the utility targets
 - `value` is the value corresponding to the css property
 - `unit` is the unit attached to the value
@@ -650,7 +648,7 @@ From there you may use whatever build process you like to get a nice, production
 
 ### Why was this made?
 
-[f(css)](http://www.jon.gold/2015/07/functional-css/) is super and there are many solid approaches to functional css out there, `gr8` just happens to be my personal take. I like a system which is very flexible. Many of the sites which we make at [Folder Studio](http://folderstudio.com) would be quite tricky to pull off without quickly and easily adjusting utilities en masse.
+[f(css)](http://www.jon.gold/2015/07/functional-css/) is super and there are many solid approaches to functional css out there, `gr8` just happens to be my personal take. I like a system which is very flexible. Many of the sites we make at [Folder Studio](http://folderstudio.com) would be quite tricky to pull off without quickly and easily adjusting utilities en masse.
 
 ### Why not use..?
 
@@ -659,7 +657,7 @@ Let me start by shouting out [gravitons](https://github.com/jxnblk/gravitons/), 
 
 ## Fin!
 
-`gr8` is built and maintained by [Jon Gacnik](http://jongacnik.com) and used extensivley in projects at [Folder Studio](http://folderstudio.com).
+`gr8` is built and maintained by [Jon Gacnik](http://jongacnik.com) and used extensively in projects at [Folder Studio](http://folderstudio.com).
 
 Shout out [Jon-Kyle Mohr](http://jon-kyle.com/) for using `gr8` for the past bits, totally tearing this thing apart and helping rebuild it in various past incarnations. This handy version is much thanks to him!
 

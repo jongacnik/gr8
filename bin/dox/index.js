@@ -10,8 +10,7 @@ var templates = {}
 templates['defaults'] = fs.readFileSync(__dirname + '/../../src/defaults.js', 'utf8')
   .replace('module.exports = ', '').trim()
 
-templates['optionsDetails'] = fs.readFileSync(__dirname + '/options-list.md', 'utf8')
-templates['optionsDetailsAlt'] = fs.readFileSync(__dirname + '/options-table.md', 'utf8')
+templates['optionsDetails'] = fs.readFileSync(__dirname + '/options-table.md', 'utf8')
 
 templates['utilityIndex'] = Object.keys(utils).map(function (key) {
   return '- [' + key + '](#' + key + ')'
