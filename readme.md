@@ -681,12 +681,12 @@ From there you may use whatever build process you like to get a nice, production
 ### Why not use..?
 
 Let me start by shouting out [gravitons](https://github.com/jxnblk/gravitons/), [basscss](https://github.com/jxnblk/basscss/),
-[tachyons](https://github.com/tachyons-css/tachyons/), and the like! These are all awesome tools, huge ups to their creators, and if you like 'em, use 'em. I've tried them all to varying degrees of success, I just happen to prefer `gr8` style 🙃
+[tachyons](https://github.com/tachyons-css/tachyons/), and the like. These are all awesome tools, huge ups to their creators, and if you like 'em, use 'em. I've tried them all to varying degrees of success, I just happen to prefer `gr8` style 🙃
 
 ## Fin!
 
 `gr8` is built and maintained by [Jon Gacnik](http://jongacnik.com) and used extensively in projects at [Folder Studio](http://folderstudio.com).
 
-Shout out [Jon-Kyle Mohr](http://jon-kyle.com/) for using `gr8` for the past bits, totally tearing this thing apart and helping rebuild it in various past incarnations. This handy version is much thanks to him!
+Shout out [Jon-Kyle Mohr](http://jon-kyle.com/) for using `gr8` for the past bits, totally tearing this thing apart and helping rebuild it in various past incarnations. This handy version is much thanks to him.
 
 Subarashīdesu!
