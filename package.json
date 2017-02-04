@@ -1,6 +1,6 @@
 {
   "name": "gr8",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "ⓖⓡ⑧ FUNctional CSS shorthand utilities",
   "main": "dist/gr8.js",
   "devDependencies": {
