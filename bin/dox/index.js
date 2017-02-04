@@ -25,7 +25,7 @@ templates['utilitySections'] = Object.keys(utils).map(function (key) {
   return [
     `<details>`,
     `<summary>${key}</summary>`,
-    '```',
+    '```css',
     css.toString() + '```',
     '</details>'
   ].join('\n')

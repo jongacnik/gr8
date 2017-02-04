@@ -51,7 +51,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>column</summary>
-```
+```css
 .c1{width:8.333333333333332%}
 .c2{width:16.666666666666664%}
 .c3{width:25%}
@@ -82,7 +82,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>margin</summary>
-```
+```css
 .m0{margin:0}
 .m1{margin:1rem}
 .m2{margin:2rem}
@@ -123,7 +123,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>padding</summary>
-```
+```css
 .p0{padding:0}
 .p1{padding:1rem}
 .p2{padding:2rem}
@@ -164,7 +164,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>opacity</summary>
-```
+```css
 .op0{opacity:0}
 .op25{opacity:0.25}
 .op50{opacity:0.5}
@@ -175,7 +175,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>background</summary>
-```
+```css
 .bgsc{background-size:cover}
 .bgsct{background-size:contain}
 .bgpc{background-position:center}
@@ -191,7 +191,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>flex</summary>
-```
+```css
 .x{display:flex}
 .xac{align-items:center}
 .xab{align-items:baseline}
@@ -226,7 +226,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>display</summary>
-```
+```css
 .df{display:flex}
 .db{display:block}
 .dib{display:inline-block}
@@ -240,7 +240,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>float</summary>
-```
+```css
 .fl{float:left}
 .fr{float:right}
 .fn{float:none}
@@ -250,7 +250,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>overflow</summary>
-```
+```css
 .oh{overflow:hidden}
 .os{overflow:scroll}
 .oxh{overflow-x:hidden}
@@ -262,7 +262,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>positioning</summary>
-```
+```css
 .psa{position:absolute}
 .psr{position:relative}
 .psf{position:fixed}
@@ -281,7 +281,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>size</summary>
-```
+```css
 .w0{width:0}
 .w100{width:100%}
 .h0{height:0}
@@ -302,7 +302,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>typography</summary>
-```
+```css
 .fs6-4{font-size:6.4rem}
 .fs3-2{font-size:3.2rem}
 .fs2-4{font-size:2.4rem}
@@ -340,7 +340,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>miscellaneous</summary>
-```
+```css
 .curp{cursor:pointer}
 .curd{cursor:default}
 .cura{cursor:alias}
@@ -356,7 +356,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 <details>
 <summary>development</summary>
-```
+```css
 .dev{outline:1px solid #912eff}
 .dev > *{outline:1px solid #5497ff}
 .dev > * > *{outline:1px solid #51feff}
