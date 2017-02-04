@@ -81,7 +81,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="margin">
 <summary>margin</summary>
 
@@ -124,7 +123,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="padding">
 <summary>padding</summary>
 
@@ -167,7 +165,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="opacity">
 <summary>opacity</summary>
 
@@ -180,7 +177,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="background">
 <summary>background</summary>
 
@@ -198,7 +194,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="flex">
 <summary>flex</summary>
 
@@ -235,7 +230,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="display">
 <summary>display</summary>
 
@@ -251,7 +245,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="float">
 <summary>float</summary>
 
@@ -263,7 +256,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="overflow">
 <summary>overflow</summary>
 
@@ -277,7 +269,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="positioning">
 <summary>positioning</summary>
 
@@ -298,7 +289,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="size">
 <summary>size</summary>
 
@@ -321,7 +311,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="typography">
 <summary>typography</summary>
 
@@ -361,7 +350,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="miscellaneous">
 <summary>miscellaneous</summary>
 
@@ -379,7 +367,6 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 ```
 
 </details>
-
 <details id="development">
 <summary>development</summary>
 

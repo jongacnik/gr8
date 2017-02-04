@@ -31,7 +31,7 @@ templates['utilitySections'] = Object.keys(utils).map(function (key) {
     '',
     '</details>'
   ].join('\n')
-}).join('\n\n')
+}).join('\n')
 
 var readme = fs.readFileSync(__dirname + '/index.md', 'utf8')
 
