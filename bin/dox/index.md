@@ -10,6 +10,7 @@ npm i gr8
 ```
 
 ## Features
+
 - **super**: Makes structuring layouts fast [without imposing limitations](#faq)
 - **handy**: Utilities for columns, spacing, flexbox, typography, and more!
 - **flexible**: Customize included utilities using [options](#options) for breakpoints, spacing, units, etc...

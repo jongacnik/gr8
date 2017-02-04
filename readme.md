@@ -10,6 +10,7 @@ npm i gr8
 ```
 
 ## Features
+
 - **super**: Makes structuring layouts fast [without imposing limitations](#faq)
 - **handy**: Utilities for columns, spacing, flexbox, typography, and more!
 - **flexible**: Customize included utilities using [options](#options) for breakpoints, spacing, units, etc...
@@ -38,7 +39,7 @@ css.add({
 css.attach()
 ```
 
-Now we can use the available css selectors in our app!
+Now we can use the available css selectors in our app! [Click here to see a running example]().
 
 ```html
 <div class="c6 p2 fs1-5 tcr" sm="c12 p1 tcb">subarashīdesu!</div>
@@ -50,6 +51,7 @@ Now we can use the available css selectors in our app!
 
 <details id="column">
 <summary>column</summary>
+
 ```css
 .c1{width:8.333333333333332%}
 .c2{width:16.666666666666664%}
@@ -76,11 +78,13 @@ Now we can use the available css selectors in our app!
 .co10{margin-left:83.33333333333334%}
 .co11{margin-left:91.66666666666666%}
 .co12{margin-left:100%}
-
 ```
+
 </details>
+
 <details id="margin">
 <summary>margin</summary>
+
 ```css
 .m0{margin:0}
 .m1{margin:1rem}
@@ -117,11 +121,13 @@ Now we can use the available css selectors in our app!
 .my2{margin-top:2rem;margin-bottom:2rem}
 .my3{margin-top:3rem;margin-bottom:3rem}
 .my4{margin-top:4rem;margin-bottom:4rem}
-
 ```
+
 </details>
+
 <details id="padding">
 <summary>padding</summary>
+
 ```css
 .p0{padding:0}
 .p1{padding:1rem}
@@ -158,22 +164,26 @@ Now we can use the available css selectors in our app!
 .py2{padding-top:2rem;padding-bottom:2rem}
 .py3{padding-top:3rem;padding-bottom:3rem}
 .py4{padding-top:4rem;padding-bottom:4rem}
-
 ```
+
 </details>
+
 <details id="opacity">
 <summary>opacity</summary>
+
 ```css
 .op0{opacity:0}
 .op25{opacity:0.25}
 .op50{opacity:0.5}
 .op75{opacity:0.75}
 .op100{opacity:1}
-
 ```
+
 </details>
+
 <details id="background">
 <summary>background</summary>
+
 ```css
 .bgsc{background-size:cover}
 .bgsct{background-size:contain}
@@ -185,11 +195,13 @@ Now we can use the available css selectors in our app!
 .bgrn{background-repeat:no-repeat}
 .bgrx{background-repeat:repeat-x}
 .bgry{background-repeat:repeat-y}
-
 ```
+
 </details>
+
 <details id="flex">
 <summary>flex</summary>
+
 ```css
 .x{display:flex}
 .xac{align-items:center}
@@ -220,11 +232,13 @@ Now we can use the available css selectors in our app!
 .xo4{order:4}
 .xot{order:-1}
 .xob{order:99}
-
 ```
+
 </details>
+
 <details id="display">
 <summary>display</summary>
+
 ```css
 .df{display:flex}
 .db{display:block}
@@ -234,21 +248,25 @@ Now we can use the available css selectors in our app!
 .dtc{display:table-cell}
 .dtr{display:table-row}
 .dn{display:none}
-
 ```
+
 </details>
+
 <details id="float">
 <summary>float</summary>
+
 ```css
 .fl{float:left}
 .fr{float:right}
 .fn{float:none}
 .cf:after{content:"";display:block;clear:both}
-
 ```
+
 </details>
+
 <details id="overflow">
 <summary>overflow</summary>
+
 ```css
 .oh{overflow:hidden}
 .os{overflow:scroll}
@@ -256,11 +274,13 @@ Now we can use the available css selectors in our app!
 .oxs{overflow-x:scroll}
 .oyh{overflow-y:hidden}
 .oys{overflow-y:scroll}
-
 ```
+
 </details>
+
 <details id="positioning">
 <summary>positioning</summary>
+
 ```css
 .psa{position:absolute}
 .psr{position:relative}
@@ -275,11 +295,13 @@ Now we can use the available css selectors in our app!
 .z2{z-index:2}
 .z3{z-index:3}
 .z4{z-index:4}
-
 ```
+
 </details>
+
 <details id="size">
 <summary>size</summary>
+
 ```css
 .w0{width:0}
 .w100{width:100%}
@@ -296,11 +318,13 @@ Now we can use the available css selectors in our app!
 .ar50{content:"";display:block;padding-top:50%}
 .ar75{content:"";display:block;padding-top:75%}
 .ar100{content:"";display:block;padding-top:100%}
-
 ```
+
 </details>
+
 <details id="typography">
 <summary>typography</summary>
+
 ```css
 .fs6-4{font-size:6.4rem}
 .fs3-2{font-size:3.2rem}
@@ -334,11 +358,13 @@ Now we can use the available css selectors in our app!
 .tc2{columns:2}
 .tc3{columns:3}
 .tc4{columns:4}
-
 ```
+
 </details>
+
 <details id="miscellaneous">
 <summary>miscellaneous</summary>
+
 ```css
 .curp{cursor:pointer}
 .curd{cursor:default}
@@ -350,19 +376,21 @@ Now we can use the available css selectors in our app!
 .ust{user-select:text}
 .pen{pointer-events:none}
 .pea{pointer-events:auto}
-
 ```
+
 </details>
+
 <details id="development">
 <summary>development</summary>
+
 ```css
 .dev{outline:1px solid #912eff}
 .dev > *{outline:1px solid #5497ff}
 .dev > * > *{outline:1px solid #51feff}
 .dev > * > * > *{outline:1px solid #ff0000}
 .dev > * > * > * > *{outline:1px solid #00ff00}
-
 ```
+
 </details>
 
 

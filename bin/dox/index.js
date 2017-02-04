@@ -25,12 +25,13 @@ templates['utilitySections'] = Object.keys(utils).map(function (key) {
   return [
     '<details id="' + key + '">',
     '<summary>' + key + '</summary>',
+    '',
     '```css',
-    css.toString(),
-    '```',
+    css.toString() + '```',
+    '',
     '</details>'
   ].join('\n')
-}).join('\n')
+}).join('\n\n')
 
 var readme = fs.readFileSync(__dirname + '/index.md', 'utf8')
 
