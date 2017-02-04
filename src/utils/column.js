@@ -4,7 +4,8 @@ var prefill = require('../helpers').prefill
 var columns = 12
 var columnsVals = prefill(1, columns)
 var offsetsVals = prefill(0, columns)
-var nestedColumnsVals = prefill(1, columns - 1)
+var nestedColumnsVals = prefill(1, columns).reverse()
+var nestedOffsetsVals = prefill(0, columns).reverse()
 
 exports.column = {
   prefix: 'c',
@@ -46,8 +47,8 @@ exports.nestedColumn = function (opts) {
 }
 
 exports.nestedOffset = function (opts) {
-  return opts.nested ? nestedColumnsVals.map(function (val) {
-    var cols = prefill(1, val)
+  return opts.nested ? nestedOffsetsVals.map(function (val) {
+    var cols = prefill(0, val)
     return cols.map(function (col) {
       return {
         prefix: ['co' + val, 'co' + col],
