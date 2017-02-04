@@ -624,6 +624,8 @@ Now columns may be nested while retaining their actual size:
 </div>
 ```
 
+**Warning:** There are some [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) concerns when using nested columns in combination with responsive utilities. To minimize bloat 😳 not every possible cascade permutation is provided. You'll need to be a little redundant with your utilities to avoid issues, but it's quite doable. ⚠️ **In general I recommend avoiding nested columns unless you are implementing a design which absolutely requires them!** ⚠️
+
 ## Utility Design
 
 The anatomy of `gr8` utilities generally follow a simple and similar structure. For example:
