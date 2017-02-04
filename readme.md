@@ -39,7 +39,7 @@ css.add({
 css.attach()
 ```
 
-Now we can use the available css selectors in our app! [Click here to see a running example]().
+Now we can use the available css selectors in our app!
 
 ```html
 <div class="c6 p2 fs1-5 tcr" sm="c12 p1 tcb">subarashīdesu!</div>
@@ -49,7 +49,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 `gr8` default utilities:
 
-<details>
+<details id="column">
 <summary>column</summary>
 
 ```css
@@ -82,7 +82,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="margin">
 <summary>margin</summary>
 
 ```css
@@ -125,7 +125,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="padding">
 <summary>padding</summary>
 
 ```css
@@ -168,7 +168,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="opacity">
 <summary>opacity</summary>
 
 ```css
@@ -181,7 +181,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="background">
 <summary>background</summary>
 
 ```css
@@ -199,7 +199,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="flex">
 <summary>flex</summary>
 
 ```css
@@ -236,7 +236,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="display">
 <summary>display</summary>
 
 ```css
@@ -252,7 +252,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="float">
 <summary>float</summary>
 
 ```css
@@ -264,7 +264,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="overflow">
 <summary>overflow</summary>
 
 ```css
@@ -278,7 +278,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="positioning">
 <summary>positioning</summary>
 
 ```css
@@ -299,7 +299,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="size">
 <summary>size</summary>
 
 ```css
@@ -322,7 +322,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="typography">
 <summary>typography</summary>
 
 ```css
@@ -362,7 +362,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="miscellaneous">
 <summary>miscellaneous</summary>
 
 ```css
@@ -380,7 +380,7 @@ Now we can use the available css selectors in our app! [Click here to see a runn
 
 </details>
 
-<details>
+<details id="development">
 <summary>development</summary>
 
 ```css

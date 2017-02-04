@@ -39,7 +39,7 @@ css.add({
 css.attach()
 ```
 
-Now we can use the available css selectors in our app! [Click here to see a running example]().
+Now we can use the available css selectors in our app!
 
 ```html
 <div class="c6 p2 fs1-5 tcr" sm="c12 p1 tcb">subarashīdesu!</div>
