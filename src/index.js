@@ -198,7 +198,7 @@ module.exports = function (options) {
     return styleNode
   }
 
-  api.empty = function () {
+  api.reset = function () {
     utilities = []
   }
 

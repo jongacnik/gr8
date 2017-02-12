@@ -17,7 +17,7 @@ templates['utilityIndex'] = Object.keys(utils).map(function (key) {
 }).join('\n')
 
 templates['utilitySections'] = Object.keys(utils).map(function (key) {
-  css.empty()
+  css.reset()
   css.add(utils[key])
   var subsections = !lib.isUtil(utils[key])
     ? Object.keys(utils[key]).join(', ')
