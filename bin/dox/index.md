@@ -54,7 +54,7 @@ Now we can use the available css selectors in our app!
 
 ## API
 
-The `gr8` api is very small and contains only 3 methods.
+The `gr8` api is very small and contains only 4 methods.
 
 ### `css = gr8(options)`
 
@@ -71,6 +71,16 @@ Returns all utilities as a `String` of css. Generally useful for [writing css to
 ### `css.add(options)`
 
 Adds a `gr8` utility. This is quite powerful so it [gets its own section](#custom-utilities-).
+
+### `css.remove(key)`
+
+Removes a built-in `gr8` utility. Accepts a single key or an array of keys.
+
+<details>
+  <summary>Accepted values</summary>
+
+  {{ utilityKeys }}
+</details>
 
 ## Options
 

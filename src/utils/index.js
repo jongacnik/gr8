@@ -10,7 +10,7 @@ module.exports = {
   overflow: require('./overflow'),
   positioning: require('./positioning'),
   size: require('./size'),
-  typography: require('./type'),
-  miscellaneous: require('./misc'),
-  development: require('./dev')
+  type: require('./type'),
+  misc: require('./misc'),
+  dev: require('./dev')
 }

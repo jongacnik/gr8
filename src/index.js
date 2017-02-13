@@ -5,7 +5,9 @@ var getBreakpoints = require('./breakpoints')
 
 module.exports = function (options) {
   var opts = lib.extend(defaultOptions, options)
-  var utilities = lib.objToArr(defaultUtils)
+  var utilities = lib.squish(defaultUtils, {
+    stopWhen: lib.isUtil
+  })
 
   function getFallbackUnit (unit) {
     unit = unit || ''
@@ -112,14 +114,22 @@ module.exports = function (options) {
     return simpleUtil(util) || complexUtil(util)
   }
 
-  function expandUtil (util) {
-    if (lib.isUtil(util)) {
-      return util
-    } else if (lib.isFcn(util)) {
-      return lib.alwaysArr(util(opts)).map(expandUtil)
-    } else if (lib.isArr(util) || lib.isObj(util)) {
-      return lib.objToArr(util).map(expandUtil).reduce(lib.flatten, [])
-    }
+  function expandUtils (utils) {
+    utils = lib.squish(utils, {
+      includeArrays: true,
+      stopWhen: lib.isUtil
+    })
+
+    Object.keys(utils).forEach(function (key) {
+      if (lib.isFcn(utils[key])) {
+        utils[key] = utils[key](opts)
+      }
+    })
+
+    return lib.squish(utils, {
+      includeArrays: true,
+      stopWhen: lib.isUtil
+    })
   }
 
   function setUtilOption (util) {
@@ -139,9 +149,10 @@ module.exports = function (options) {
   }
 
   function getFormattedUtils () {
-    var utils = utilities
-      .map(expandUtil)
-      .reduce(lib.flatten, [])
+    var expandedUtils = expandUtils(utilities)
+    var utilsArr = lib.objToArr(expandedUtils)
+
+    var utils = utilsArr
       .filter(lib.removeEmpty)
       .map(setUtilOption)
       .map(formatUtil)
@@ -183,7 +194,20 @@ module.exports = function (options) {
   var api = {}
 
   api.add = function (util) {
-    utilities.push(util)
+    var hash = lib.hash(JSON.stringify(util))
+    utilities['z' + hash] = util
+  }
+
+  api.remove = function (key) {
+    lib.alwaysArr(key).forEach(function (k) {
+      if (k in utilities) {
+        delete utilities[k]
+      }
+    })
+  }
+
+  api.reset = function () {
+    utilities = {}
   }
 
   api.toString = function () {
@@ -196,10 +220,6 @@ module.exports = function (options) {
     styleNode.innerHTML = makeCss()
     document.head.appendChild(styleNode)
     return styleNode
-  }
-
-  api.reset = function () {
-    utilities = []
   }
 
   return api

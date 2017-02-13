@@ -12,6 +12,14 @@ templates['defaults'] = fs.readFileSync(__dirname + '/../../src/defaults.js', 'u
 
 templates['optionsDetails'] = fs.readFileSync(__dirname + '/options-table.md', 'utf8')
 
+var allKeys = lib.squish(utils, {
+  stopWhen: lib.isUtil
+})
+
+templates['utilityKeys'] = Object.keys(allKeys).map(function (key) {
+  return '`' + key + '`'
+}).join(', ')
+
 templates['utilityIndex'] = Object.keys(utils).map(function (key) {
   return '- [' + key + '](#' + key + ')'
 }).join('\n')
@@ -19,16 +27,23 @@ templates['utilityIndex'] = Object.keys(utils).map(function (key) {
 templates['utilitySections'] = Object.keys(utils).map(function (key) {
   css.reset()
   css.add(utils[key])
-  var subsections = !lib.isUtil(utils[key])
-    ? Object.keys(utils[key]).join(', ')
-    : key
+  var subsections = !lib.isUtil(utils[key]) && !lib.isArr(utils[key])
+    ? Object.keys(utils[key]).map(subkey => '`' + key + '.' + subkey + '`').join(', ')
+    : '`' + key + '`'
+  var transform = (key) => {
+    return key === 'type' ? 'typography'
+      : key === 'misc' ? 'miscellaneous'
+      : key === 'dev' ? 'development'
+      : key
+  }
   return [
     `<details id="${key}">`,
-    `<summary>${key}</summary>`,
+    `<summary>${transform(key)}</summary>`,
     '',
     '```css',
     css.toString() + '```',
     '',
+    'Included Utilities: ' + subsections,
     '</details>'
   ].join('\n')
 }).join('\n\n')

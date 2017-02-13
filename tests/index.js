@@ -88,6 +88,25 @@ test('`add` method 4/4', function (t) {
   t.end()
 })
 
+test('`remove` method', function (t) {
+  utils.remove('display')
+
+  var css = utils.toString()
+  var hasUtils = hasAll([
+    '.df{display:flex}',
+    '.db{display:block}',
+    '.dib{display:inline-block}',
+    '.di{display:inline}',
+    '.dt{display:table}',
+    '.dtc{display:table-cell}',
+    '.dtr{display:table-row}',
+    '.dn{display:none}'
+  ], css)
+
+  t.notOk(hasUtils, 'utility removed by key')
+  t.end()
+})
+
 /**
  * Options
  */

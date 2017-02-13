@@ -80,6 +80,7 @@ Now we can use the available css selectors in our app!
 .co12{margin-left:100%}
 ```
 
+Included Utilities: `column.column`, `column.offset`, `column.nestedColumn`, `column.nestedOffset`
 </details>
 
 <details id="margin">
@@ -123,6 +124,7 @@ Now we can use the available css selectors in our app!
 .my4{margin-top:4rem;margin-bottom:4rem}
 ```
 
+Included Utilities: `margin.margin`, `margin.marginX`, `margin.marginY`
 </details>
 
 <details id="padding">
@@ -166,6 +168,7 @@ Now we can use the available css selectors in our app!
 .py4{padding-top:4rem;padding-bottom:4rem}
 ```
 
+Included Utilities: `padding.padding`, `padding.paddingX`, `padding.paddingY`
 </details>
 
 <details id="opacity">
@@ -179,6 +182,7 @@ Now we can use the available css selectors in our app!
 .op100{opacity:1}
 ```
 
+Included Utilities: `opacity`
 </details>
 
 <details id="background">
@@ -197,6 +201,7 @@ Now we can use the available css selectors in our app!
 .bgry{background-repeat:repeat-y}
 ```
 
+Included Utilities: `background.size`, `background.position`, `background.repeat`
 </details>
 
 <details id="flex">
@@ -234,6 +239,7 @@ Now we can use the available css selectors in our app!
 .xob{order:99}
 ```
 
+Included Utilities: `flex.display`, `flex.align`, `flex.direction`, `flex.justify`, `flex.wrap`, `flex.flex`, `flex.order`, `flex.orderSpecial`
 </details>
 
 <details id="display">
@@ -250,6 +256,7 @@ Now we can use the available css selectors in our app!
 .dn{display:none}
 ```
 
+Included Utilities: `display`
 </details>
 
 <details id="float">
@@ -262,6 +269,7 @@ Now we can use the available css selectors in our app!
 .cf:after{content:"";display:block;clear:both}
 ```
 
+Included Utilities: `float.float`, `float.clear`
 </details>
 
 <details id="overflow">
@@ -276,6 +284,7 @@ Now we can use the available css selectors in our app!
 .oys{overflow-y:scroll}
 ```
 
+Included Utilities: `overflow`
 </details>
 
 <details id="positioning">
@@ -297,6 +306,7 @@ Now we can use the available css selectors in our app!
 .z4{z-index:4}
 ```
 
+Included Utilities: `positioning.position`, `positioning.placement`, `positioning.zindex`
 </details>
 
 <details id="size">
@@ -320,9 +330,10 @@ Now we can use the available css selectors in our app!
 .ar100{content:"";display:block;padding-top:100%}
 ```
 
+Included Utilities: `size.size`, `size.viewportWidth`, `size.viewportHeight`, `size.viewportMinWidth`, `size.viewportMinHeight`, `size.viewportMaxWidth`, `size.viewportMaxHeight`, `size.aspect`
 </details>
 
-<details id="typography">
+<details id="type">
 <summary>typography</summary>
 
 ```css
@@ -360,9 +371,10 @@ Now we can use the available css selectors in our app!
 .tc4{columns:4}
 ```
 
+Included Utilities: `type.fontSize`, `type.lineHeight`, `type.fontStyle`, `type.fontWeight`, `type.textAlign`, `type.textDecoration`, `type.textTransform`, `type.verticalAlign`, `type.textColumn`
 </details>
 
-<details id="miscellaneous">
+<details id="misc">
 <summary>miscellaneous</summary>
 
 ```css
@@ -378,9 +390,10 @@ Now we can use the available css selectors in our app!
 .pea{pointer-events:auto}
 ```
 
+Included Utilities: `misc.cursor`, `misc.userSelect`, `misc.pointerEvents`
 </details>
 
-<details id="development">
+<details id="dev">
 <summary>development</summary>
 
 ```css
@@ -391,12 +404,13 @@ Now we can use the available css selectors in our app!
 .dev > * > * > * > *{outline:1px solid #00ff00}
 ```
 
+Included Utilities: `dev`
 </details>
 
 
 ## API
 
-The `gr8` api is very small and contains only 3 methods.
+The `gr8` api is very small and contains only 4 methods.
 
 ### `css = gr8(options)`
 
@@ -413,6 +427,16 @@ Returns all utilities as a `String` of css. Generally useful for [writing css to
 ### `css.add(options)`
 
 Adds a `gr8` utility. This is quite powerful so it [gets its own section](#custom-utilities-).
+
+### `css.remove(key)`
+
+Removes a built-in `gr8` utility. Accepts a single key or an array of keys.
+
+<details>
+  <summary>Accepted values</summary>
+
+  `column.column`, `column.offset`, `column.nestedColumn`, `column.nestedOffset`, `margin.margin`, `margin.marginX`, `margin.marginY`, `padding.padding`, `padding.paddingX`, `padding.paddingY`, `opacity`, `background.size`, `background.position`, `background.repeat`, `flex.display`, `flex.align`, `flex.direction`, `flex.justify`, `flex.wrap`, `flex.flex`, `flex.order`, `flex.orderSpecial`, `display`, `float.float`, `float.clear`, `overflow`, `positioning.position`, `positioning.placement`, `positioning.zindex`, `size.size`, `size.viewportWidth`, `size.viewportHeight`, `size.viewportMinWidth`, `size.viewportMinHeight`, `size.viewportMaxWidth`, `size.viewportMaxHeight`, `size.aspect`, `type.fontSize`, `type.lineHeight`, `type.fontStyle`, `type.fontWeight`, `type.textAlign`, `type.textDecoration`, `type.textTransform`, `type.verticalAlign`, `type.textColumn`, `misc.cursor`, `misc.userSelect`, `misc.pointerEvents`, `dev`
+</details>
 
 ## Options
 
@@ -447,15 +471,15 @@ var css = gr8({
 | option | expects | controls |
 | --- | --- | --- |
 | spacing | `Array`/`Number` | [margin](#margin) & [padding](#padding) utilities |
-| fontSize | `Array`/`Number` | [font-size](#typography) utilities |
-| lineHeight | `Array`/`Number` | [line-height](#typography) utilities |
+| fontSize | `Array`/`Number` | [font-size](#type) utilities |
+| lineHeight | `Array`/`Number` | [line-height](#type) utilities |
 | size | `Array`/`Number` | [width & height](#size) utilities |
 | viewport | `Array`/`Number` | [viewport](#size) utilities |
 | zIndex | `Array`/`Number` | [zIndex](#positioning) utilities |
 | order | `Array`/`Number` | [flex-order](#flex) utilities |
 | opacity | `Array`/`Number` | [opacity](#opacity) utilities |
 | aspect | `Array`/`Number` | [aspect ratio](#size) utilities |
-| textColumns | `Array`/`Number` | [text columns](#typography) utilities |
+| textColumns | `Array`/`Number` | [text columns](#type) utilities |
 | unit | `String` | default unit for numerical values |
 | nested | `Bool` | support for [nested columns](#nested-columns) ⚠️ increases size of css output ⚠️ |
 | responsive | `Bool` | support for [responsive utilities](#responsive) |

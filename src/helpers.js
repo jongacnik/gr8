@@ -1,3 +1,6 @@
+var hash = require('string-hash')
+var squish = require('object-squish')
+
 function isFcn (val) {
   return typeof val === 'function'
 }
@@ -135,6 +138,8 @@ function prefill (start, end) {
 }
 
 module.exports = {
+  hash: hash,
+  squish: squish,
   isFcn: isFcn,
   isStr: isStr,
   isArr: isArr,

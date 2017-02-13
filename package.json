@@ -27,5 +27,8 @@
   "author": "Jon Gacnik <jon@folderstudio.com> (http://jongacnik.com)",
   "license": "MIT",
   "homepage": "https://github.com/jongacnik/gr8#readme",
-  "dependencies": {}
+  "dependencies": {
+    "object-squish": "^1.1.0",
+    "string-hash": "^1.1.3"
+  }
 }
