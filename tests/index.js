@@ -53,11 +53,11 @@ test('`add` method 3/4', function (t) {
     prefix: 'bdw',
     suffix: ':after',
     prop: 'border-width',
-    vals: [
-      { sm: 1 },
-      { md: 4 },
-      { lg: 8 }
-    ],
+    vals: {
+      sm: 1,
+      md: 4,
+      lg: 8
+    },
     hyphenate: true,
     unit: 'px',
     transform: function (val) {

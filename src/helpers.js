@@ -62,6 +62,16 @@ function objToArr (obj) {
   }) : obj
 }
 
+function arrOfObjs (obj) {
+  return isObj(obj)
+    ? Object.keys(obj).map(function (key) {
+        var newObj = {}
+        newObj[key] = obj[key]
+        return newObj
+      })
+    : obj
+}
+
 // expects: { key: 'nice', val: 'cool' } or { val: 'cool' }
 function getKeyOrVal (obj) {
   obj = obj || {}
@@ -159,5 +169,6 @@ module.exports = {
   prefill: prefill,
   getKeyOrVal: getKeyOrVal,
   objToArr: objToArr,
+  arrOfObjs: arrOfObjs,
   getValObj: getValObj
 }

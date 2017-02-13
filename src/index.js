@@ -94,7 +94,7 @@ module.exports = function (options) {
   function complexUtil (util) {
     if (canGenerate(util)) {
       var makePrefix = makePrefixer(util)
-      return lib.alwaysArr(util.vals).map(function (val) {
+      return lib.alwaysArr(lib.arrOfObjs(util.vals)).map(function (val) {
         var thisValObj = lib.getValObj(val)
         var thisPrefix = makePrefix(thisValObj)
         var thisDeclaration = lib.isFcn(util.declaration)
