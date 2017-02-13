@@ -401,7 +401,7 @@ Included Utilities: `misc.cursor`, `misc.userSelect`, `misc.pointerEvents`
 .dev > *{outline:1px solid #5497ff}
 .dev > * > *{outline:1px solid #51feff}
 .dev > * > * > *{outline:1px solid #ff0000}
-.dev > * > * > * > *{outline:1px solid #00ff00}
+.dev > * > * > * *{outline:1px solid #00ff00}
 ```
 
 Included Utilities: `dev`

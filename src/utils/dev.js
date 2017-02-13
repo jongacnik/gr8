@@ -28,7 +28,7 @@ module.exports = [
   },
   {
     prefix: 'dev',
-    suffix: ' > * > * > * > *',
+    suffix: ' > * > * > * *',
     declaration: 'outline:1px solid ' + colors.lime
   }
 ]
