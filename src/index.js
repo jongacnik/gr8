@@ -222,5 +222,9 @@ module.exports = function (options) {
     return styleNode
   }
 
+  api.utils = function () {
+    return getFormattedUtils()
+  }
+
   return api
 }
