@@ -369,7 +369,7 @@ Included Utilities: `size.size`, `size.viewportWidth`, `size.viewportHeight`, `s
 .vam{vertical-align:middle}
 .vab{vertical-align:bottom}
 .wsn{white-space:normal}
-.wsn{white-space:nowrap}
+.wsnw{white-space:nowrap}
 .wsp{white-space:pre}
 .wsi{white-space:inherit}
 .tc1{columns:1}

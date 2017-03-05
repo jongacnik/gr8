@@ -78,7 +78,7 @@ exports.whiteSpace = {
   prop: 'white-space',
   vals: [
     'normal',
-    'nowrap',
+    { nw: 'nowrap' },
     'pre',
     'inherit'
   ]
