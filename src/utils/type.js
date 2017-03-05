@@ -35,6 +35,15 @@ exports.textAlign = {
   ]
 }
 
+exports.textOverflow = {
+  prop: 'text-overflow',
+  vals: [
+    'initial',
+    'clip',
+    'ellipsis'
+  ]
+}
+
 exports.textDecoration = {
   prop: 'text-decoration',
   vals: [
@@ -62,6 +71,16 @@ exports.verticalAlign = {
     'top',
     'middle',
     'bottom'
+  ]
+}
+
+exports.whiteSpace = {
+  prop: 'white-space',
+  vals: [
+    'normal',
+    { nw: 'nowrap' },
+    'pre',
+    'inherit'
   ]
 }
 

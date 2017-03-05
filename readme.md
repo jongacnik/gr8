@@ -353,6 +353,9 @@ Included Utilities: `size.size`, `size.viewportWidth`, `size.viewportHeight`, `s
 .tac{text-align:center}
 .tar{text-align:right}
 .taj{text-align:justify}
+.toi{text-overflow:initial}
+.toc{text-overflow:clip}
+.toe{text-overflow:ellipsis}
 .tdu{text-decoration:underline}
 .tdo{text-decoration:overline}
 .tdlt{text-decoration:line-through}
@@ -365,13 +368,17 @@ Included Utilities: `size.size`, `size.viewportWidth`, `size.viewportHeight`, `s
 .vat{vertical-align:top}
 .vam{vertical-align:middle}
 .vab{vertical-align:bottom}
+.wsn{white-space:normal}
+.wsnw{white-space:nowrap}
+.wsp{white-space:pre}
+.wsi{white-space:inherit}
 .tc1{columns:1}
 .tc2{columns:2}
 .tc3{columns:3}
 .tc4{columns:4}
 ```
 
-Included Utilities: `type.fontSize`, `type.lineHeight`, `type.fontStyle`, `type.fontWeight`, `type.textAlign`, `type.textDecoration`, `type.textTransform`, `type.verticalAlign`, `type.textColumn`
+Included Utilities: `type.fontSize`, `type.lineHeight`, `type.fontStyle`, `type.fontWeight`, `type.textAlign`, `type.textOverflow`, `type.textDecoration`, `type.textTransform`, `type.verticalAlign`, `type.whiteSpace`, `type.textColumn`
 </details>
 
 <details id="misc">
@@ -435,7 +442,7 @@ Removes a built-in `gr8` utility. Accepts a single key or an array of keys.
 <details>
   <summary>Accepted values</summary>
 
-  `column.column`, `column.offset`, `column.nestedColumn`, `column.nestedOffset`, `margin.margin`, `margin.marginX`, `margin.marginY`, `padding.padding`, `padding.paddingX`, `padding.paddingY`, `opacity`, `background.size`, `background.position`, `background.repeat`, `flex.display`, `flex.align`, `flex.direction`, `flex.justify`, `flex.wrap`, `flex.flex`, `flex.order`, `flex.orderSpecial`, `display`, `float.float`, `float.clear`, `overflow`, `positioning.position`, `positioning.placement`, `positioning.zindex`, `size.size`, `size.viewportWidth`, `size.viewportHeight`, `size.viewportMinWidth`, `size.viewportMinHeight`, `size.viewportMaxWidth`, `size.viewportMaxHeight`, `size.aspect`, `type.fontSize`, `type.lineHeight`, `type.fontStyle`, `type.fontWeight`, `type.textAlign`, `type.textDecoration`, `type.textTransform`, `type.verticalAlign`, `type.textColumn`, `misc.cursor`, `misc.userSelect`, `misc.pointerEvents`, `dev`
+  `column.column`, `column.offset`, `column.nestedColumn`, `column.nestedOffset`, `margin.margin`, `margin.marginX`, `margin.marginY`, `padding.padding`, `padding.paddingX`, `padding.paddingY`, `opacity`, `background.size`, `background.position`, `background.repeat`, `flex.display`, `flex.align`, `flex.direction`, `flex.justify`, `flex.wrap`, `flex.flex`, `flex.order`, `flex.orderSpecial`, `display`, `float.float`, `float.clear`, `overflow`, `positioning.position`, `positioning.placement`, `positioning.zindex`, `size.size`, `size.viewportWidth`, `size.viewportHeight`, `size.viewportMinWidth`, `size.viewportMinHeight`, `size.viewportMaxWidth`, `size.viewportMaxHeight`, `size.aspect`, `type.fontSize`, `type.lineHeight`, `type.fontStyle`, `type.fontWeight`, `type.textAlign`, `type.textOverflow`, `type.textDecoration`, `type.textTransform`, `type.verticalAlign`, `type.whiteSpace`, `type.textColumn`, `misc.cursor`, `misc.userSelect`, `misc.pointerEvents`, `dev`
 </details>
 
 ## Options
