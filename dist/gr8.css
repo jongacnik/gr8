@@ -199,6 +199,9 @@
 .tac{text-align:center}
 .tar{text-align:right}
 .taj{text-align:justify}
+.toi{text-overflow:initial}
+.toc{text-overflow:clip}
+.toe{text-overflow:ellipsis}
 .tdu{text-decoration:underline}
 .tdo{text-decoration:overline}
 .tdlt{text-decoration:line-through}
@@ -211,6 +214,10 @@
 .vat{vertical-align:top}
 .vam{vertical-align:middle}
 .vab{vertical-align:bottom}
+.wsn{white-space:normal}
+.wsn{white-space:nowrap}
+.wsp{white-space:pre}
+.wsi{white-space:inherit}
 .tc1{columns:1}
 .tc2{columns:2}
 .tc3{columns:3}
