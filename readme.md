@@ -6,7 +6,7 @@
 FUNctional CSS shorthand utilities. `gr8` is both a handy [**set**](#utilities) of functional css utilities, as well as a handy [**tool**](#custom-utilities-) for generating functional css utilities.
 
 ```
-npm i gr8
+$ npm i gr8
 ```
 
 ## Features
@@ -21,7 +21,15 @@ npm i gr8
 
 ## Example
 
-Let's set up `gr8` with a couple options, add a custom `text-color` utility, and append the styles to the head of our doc using the `attach` method:
+The fastest way to use `gr8` is to include [gr8.css]() in your project and begin using styles:
+
+```html
+<div class="c6 p2 fs1-5 tcr" sm="c12 p1 tcb">subarashīdesu!</div>
+```
+
+### More advanced...
+
+While using the prebuilt css is handy, `gr8` becomes exceptionally useful if you use the [javascript API](#api) to customize the output. Let's set up with a couple options, add a custom `text-color` utility, and write the styles to stdout using the `toString` method:
 
 ```js
 var gr8 = require('gr8')
@@ -36,13 +44,8 @@ css.add({
   vals: ['red', 'blue', 'green']
 })
 
-css.attach()
-```
-
-Now we can use the available css selectors in our app!
-
-```html
-<div class="c6 p2 fs1-5 tcr" sm="c12 p1 tcb">subarashīdesu!</div>
+// pipe the css to a file, perhaps?
+process.stdout.write(css.toString())
 ```
 
 ## Utilities
@@ -417,19 +420,19 @@ Included Utilities: `dev`
 
 ## API
 
-The `gr8` api is very small and contains only 4 methods.
+The `gr8` api is very small and contains only 5 methods.
 
 ### `css = gr8(options)`
 
 Initialize `gr8`. View all available [options](#options).
 
+### `css.toString()`
+
+Returns all utilities as a `String` of css. Very useful for [writing css to a file](#production).
+
 ### `css.attach()`
 
 Attach all utilities to the document head in a style tag. Returns style node.
-
-### `css.toString()`
-
-Returns all utilities as a `String` of css. Generally useful for [writing css to a file](#production).
 
 ### `css.add(options)`
 
@@ -499,7 +502,7 @@ var css = gr8({
 
 **The best way to learn how to write custom utilities is by peeking at the default utilities in [src/utils](https://github.com/jongacnik/gr8/tree/master/src/utils)!**
 
-Perhaps my favorite part about `gr8` is adding custom utilities because it makes it simple to think about *all* your styles for a project in a functional manner. Utilities are added by passing options to the [`add`](#css-add-options-) method. Let's take a look at creating a `text-color` utility:
+Perhaps the most useful aspect of `gr8` is adding custom utilities because it makes it simple to think about *all* your styles for a project in a functional manner. Utilities are added by passing options to the [`add`](#css-add-options-) method. Let's take a look at creating a `text-color` utility:
 
 ```js
 css.add({
@@ -683,7 +686,7 @@ This structure is modified based on context and need of the utility. For example
 
 ## Production
 
-The `attach` method is handy, especially during development, but for production you might want to css loaded in an external file, which is autoprefixed, minified, and maybe even [purified](https://www.npmjs.com/package/purify-css) (especially when using responsive utilities and nested columns!). The `toString` method returns all the css as a simple string, and we can leverage this in a node script to save our css to a file:
+The `attach` method can be useful during development, but you'll usually want to make use of the `toString` method when thinking about bundling for production. That way you can autoprefix, minify, and maybe even [purify](https://www.npmjs.com/package/purify-css) (especially when using responsive utilities and nested columns!). The `toString` method returns all the css as a simple string, and we can leverage this in a node script to pipe to stdout or to save to a file:
 
 ```js
 var fs = require('fs')
@@ -692,6 +695,10 @@ var gr8 = require('gr8')
 var css = gr8()
 var cssString = css.toString()
 
+// pipe to stdout
+process.stdout.write(cssString)
+
+// or write to file
 fs.writeFile('gr8.css', cssString, function (err) {
   if (err) {
     return console.log(err)
@@ -701,25 +708,24 @@ fs.writeFile('gr8.css', cssString, function (err) {
 })
 ```
 
-From there you may use whatever build process you like to get a nice, production-ready css file! **Example of this is coming soon...**
+From there you may use whatever build process you like to create your production bundle! I usually have my styles piped to stdout from a file like, **styles.js**, and will bundle using something like:
+
+```
+$ node styles.js | postcss --use autoprefixer | cssnano > dist/bundle.css
+```
 
 ## FAQ
 
-**Work in progress...**
-
 ### Why was this made?
 
-[f(css)](http://www.jon.gold/2015/07/functional-css/) is super and there are many solid approaches to functional css out there, `gr8` just happens to be my personal take. I like a system which is very flexible. Many of the sites we make at [Folder Studio](http://folderstudio.com) would be quite tricky to pull off without quickly and easily adjusting utilities en masse.
+[f(css)](http://www.jon.gold/2015/07/functional-css/) is an interesting way to think about css. There are many solid approaches out there, `gr8` just happens to be my personal take. I like a system which is very flexible. Many of the sites we make at [Folder Studio](http://folderstudio.com) would be quite tricky to pull off without quickly and easily adjusting utilities en masse. 
 
 ### Why not use..?
 
-Let me start by shouting out [gravitons](https://github.com/jxnblk/gravitons/), [basscss](https://github.com/jxnblk/basscss/),
-[tachyons](https://github.com/tachyons-css/tachyons/), and the like. These are all awesome tools, huge ups to their creators, and if you like 'em, use 'em. I've tried them all to varying degrees of success, I just happen to prefer `gr8` style 🙃
+Things like [gravitons](https://github.com/jxnblk/gravitons/), [basscss](https://github.com/jxnblk/basscss/), and [tachyons](https://github.com/tachyons-css/tachyons/) are all rad. If you like 'em, use 'em. I've tried them all to varying degrees of success, I just happen to prefer maximum flexibility, `gr8` style 🙃
 
 ## Fin!
 
 `gr8` is built and maintained by [Jon Gacnik](http://jongacnik.com) and used extensively in projects at [Folder Studio](http://folderstudio.com).
 
-Shout out [Jon-Kyle Mohr](http://jon-kyle.com/) for using `gr8` for the past bits, totally tearing this thing apart and helping rebuild it in various past incarnations. This handy version is much thanks to him.
-
-Subarashīdesu!
+Shout out [Jon-Kyle Mohr](http://jon-kyle.com/) for using `gr8` for the past bits, totally tearing this thing apart and helping rebuild it in various past incarnations.
