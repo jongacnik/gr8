@@ -21,7 +21,7 @@ $ npm i gr8
 
 ## Example
 
-The fastest way to use `gr8` is to include [gr8.css]() in your project and begin using styles:
+The fastest way to use `gr8` is to include [gr8.css](https://github.com/jongacnik/gr8/blob/master/dist/gr8.css) in your project and begin using styles:
 
 ```html
 <div class="c6 p2 fs1-5 tcr" sm="c12 p1 tcb">subarashīdesu!</div>
