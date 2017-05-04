@@ -1,5 +1,7 @@
 # ⓖⓡ⑧
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jongacnik/gr8.svg)](https://greenkeeper.io/)
+
 [![NPM version](https://img.shields.io/npm/v/gr8.svg)](https://www.npmjs.com/package/gr8)
 [![Standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
