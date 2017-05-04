@@ -1,7 +1,7 @@
 # ⓖⓡ⑧
 
-[![NPM version](https://img.shields.io/npm/v/gr8.svg)](https://www.npmjs.com/package/gr8)
-[![Standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
+[![NPM version](https://img.shields.io/npm/v/gr8.svg?style=flat-square)](https://www.npmjs.com/package/gr8)
+[![Standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
 [![Build Status](https://img.shields.io/travis/jongacnik/gr8/master.svg?style=flat-square)](https://travis-ci.org/jongacnik/gr8)
 
 FUNctional CSS shorthand utilities. `gr8` is both a handy [**set**](#utilities) of functional css utilities, as well as a handy [**tool**](#custom-utilities-) for generating functional css utilities.
