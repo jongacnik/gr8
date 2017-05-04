@@ -4,7 +4,7 @@
   "description": "ⓖⓡ⑧ FUNctional CSS shorthand utilities",
   "main": "dist/gr8.js",
   "devDependencies": {
-    "browserify": "^13.3.0",
+    "browserify": "^14.3.0",
     "colortape": "^0.1.2",
     "onchange": "^3.2.1",
     "tape": "^4.6.3",
