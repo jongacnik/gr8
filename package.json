@@ -9,7 +9,7 @@
     "onchange": "^3.2.1",
     "tape": "^4.6.3",
     "tape-run": "^3.0.0",
-    "uglify-js": "^2.7.5"
+    "uglify-js": "^3.0.0"
   },
   "scripts": {
     "test": "node tests/index.js | colortape && browserify tests/browser.js | tape-run | colortape",
