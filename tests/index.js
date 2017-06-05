@@ -16,7 +16,7 @@ test('`toString` method', function (t) {
 
 test('`add` method 1/4', function (t) {
   utils.add({
-    prop: 'text-color',
+    prop: 'background-color',
     vals: [
       'red',
       'blue',
@@ -26,9 +26,9 @@ test('`add` method 1/4', function (t) {
 
   var css = utils.toString()
   var hasUtils = hasAll([
-    '.tcr{text-color:red}',
-    '.tcb{text-color:blue}',
-    '.tcg{text-color:green}'
+    '.bcr{background-color:red}',
+    '.bcb{background-color:blue}',
+    '.bcg{background-color:green}'
   ], css)
 
   t.ok(hasUtils, 'correct utilities generated from prop and vals')

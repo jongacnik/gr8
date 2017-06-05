@@ -24,12 +24,12 @@ $ npm i gr8
 The fastest way to use `gr8` is to include [gr8.css](https://github.com/jongacnik/gr8/blob/master/dist/gr8.css) in your project and begin using styles:
 
 ```html
-<div class="c6 p2 fs1-5 tcr">subarashīdesu!</div>
+<div class="c6 p2 fs1-5 bcr">subarashīdesu!</div>
 ```
 
 ### More advanced...
 
-While using the prebuilt css is handy, `gr8` becomes exceptionally useful if you use the [javascript API](#api) to customize the output. Let's set up with a couple options, add a custom `text-color` utility, and write the styles to stdout using the `toString` method:
+While using the prebuilt css is handy, `gr8` becomes exceptionally useful if you use the [javascript API](#api) to customize the output. Let's set up with a couple options, add a custom `background-color` utility, and write the styles to stdout using the `toString` method:
 
 ```js
 var gr8 = require('gr8')
@@ -40,7 +40,7 @@ var css = gr8({
 })
 
 css.add({
-  prop: 'text-color',
+  prop: 'background-color',
   vals: ['red', 'blue', 'green']
 })
 
@@ -99,11 +99,11 @@ var css = gr8({{ defaults }})
 
 **The best way to learn how to write custom utilities is by peeking at the default utilities in [src/utils](https://github.com/jongacnik/gr8/tree/master/src/utils)!**
 
-Perhaps the most useful aspect of `gr8` is adding custom utilities because it makes it simple to think about *all* your styles for a project in a functional manner. Utilities are added by passing options to the [`add`](#css-add-options-) method. Let's take a look at creating a `text-color` utility:
+Perhaps the most useful aspect of `gr8` is adding custom utilities because it makes it simple to think about *all* your styles for a project in a functional manner. Utilities are added by passing options to the [`add`](#css-add-options-) method. Let's take a look at creating a `background-color` utility:
 
 ```js
 css.add({
-  prop: 'text-color',
+  prop: 'background-color',
   vals: ['red', 'green', 'blue']
 })
 ```
@@ -111,9 +111,9 @@ css.add({
 ...creates these utilities:
 
 ```css
-.tcr{text-color:red}
-.tcg{text-color:green}
-.tcb{text-color:blue}
+.bcr{background-color:red}
+.bcg{background-color:green}
+.bcb{background-color:blue}
 ```
 
 *Estupendo!*
