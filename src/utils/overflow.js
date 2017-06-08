@@ -6,6 +6,7 @@ module.exports = {
   ],
   vals: [
     'hidden',
-    'scroll'
+    'scroll',
+    'visible'
   ]
 }
