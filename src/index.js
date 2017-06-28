@@ -162,25 +162,14 @@ module.exports = function (options) {
     return utils ? utils : []
   }
 
-  function filterNested (bp, utils) {
-    if (!bp.key && opts.nested) {
-      return utils.filter(function (util) {
-        return !(lib.isArr(util.prefix) &&
-          ['c12', 'co12'].indexOf(util.prefix[0]) >= 0)
-      })
-    }
-    return utils
-  }
-
   function makeCss () {
     var utils = getFormattedUtils()
     var brpts = getBreakpoints(opts)
 
     var css = brpts.map(function (bp) {
-      var thisUtils = filterNested(bp, utils)
       return [
         bp.open,
-        thisUtils.map(function (util) {
+        utils.map(function (util) {
           return makeRule(util, bp.key)
         }).join('\n'),
         bp.close

@@ -11,7 +11,6 @@
 | aspect | `Array`/`Number` | [aspect ratio](#size) utilities |
 | textColumns | `Array`/`Number` | [text columns](#type) utilities |
 | unit | `String` | default unit for numerical values |
-| nested | `Bool` | support for [nested columns](#nested-columns) ⚠️ increases size of css output ⚠️ |
 | responsive | `Bool` | support for [responsive utilities](#responsive) |
 | attribute | `Bool` | [breakpoint attribute selectors](#responsive) or prefixed class selectors? |
 | max | `Bool` | `max-width` (desktop-first) or `min-width` (mobile-first) breakpoints? |

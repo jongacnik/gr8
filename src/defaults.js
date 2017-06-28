@@ -10,7 +10,6 @@ module.exports = {
   aspect: [0, 20, 50, 75, 100],
   textColumns: [1, 2, 3, 4],
   unit: 'rem',
-  nested: false,
   responsive: false,
   attribute: true,
   max: true,

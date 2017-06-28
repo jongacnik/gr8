@@ -83,7 +83,7 @@ process.stdout.write(css.toString())
 .co12{margin-left:100%}
 ```
 
-Included Utilities: `column.column`, `column.offset`, `column.nestedColumn`, `column.nestedOffset`
+Included Utilities: `column.column`, `column.offset`
 </details>
 
 <details id="margin">
@@ -445,7 +445,7 @@ Removes a built-in `gr8` utility. Accepts a single key or an array of keys.
 <details>
   <summary>Accepted values</summary>
 
-  `column.column`, `column.offset`, `column.nestedColumn`, `column.nestedOffset`, `margin.margin`, `margin.marginX`, `margin.marginY`, `padding.padding`, `padding.paddingX`, `padding.paddingY`, `opacity`, `background.size`, `background.position`, `background.repeat`, `flex.display`, `flex.align`, `flex.direction`, `flex.justify`, `flex.wrap`, `flex.flex`, `flex.order`, `flex.orderSpecial`, `display`, `float.float`, `float.clear`, `overflow`, `positioning.position`, `positioning.placement`, `positioning.zindex`, `size.size`, `size.viewportWidth`, `size.viewportHeight`, `size.viewportMinWidth`, `size.viewportMinHeight`, `size.viewportMaxWidth`, `size.viewportMaxHeight`, `size.aspect`, `type.fontSize`, `type.lineHeight`, `type.fontStyle`, `type.fontWeight`, `type.textAlign`, `type.textOverflow`, `type.textDecoration`, `type.textTransform`, `type.verticalAlign`, `type.whiteSpace`, `type.textColumn`, `misc.cursor`, `misc.userSelect`, `misc.pointerEvents`, `dev`
+  `column.column`, `column.offset`, `margin.margin`, `margin.marginX`, `margin.marginY`, `padding.padding`, `padding.paddingX`, `padding.paddingY`, `opacity`, `background.size`, `background.position`, `background.repeat`, `flex.display`, `flex.align`, `flex.direction`, `flex.justify`, `flex.wrap`, `flex.flex`, `flex.order`, `flex.orderSpecial`, `display`, `float.float`, `float.clear`, `overflow`, `positioning.position`, `positioning.placement`, `positioning.zindex`, `size.size`, `size.viewportWidth`, `size.viewportHeight`, `size.viewportMinWidth`, `size.viewportMinHeight`, `size.viewportMaxWidth`, `size.viewportMaxHeight`, `size.aspect`, `type.fontSize`, `type.lineHeight`, `type.fontStyle`, `type.fontWeight`, `type.textAlign`, `type.textOverflow`, `type.textDecoration`, `type.textTransform`, `type.verticalAlign`, `type.whiteSpace`, `type.textColumn`, `misc.cursor`, `misc.userSelect`, `misc.pointerEvents`, `dev`
 </details>
 
 ## Options
@@ -465,7 +465,6 @@ var css = gr8({
   aspect: [0, 20, 50, 75, 100],
   textColumns: [1, 2, 3, 4],
   unit: 'rem',
-  nested: false,
   responsive: false,
   attribute: true,
   max: true,
@@ -491,7 +490,6 @@ var css = gr8({
 | aspect | `Array`/`Number` | [aspect ratio](#size) utilities |
 | textColumns | `Array`/`Number` | [text columns](#type) utilities |
 | unit | `String` | default unit for numerical values |
-| nested | `Bool` | support for [nested columns](#nested-columns) ⚠️ increases size of css output ⚠️ |
 | responsive | `Bool` | support for [responsive utilities](#responsive) |
 | attribute | `Bool` | [breakpoint attribute selectors](#responsive) or prefixed class selectors? |
 | max | `Bool` | `max-width` (desktop-first) or `min-width` (mobile-first) breakpoints? |
@@ -627,39 +625,6 @@ If breakpoint attributes aren't your style, you can set the **attribute** option
 
 You can use `min-width` instead of `max-width` media queries by setting the **max** option to `false`.
 
-## Nested Columns
-
-If the **nested** option is set to `true`, utilities will be generated for column nesting:
-
-```css
-.c1{width:8.333333333333332%}
-.c1 .c1{width:100%}
-.c2{width:16.666666666666664%}
-.c2 .c1{width:50%}
-.c2 .c2{width:100%}
-.c3{width:25%}
-.c3 .c1{width:33.33333333333333%}
-.c3 .c2{width:66.66666666666666%}
-.c3 .c3{width:100%}
-/* etc... */
-```
-
-Now columns may be nested while retaining their actual size:
-
-```html
-<div class="c1">
-  <div class="c1">I'm 100% of my parent!</div>
-</div>
-<div class="c2">
-  <div class="c1">I'm 50% of my parent!</div>
-</div>
-<div class="c3">
-  <div class="c1">I'm 33.333% of my parent!</div>
-</div>
-```
-
-**Warning:** There are some [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) concerns when using nested columns in combination with responsive utilities. To minimize bloat 😳 not every possible cascade permutation is provided. You'll need to be a little redundant with your utilities to avoid issues, but it's quite doable. ⚠️ **In general I recommend avoiding nested columns unless you are implementing a design which absolutely requires them!** ⚠️
-
 ## Utility Design
 
 The anatomy of `gr8` utilities generally follow a simple and similar structure. For example:
@@ -686,7 +651,7 @@ This structure is modified based on context and need of the utility. For example
 
 ## Production
 
-The `attach` method can be useful during development, but you'll usually want to make use of the `toString` method when thinking about bundling for production. That way you can autoprefix, minify, and maybe even [purify](https://www.npmjs.com/package/purify-css) (especially when using responsive utilities and nested columns!). The `toString` method returns all the css as a simple string, and we can leverage this in a node script to pipe to stdout or to save to a file:
+The `attach` method can be useful during development, but you'll usually want to make use of the `toString` method when thinking about bundling for production. That way you can autoprefix, minify, and maybe even [purify](https://www.npmjs.com/package/purify-css) (especially when using responsive utilities). The `toString` method returns all the css as a simple string, and we can leverage this in a node script to pipe to stdout or to save to a file:
 
 ```js
 var fs = require('fs')

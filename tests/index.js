@@ -170,26 +170,6 @@ test('responsive options 2/2', function (t) {
   t.end()
 })
 
-test('nested option', function (t) {
-  var utils = gr8({
-    nested: true
-  })
-  var css = utils.toString()
-
-  // iteratively check for nested column classes
-  // .c1 .c1 through .c11 .c11
-  var results = []
-  for (var i = 1; i < 12; i++) {
-    for (var j = 1; j <= i; j++) {
-      var sel = '.c' + i + ' .c' + j
-      results.push(has(sel, css))
-    }
-  }
-
-  t.ok(allTruthy(results), 'nested:true, has all nested column selectors')
-  t.end()
-})
-
 test('unit option', function (t) {
   var utils = gr8({
     unit: 'px'
