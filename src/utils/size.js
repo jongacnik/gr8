@@ -1,3 +1,17 @@
+var prefill = require('../helpers').prefill
+
+var sliceVals = prefill(1, 12)
+
+exports.split = {
+  prefix: 's',
+  prop: 'width',
+  unit: '%',
+  vals: sliceVals,
+  transform: function (val) {
+    return (1 / val) * 100
+  }
+}
+
 exports.size = {
   option: 'size',
   prop: ['width', 'height'],

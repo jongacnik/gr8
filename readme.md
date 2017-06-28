@@ -316,6 +316,18 @@ Included Utilities: `positioning.position`, `positioning.placement`, `positionin
 <summary>size</summary>
 
 ```css
+.s1{width:100%}
+.s2{width:50%}
+.s3{width:33.33333333333333%}
+.s4{width:25%}
+.s5{width:20%}
+.s6{width:16.666666666666664%}
+.s7{width:14.285714285714285%}
+.s8{width:12.5%}
+.s9{width:11.11111111111111%}
+.s10{width:10%}
+.s11{width:9.090909090909092%}
+.s12{width:8.333333333333332%}
 .w0{width:0}
 .w100{width:100%}
 .h0{height:0}
@@ -333,7 +345,7 @@ Included Utilities: `positioning.position`, `positioning.placement`, `positionin
 .ar100{content:"";display:block;padding-top:100%}
 ```
 
-Included Utilities: `size.size`, `size.viewportWidth`, `size.viewportHeight`, `size.viewportMinWidth`, `size.viewportMinHeight`, `size.viewportMaxWidth`, `size.viewportMaxHeight`, `size.aspect`
+Included Utilities: `size.split`, `size.size`, `size.viewportWidth`, `size.viewportHeight`, `size.viewportMinWidth`, `size.viewportMinHeight`, `size.viewportMaxWidth`, `size.viewportMaxHeight`, `size.aspect`
 </details>
 
 <details id="type">
@@ -445,7 +457,7 @@ Removes a built-in `gr8` utility. Accepts a single key or an array of keys.
 <details>
   <summary>Accepted values</summary>
 
-  `column.column`, `column.offset`, `margin.margin`, `margin.marginX`, `margin.marginY`, `padding.padding`, `padding.paddingX`, `padding.paddingY`, `opacity`, `background.size`, `background.position`, `background.repeat`, `flex.display`, `flex.align`, `flex.direction`, `flex.justify`, `flex.wrap`, `flex.flex`, `flex.order`, `flex.orderSpecial`, `display`, `float.float`, `float.clear`, `overflow`, `positioning.position`, `positioning.placement`, `positioning.zindex`, `size.size`, `size.viewportWidth`, `size.viewportHeight`, `size.viewportMinWidth`, `size.viewportMinHeight`, `size.viewportMaxWidth`, `size.viewportMaxHeight`, `size.aspect`, `type.fontSize`, `type.lineHeight`, `type.fontStyle`, `type.fontWeight`, `type.textAlign`, `type.textOverflow`, `type.textDecoration`, `type.textTransform`, `type.verticalAlign`, `type.whiteSpace`, `type.textColumn`, `misc.cursor`, `misc.userSelect`, `misc.pointerEvents`, `dev`
+  `column.column`, `column.offset`, `margin.margin`, `margin.marginX`, `margin.marginY`, `padding.padding`, `padding.paddingX`, `padding.paddingY`, `opacity`, `background.size`, `background.position`, `background.repeat`, `flex.display`, `flex.align`, `flex.direction`, `flex.justify`, `flex.wrap`, `flex.flex`, `flex.order`, `flex.orderSpecial`, `display`, `float.float`, `float.clear`, `overflow`, `positioning.position`, `positioning.placement`, `positioning.zindex`, `size.split`, `size.size`, `size.viewportWidth`, `size.viewportHeight`, `size.viewportMinWidth`, `size.viewportMinHeight`, `size.viewportMaxWidth`, `size.viewportMaxHeight`, `size.aspect`, `type.fontSize`, `type.lineHeight`, `type.fontStyle`, `type.fontWeight`, `type.textAlign`, `type.textOverflow`, `type.textDecoration`, `type.textTransform`, `type.verticalAlign`, `type.whiteSpace`, `type.textColumn`, `misc.cursor`, `misc.userSelect`, `misc.pointerEvents`, `dev`
 </details>
 
 ## Options
