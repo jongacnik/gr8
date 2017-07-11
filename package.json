@@ -3,6 +3,7 @@
   "version": "2.1.8",
   "description": "ⓖⓡ⑧ FUNctional CSS shorthand utilities",
   "main": "dist/gr8.js",
+  "types": "./dist/main.d.ts",
   "devDependencies": {
     "browserify": "^14.3.0",
     "colortape": "^0.1.2",
