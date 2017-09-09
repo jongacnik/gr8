@@ -1,4 +1,4 @@
-module.exports = {
+exports.display = {
   prop: 'display',
   vals: [
     'flex',

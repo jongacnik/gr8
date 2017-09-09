@@ -1,6 +1,7 @@
 exports.cursor = {
-  prefix: 'cur',
-  prop: 'cursor',
+  prop: {
+    cur: 'cursor'
+  },
   vals: [
     'pointer',
     'default',
