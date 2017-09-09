@@ -9,7 +9,7 @@
     "tape": "^4.8.0"
   },
   "scripts": {
-    "test": "node tests/index.js | colortape",
+    "test": "node test.js | colortape",
     "build-css": "node bin/dist.js",
     "build-readme": "node bin/readme/index.js",
     "watch-readme": "onchange 'bin/readme/' -- npm run build-readme",
