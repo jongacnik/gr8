@@ -14,7 +14,7 @@
     "build-css": "node bin/dist.js",
     "build-readme": "node bin/readme/index.js",
     "watch-readme": "onchange 'bin/readme/' -- npm run build-readme",
-    "dist": "npm run build-css && npm run build-readme"
+    "dist": "npm run test && npm run build-css && npm run build-readme"
   },
   "standard": {
     "ignore": [
