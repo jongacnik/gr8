@@ -274,10 +274,13 @@ Default utilities:
 ```css
 .oh{overflow:hidden}
 .os{overflow:scroll}
+.ov{overflow:visible}
 .oxh{overflow-x:hidden}
 .oxs{overflow-x:scroll}
+.oxv{overflow-x:visible}
 .oyh{overflow-y:hidden}
 .oys{overflow-y:scroll}
+.oyv{overflow-y:visible}
 ```
 
 </details>
