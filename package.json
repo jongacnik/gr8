@@ -1,7 +1,7 @@
 {
   "name": "gr8",
   "version": "3.0.0",
-  "description": "ⓖⓡ⑧ FUNctional CSS shorthand utilities",
+  "description": "Functional css utilities",
   "main": "index.js",
   "devDependencies": {
     "colortape": "^0.1.2",
