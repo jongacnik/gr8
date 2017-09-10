@@ -166,19 +166,19 @@ var css = gr8({
   <summary><strong>Output</strong></summary>
 
   ```css
-  @media (min-width:1024px){
+  @media (min-width:1024px) {
     [small~="fs1"]{font-size:1rem}
     /* etc... */  
   }
-  @media (min-width:768px) and (max-width:1280px){
+  @media (min-width:768px) and (max-width:1280px) {
     [medium~="fs1"]{font-size:1rem}
     /* etc... */  
   }
-  @media (max-width:1024px){
+  @media (max-width:1024px) {
     [not-big~="fs1"]{font-size:1rem}
     /* etc... */  
   }
-  @media (orientation:portrait){
+  @media (orientation:portrait) {
     [portrait~="fs1"]{font-size:1rem}
     /* etc... */  
   }
@@ -204,15 +204,15 @@ var css = gr8({
   <summary><strong>Output</strong></summary>
   
   ```css
-  @media (min-width:768px){
+  @media (min-width:768px) {
     .sm-fs1{font-size:1rem}
     /* etc... */
   }
-  @media (min-width:1024px){
+  @media (min-width:1024px) {
     .md-fs1{font-size:1rem}
     /* etc... */
   }
-  @media (min-width:1280px){
+  @media (min-width:1280px) {
     .lg-fs1{font-size:1rem}
     /* etc... */
   }
@@ -233,15 +233,15 @@ var css = gr8({
   <summary><strong>Output</strong></summary>
 
   ```css
-  @media (min-width:768px){
+  @media (min-width:768px) {
     .gr8-sm-fs1{font-size:1rem}
     /* etc... */
   }
-  @media (min-width:1024px){
+  @media (min-width:1024px) {
     .gr8-md-fs1{font-size:1rem}
     /* etc... */
   }
-  @media (min-width:1280px){
+  @media (min-width:1280px) {
     .gr8-lg-fs1{font-size:1rem}
     /* etc... */
   }
@@ -290,7 +290,7 @@ var css = gr8({
   .fcg{color:green}
   /* etc... */
 
-  @media (min-width:768px){
+  @media (min-width:768px) {
     [sm~="bgcr"]{background-color:red}
     [sm~="bgcb"]{background-color:blue}
     [sm~="bgcg"]{background-color:green}
@@ -300,7 +300,7 @@ var css = gr8({
     /* etc... */
   }
 
-  @media (min-width:1024px){
+  @media (min-width:1024px) {
     [md~="bgcr"]{background-color:red}
     [md~="bgcb"]{background-color:blue}
     [md~="bgcg"]{background-color:green}
@@ -310,7 +310,7 @@ var css = gr8({
     /* etc... */
   }
 
-  @media (min-width:1280px){
+  @media (min-width:1280px) {
     [lg~="bgcr"]{background-color:red}
     [lg~="bgcb"]{background-color:blue}
     [lg~="bgcg"]{background-color:green}
