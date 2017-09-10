@@ -10,12 +10,16 @@
     "tape": "^4.8.0"
   },
   "scripts": {
-    "test": "standard && node test.js | colortape",
-    "lint": "standard --fix",
+    "test": "standard --fix && node test.js | colortape",
     "build-css": "node bin/dist.js",
     "build-readme": "node bin/readme/index.js",
     "watch-readme": "onchange 'bin/readme/' -- npm run build-readme",
     "dist": "npm run build-css && npm run build-readme"
+  },
+  "standard": {
+    "ignore": [
+      "postcss.js"
+    ]
   },
   "repository": {
     "type": "git",
