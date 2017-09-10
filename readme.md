@@ -727,9 +727,35 @@ Using block `/* comments */` lets us write options as plain javascript. These op
 
 ## Proxies
 
-## Why
+For more advanced use cases, some additional methods are proxied:
 
-`gr8` is developed and iterated on specifically for use within projects at [Folder Studio](http://folderstudio.com). It shares similarities with other functional css libraries like [tachyons](https://github.com/tachyons-css/tachyons) or [basscss](https://github.com/basscss/basscss), but diverges in its minimalism and customizability. `gr8` provides no colors, no borders, no font-families, etc out of the box, but instead provides ways to rapidly define your own utilities for things like these using simple objects. It facilitates creating coherent design systems without imposing one by default.
+```js
+// direct access to gr8-util
+var gr8util = require('gr8/util')
+var css = gr8util({options})
+```
+
+```js
+// direct access to gr8-utils
+var gr8utils = require('gr8/utils')
+var css = gr8utils({options})
+
+// or even lower level
+gr8utils.generate(gr8utils.utils, gr8utils.defaults)
+```
+
+These are also available via postcss using:
+
+```css
+@gr8util/*{options}*/
+@gr8utils/*{options}*/
+```
+
+## Notes
+
+`gr8` is developed and iterated-on primarily for use within projects at [Folder Studio](http://folderstudio.com). It shares similarities with other functional css libraries like [tachyons](https://github.com/tachyons-css/tachyons) or [basscss](https://github.com/basscss/basscss), but diverges in its minimalism and customizability. `gr8` provides no colors, no borders, no font-families, etc out of the box, but instead provides ways to quickly define your own utilities for things like these using plain objects. It facilitates creating coherent design systems without imposing one by default.
+
+In any case, I hope you like it and perhaps find it useful!
 
 ## Todo
 
