@@ -15,7 +15,6 @@ Customizable, functional css utilities built using [**gr8-util**](https://github
 
 - [**css stylesheet**](#stylesheet-usage) with default utilities
 - [**`gr8` function**](#javascript-usage) to generate and customize utilities within javascript
-- [**postcss plugin**](#postcss-usage) to generate and customize utilities within css
 
 ## Usage
 
@@ -37,20 +36,6 @@ var css = gr8()
 ```
 
 [Detailed usage →](#api)
-
-### postcss usage
-
-Use the postcss plugin to generate utilities within css. The `@gr8` rule will be replaced with css utilities:
-
-```css
-@gr8
-```
-
-```bash
-$ postcss input.css -u gr8/postcss -o output.css
-```
-
-[Detailed usage →](#postcss)
 
 ## Utilities
 
@@ -325,38 +310,6 @@ var css = gr8({
 
 **[Refer to gr8-util for further documentation on generating custom utilities.](https://github.com/jongacnik/gr8-util)**
 
-## Postcss
-
-A [postcss](https://github.com/postcss/postcss) plugin is provided which simply wraps the javascript API for use directly within css.
-
-```bash
-$ postcss input.css -u gr8/postcss -o output.css
-```
-
-**input.css**
-
-```css
-@gr8 /*{
-  spacing: [0, 2, 4, 8, 16]
-}*/
-```
-**output.css**
-
-```css
-.m0{margin:0}
-.m2{margin:2rem}
-.m4{margin:4rem}
-.m8{margin:8rem}
-.m16{margin:16rem}
-/* etc... */
-```
-
-### Details
-
-`@gr8/*{}*/` in css is no different than `gr8({})` in js
-
-Using block `/* comments */` lets us write options as plain javascript. These options are passed directly into `gr8`. This approach creates a consistent api whether using `gr8` from within js or within css. Idea for block comment syntax borrowed from [multiline](https://github.com/sindresorhus/multiline).
-
 ## Proxies
 
 For more advanced use cases, some additional methods are proxied:
@@ -374,13 +327,6 @@ var css = gr8utils({options})
 
 // or even lower level
 gr8utils.generate(gr8utils.utils, gr8utils.defaults)
-```
-
-These are also available via postcss using:
-
-```css
-@gr8util/*{options}*/
-@gr8utils/*{options}*/
 ```
 
 ## Notes
