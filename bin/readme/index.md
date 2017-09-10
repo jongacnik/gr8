@@ -13,15 +13,15 @@
 
 Customizable, functional css utilities built using [**gr8-util**](https://github.com/jongacnik/gr8-util). Includes:
 
-- [**css file**](#css-usage) with default utilities
+- [**css stylesheet**](#stylesheet-usage) with default utilities
 - [**`gr8` function**](#javascript-usage) to generate and customize utilities within javascript
 - [**postcss plugin**](#postcss-usage) to generate and customize utilities within css
 
 ## Usage
 
-### css usage
+### stylesheet usage
 
-The simplest way to use `gr8` is to include the [gr8.css](https://github.com/jongacnik/gr8/blob/master/dist/gr8.css) file in your project:
+The simplest way to use `gr8` is to include the [gr8.css](https://github.com/jongacnik/gr8/blob/master/dist/gr8.css) stylesheet in your project:
 
 ```html
 <link rel="stylesheet" href="dist/gr8.css" />
@@ -36,7 +36,7 @@ var gr8 = require('gr8')
 var css = gr8()
 ```
 
-[Read More →]()
+[Detailed usage →](#api)
 
 ### postcss usage
 
@@ -50,7 +50,7 @@ Use the postcss plugin to generate utilities within css. The `@gr8` rule will be
 $ postcss input.css --use gr8/postcss > output.css
 ```
 
-[Read More →]()
+[Detailed usage →](#postcss)
 
 ## Utilities
 
@@ -80,16 +80,18 @@ Generate utilities and return a string of css. `opts` accepts the following valu
 #### Selector Options
 
 - `opts.selector` **[Function]** css selector template function
-- `opts.breakpoints` **[Object]** css selector template function
-- `opts.breakpointSelector` **[String | Function]** css selector template function
+- `opts.breakpoints` **[Object]** values for responsive utilities
+- `opts.breakpointSelector` **[String | Function]** selector shortcut or css selector template function
 
 #### Custom Utilities Option
 
-- `opts.utils` **[Array]** custom `gr8-util` utils
+- `opts.utils` **[Array]** custom [gr8-util](https://github.com/jongacnik/gr8-util) utilities
 
 ## Value Options
 
-Value options are used to customize the values of numeric `gr8` utilities. They accept numbers, strings, arrays, or objects allowing for granular control over utilities. Refer to [gr8-util](https://github.com/jongacnik/gr8-util) for details. 
+Value options customize the values of numeric `gr8` utilities. They accept numbers, strings, arrays, or objects. Typically arrays of numbers will be used. Refer to [gr8-util](https://github.com/jongacnik/gr8-util) for details on all possible values.
+
+**Defaults:**
 
 ```js
 var css = gr8({
@@ -106,50 +108,25 @@ var css = gr8({
 })
 ```
 
-<details>
-  <summary>More Details</summary>
+## Selector Options
 
-  | option | controls |
-  | --- | --- |
-  | spacing | [margin](#margin) & [padding](#padding) utilities |
-  | fontSize | [font-size](#typography) utilities |
-  | lineHeight | [line-height](#typography) utilities |
-  | size | [width & height](#size) utilities |
-  | viewport | [viewport](#size) utilities |
-  | zIndex | [zIndex](#positioning) utilities |
-  | flexOrder | [flex-order](#flex) utilities |
-  | opacity | [opacity](#opacity) utilities |
-  | aspectRatio | [aspect ratio](#size) utilities |
-  | textColumn | [text columns](#typography) utilities |
-</details>
+**Defaults:**
 
-<details>
-  <summary>Example</summary>
+```js
+var css = gr8({
+  selector: s => `.${s}`,
+  breakpoints: {
+    sm: 1024,
+    md: 1280,
+    lg: 1440
+  },
+  breakpointSelector: 'attribute',
+})
+```
 
-  Given these `fontSize` options, the following font-size utilities will be generated:
+### `opts.selector`
 
-  ```js
-  var css = gr8({
-    fontSize: [ 1, 2, 3, { huge: 50 } ]
-  })
-  ```
-  
-  ```css
-  .fs1{font-size:1rem}
-  .fs2{font-size:2rem}
-  .fs3{font-size:3rem}
-  .fshuge{font-size:50rem}
-  ```
-
-</details>
-
-### Selector Options
-
-Selector options help customize the selectors in `gr8` output.
-
-### `selector`
-
-Provide a function to customize the default css selector. Function expects a selector name as input and returns a css selector string as output. For example, to use an attribute selector instead of classes:
+Function expects a selector name as input and returns a css selector string as output. For example, to use an attribute selector instead of classes:
 
 ```js
 var css = gr8({
@@ -168,16 +145,16 @@ var css = gr8({
 
 </details>
 
-### `breakpoints`
+### `opts.breakpoints`
 
-Pass an object to customize responsive utilities, pass `false` to disable responsive utilities. Object keys are used in selector names and object values are used to define the media queries. Pass in integers (defaults to `min-width` pixel based media queries), or an actual media query string:
+Object keys are used in selector names and object values are used to define the media queries. Object values can either be integers (which results in a `min-width` media queries), or values can be media query strings. Pass `false` to disable breakpoint utilities entirely:
 
 ```js
 var css = gr8({
   breakpoints: {
-    sm: 1024,
-    nb: 'max-width:1024px',
-    data-md: 1280,
+    small: 1024,
+    medium: 1280,
+    not-big: 'max-width:1024px',
     portrait: 'orientation:portrait'
   }
 })
@@ -188,15 +165,15 @@ var css = gr8({
 
   ```css
   @media(min-width:1024px){
-    [sm~="fs1"]{font-size:1rem}
-    /* etc... */  
-  }
-  @media(max-width:1024px){
-    [nb~="fs1"]{font-size:1rem}
+    [small~="fs1"]{font-size:1rem}
     /* etc... */  
   }
   @media(min-width:1280px){
-    [data-md~="fs1"]{font-size:1rem}
+    [medium~="fs1"]{font-size:1rem}
+    /* etc... */  
+  }
+  @media(max-width:1024px){
+    [not-big~="fs1"]{font-size:1rem}
     /* etc... */  
   }
   @media(orientation:portrait){
@@ -207,11 +184,11 @@ var css = gr8({
 
 </details><br>
 
-**Note:** By default `gr8` generates minimal attribute selectors for responsive utilities (ex: `[sm~="util"]`). If you need this to be valid html, for React or something, simply prepend `data-` to your breakpoint keys. You'll end up with selectors like: `[data-sm~="util"]`.
+**Note:** If you care about valid attribute selectors, prepend `data-` to your breakpoint keys.
 
-### `breakpointSelector`
+### `opts.breakpointSelector`
 
-The `breakpointSelector` option allows you to change the responsive utility selectors to use classes using a shortcut `'class'`, or to provide your own selector function for further customization:
+By default, attribute selectors are generated for breakpoint utilities (as seen above). Use classes instead by passing in the `'class'` shortcut, or provide a selector function for more granular control:
 
 #### `'class'` Shortcut
 
@@ -272,6 +249,14 @@ var css = gr8({
 
 ## Custom Utilities
 
+**Defaults:**
+
+```js
+var css = gr8({
+  utils: []
+})
+```
+
 `gr8` is built on top of [gr8-util](https://github.com/jongacnik/gr8-util). This makes it easy to generate custom utilities. Pass an array of objects into the `utils` option, one for each custom utility. These are passed directly into `gr8-util`:
 
 ```js
@@ -311,8 +296,3 @@ var css = gr8({
 ## License
 
 [MIT](https://github.com/jongacnik/gr8/blob/master/LICENSE)
-
-
-<details>
-  <summary>Defaults</summary>
-</details>
