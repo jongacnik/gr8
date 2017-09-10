@@ -49,13 +49,3 @@ fs.writeFile('readme.md', readme, function (err) {
 
   console.log('readme generated and saved to readme.md')
 })
-
-// ```html
-// <div class="c6 p2 fs1-5">subarashīdesu!</div>
-// ```
-
-// ```css
-// .c6{width:50%}
-// .p2{padding:2rem}
-// .fs1-5{font-size:1.5rem}
-// ```
