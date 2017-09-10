@@ -247,3 +247,12 @@ var css = gr8({
 ## Philosophy
 
 `gr8` has been developed and iterated on (ongoing), specifically for use within projects at [Folder Studio](http://folderstudio.com). It shares similarities with other functional css libraries like [tachyons](https://github.com/tachyons-css/tachyons) or [basscss](https://github.com/basscss/basscss), but diverges in it's minimalism and customizability. `gr8` provides no colors, no borders, no font families, etc out of the box, but instead provides ways to rapidly define your own utilties for things like these using simple objects.
+
+## See Also
+
+- [gr8-util](https://github.com/jongacnik/gr8-util)
+- ~~[gr8-tachyons]()~~
+
+## License
+
+[MIT](https://github.com/jongacnik/gr8/blob/master/LICENSE)
