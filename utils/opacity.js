@@ -3,6 +3,7 @@ exports.opacity = function (options) {
     prop: {
       op: 'opacity'
     },
-    vals: options.opacity
+    vals: options.opacity,
+    transform: v => v / 100
   }
 }

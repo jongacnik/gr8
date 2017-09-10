@@ -19,13 +19,16 @@
     "type": "git",
     "url": "git+https://github.com/jongacnik/gr8.git"
   },
-  "keywords": ["functional", "css", "utilities"],
+  "keywords": [
+    "functional",
+    "css",
+    "utilities"
+  ],
   "author": "Jon Gacnik <jon@folderstudio.com> (http://jongacnik.com)",
   "license": "MIT",
   "homepage": "https://github.com/jongacnik/gr8#readme",
   "dependencies": {
     "gr8-util": "github:jongacnik/gr8-util",
-    "object-from-entries": "^1.0.0",
     "object-values": "^1.0.0",
     "xtend": "^4.0.1"
   }
