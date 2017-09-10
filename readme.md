@@ -11,18 +11,50 @@
 
 <br />
 
-`gr8` is a customizable [**set**](#utilities) of functional css utilities, as well as a [**tool**](#custom-utilities-) for generating custom functional css utilities. 
+Customizable, functional css utilities built using [**gr8-util**](https://github.com/jongacnik/gr8-util). Includes:
 
-Builds on top of [**gr8-util**](https://github.com/jongacnik/gr8-util).
+- [**css file**](#css-usage) with default utilities
+- [**`gr8` function**](#javascript-usage) to generate and customize utilities within javascript
+- [**postcss plugin**](#postcss-usage) to generate and customize utilities within css
 
-## Features
+## Usage
 
-- **zero-config**: Include [gr8.css](https://github.com/jongacnik/gr8/blob/master/dist/gr8.css) in your project and begin building mobile-first interfaces.
-- **customizable**: For more advanced use-cases, the [Javascript API](#api) generates custom `gr8` builds.
-- **extensible**: It's easy to generate [custom css utilities](#custom-utilities) using simple objects.
-- **postcss**: Use the [postcss transform](#postcss) to include `gr8` and generate utilities directly within your css.
+### css usage
+
+The simplest way to use `gr8` is to include the [gr8.css](https://github.com/jongacnik/gr8/blob/master/dist/gr8.css) file in your project:
+
+```html
+<link rel="stylesheet" href="dist/gr8.css" />
+```
+
+### javascript usage
+
+Use the `gr8` function to generate utilites:
+
+```js
+var gr8 = require('gr8')
+var css = gr8()
+```
+
+[Read More →]()
+
+### postcss usage
+
+Use the postcss plugin to generate utilities within css. The `@gr8` rule will be replaced with css utilities:
+
+```css
+@gr8;
+```
+
+```bash
+$ postcss input.css --use gr8/postcss > output.css
+```
+
+[Read More →]()
 
 ## Utilities
+
+Default utilities:
 
 <details id="column">
 <summary>column</summary>
@@ -396,15 +428,34 @@ Builds on top of [**gr8-util**](https://github.com/jongacnik/gr8-util).
 
 ## API
 
-### `css = gr8(options)`
+### `css = gr8([opts])`
 
-Returns `gr8` utilties as a string of css. View all available [options](#options).
+Generate utilities and return a string of css. `opts` accepts the following values:
 
-## Options
+#### Value Options
 
-Options are documented below in 3 parts: [Value Options](#value-options), [Selector Options](#selector-options), and [Custom Utilities](#custom-utilities)
+- `opts.spacing` **[Mixed]** values for [margin](#margin) & [padding](#padding) utilities
+- `opts.fontSize` **[Mixed]** values for [font-size](#typography) utilities
+- `opts.lineHeight` **[Mixed]** values for [line-height](#typography) utilities
+- `opts.size` **[Mixed]** values for [width & height](#size) utilities
+- `opts.viewport` **[Mixed]** values for [viewport](#size) utilities
+- `opts.zIndex` **[Mixed]** values for [zIndex](#positioning) utilities
+- `opts.flexOrder` **[Mixed]** values for [flex-order](#flex) utilities
+- `opts.opacity` **[Mixed]** values for [opacity](#opacity) utilities
+- `opts.aspectRatio` **[Mixed]** values for [aspect ratio](#size) utilities
+- `opts.textColumn` **[Mixed]** values for [text columns](#typography) utilities
 
-### Value Options
+#### Selector Options
+
+- `opts.selector` **[Function]** css selector template function
+- `opts.breakpoints` **[Object]** css selector template function
+- `opts.breakpointSelector` **[String | Function]** css selector template function
+
+#### Custom Utilities Option
+
+- `opts.utils` **[Array]** custom `gr8-util` utils
+
+## Value Options
 
 Value options are used to customize the values of numeric `gr8` utilities. They accept numbers, strings, arrays, or objects allowing for granular control over utilities. Refer to [gr8-util](https://github.com/jongacnik/gr8-util) for details. 
 
@@ -614,7 +665,11 @@ var css = gr8({
 
 ## Philosophy
 
-`gr8` has been developed and iterated on (ongoing), specifically for use within projects at [Folder Studio](http://folderstudio.com). It shares similarities with other functional css libraries like [tachyons](https://github.com/tachyons-css/tachyons) or [basscss](https://github.com/basscss/basscss), but diverges in it's minimalism and customizability. `gr8` provides no colors, no borders, no font families, etc out of the box, but instead provides ways to rapidly define your own utilties for things like these using simple objects.
+`gr8` has been developed and iterated on (ongoing), specifically for use within projects at [Folder Studio](http://folderstudio.com). It shares similarities with other functional css libraries like [tachyons](https://github.com/tachyons-css/tachyons) or [basscss](https://github.com/basscss/basscss), but diverges in it's minimalism and customizability. `gr8` provides no colors, no borders, no font-families, etc out of the box, but instead provides ways to rapidly define your own utilties for things like these using simple objects.
+
+## Todo
+
+- [ ] Advanced documentation
 
 ## See Also
 
@@ -624,3 +679,8 @@ var css = gr8({
 ## License
 
 [MIT](https://github.com/jongacnik/gr8/blob/master/LICENSE)
+
+
+<details>
+  <summary>Defaults</summary>
+</details>
