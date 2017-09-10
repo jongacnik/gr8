@@ -29,7 +29,7 @@ The simplest way to use `gr8` is to include the [gr8.css](https://github.com/jon
 
 ### javascript usage
 
-Use the `gr8` function to generate utilites:
+Use the `gr8` function to generate utilities:
 
 ```js
 var gr8 = require('gr8')
@@ -43,11 +43,11 @@ var css = gr8()
 Use the postcss plugin to generate utilities within css. The `@gr8` rule will be replaced with css utilities:
 
 ```css
-@gr8;
+@gr8
 ```
 
 ```bash
-$ postcss input.css --use gr8/postcss > output.css
+$ postcss input.css -u gr8/postcss -o output.css
 ```
 
 [Detailed usage →](#postcss)
@@ -338,10 +338,10 @@ Default utilities:
 .vhmn100{min-height:100vh}
 .vhmx50{max-height:50vh}
 .vhmx100{max-height:100vh}
-.ar25:before{content:"";display:block;padding-top:25%;}
-.ar50:before{content:"";display:block;padding-top:50%;}
-.ar75:before{content:"";display:block;padding-top:75%;}
-.ar100:before{content:"";display:block;padding-top:100%;}
+.ar25:before{padding-top:25%;content:"";display:block}
+.ar50:before{padding-top:50%;content:"";display:block}
+.ar75:before{padding-top:75%;content:"";display:block}
+.ar100:before{padding-top:100%;content:"";display:block}
 ```
 
 </details>
@@ -448,7 +448,7 @@ Generate utilities and return a string of css. `opts` accepts the following valu
 #### Selector Options
 
 - `opts.selector` **[Function]** css selector template function
-- `opts.breakpoints` **[Object]** values for responsive utilities
+- `opts.breakpoints` **[Object]** values for breakpoint utilities
 - `opts.breakpointSelector` **[String | Function]** selector shortcut or css selector template function
 
 #### Custom Utilities Option
@@ -457,7 +457,7 @@ Generate utilities and return a string of css. `opts` accepts the following valu
 
 ## Value Options
 
-Value options customize the values of numeric `gr8` utilities. They accept numbers, strings, arrays, or objects. Typically arrays of numbers will be used. Refer to [gr8-util](https://github.com/jongacnik/gr8-util) for details on all possible values.
+Value options customize numeric `gr8` utilities. They accept Numbers, Strings, Arrays, or Objects. Typically Arrays of Numbers will be used. Refer to [gr8-util](https://github.com/jongacnik/gr8-util) for details on all possible ways to format values.
 
 **Defaults:**
 
@@ -478,6 +478,8 @@ var css = gr8({
 
 ## Selector Options
 
+Selector options control selectors & breakpoints.
+
 **Defaults:**
 
 ```js
@@ -488,7 +490,7 @@ var css = gr8({
     md: 1280,
     lg: 1440
   },
-  breakpointSelector: 'attribute',
+  breakpointSelector: 'attribute'
 })
 ```
 
@@ -503,7 +505,7 @@ var css = gr8({
 ```
 
 <details>
-  <summary>Output</summary>
+  <summary><strong>Output</strong></summary>
 
   ```css
   [gr8~="fs1"]{font-size:1rem}
@@ -515,21 +517,21 @@ var css = gr8({
 
 ### `opts.breakpoints`
 
-Object keys are used in selector names and object values are used to define the media queries. Object values can either be integers (which results in a `min-width` media queries), or values can be media query strings. Pass `false` to disable breakpoint utilities entirely:
+Object keys are used in selector names and object values are used to define the media queries. Object values can either be integers (which results in a `min-width` media queries), or object values can be media query strings. Pass `false` to disable breakpoint utilities entirely:
 
 ```js
 var css = gr8({
   breakpoints: {
     small: 1024,
     medium: 1280,
-    not-big: 'max-width:1024px',
+    'not-big': 'max-width:1024px',
     portrait: 'orientation:portrait'
   }
 })
 ```
 
 <details>
-  <summary>Output</summary>
+  <summary><strong>Output</strong></summary>
 
   ```css
   @media(min-width:1024px){
@@ -556,7 +558,7 @@ var css = gr8({
 
 ### `opts.breakpointSelector`
 
-By default, attribute selectors are generated for breakpoint utilities (as seen above). Use classes instead by passing in the `'class'` shortcut, or provide a selector function for more granular control:
+By default, attribute selectors are generated for breakpoint utilities (as seen above). Use prefixed classes instead by passing in the `'class'` shortcut, or provide a selector function for more granular control:
 
 #### `'class'` Shortcut
 
@@ -567,7 +569,7 @@ var css = gr8({
 ```
 
 <details>
-  <summary>Output</summary>
+  <summary><strong>Output</strong></summary>
   
   ```css
   @media(min-width:1024px){
@@ -596,7 +598,7 @@ var css = gr8({
 ```
 
 <details>
-  <summary>Output</summary>
+  <summary><strong>Output</strong></summary>
 
   ```css
   @media(min-width:1024px){
@@ -615,17 +617,11 @@ var css = gr8({
 
 </details>
 
-## Custom Utilities
+## Custom Utilities Option
 
-**Defaults:**
+[gr8-util](https://github.com/jongacnik/gr8-util) is a little function for generating functional css utilities. Given a plain object, concise css utilities are generated. All the utilities in `gr8` are built using this.
 
-```js
-var css = gr8({
-  utils: []
-})
-```
-
-`gr8` is built on top of [gr8-util](https://github.com/jongacnik/gr8-util). This makes it easy to generate custom utilities. Pass an array of objects into the `utils` option, one for each custom utility. These are passed directly into `gr8-util`:
+Use the `utils` option to pass an array of `gr8-util` objects to extend the `gr8` output with custom utilities:
 
 ```js
 var bgcolor = {
@@ -635,31 +631,114 @@ var bgcolor = {
   vals: ['red', 'blue', 'green']
 }
 
+var fontcolor = {
+  prop: {
+    fc: 'color'
+  },
+  vals: ['red', 'blue', 'green']
+}
+
 var css = gr8({
-  utils: [ bgcolor ]
+  utils: [
+    bgcolor,
+    fontcolor
+  ]
 })
 ```
 
-```css
-.bgcr{background-color:red}
-.bgcb{background-color:blue}
-.bgcg{background-color:green}
+<details>
+  <summary><strong>Output</strong></summary>
+
+  ```css
+  .bgcr{background-color:red}
+  .bgcb{background-color:blue}
+  .bgcg{background-color:green}
+  .fcr{color:red}
+  .fcb{color:blue}
+  .fcg{color:green}
+  /* etc... */
+
+  @media (min-width:1024px){
+    [sm~="bgcr"]{background-color:red}
+    [sm~="bgcb"]{background-color:blue}
+    [sm~="bgcg"]{background-color:green}
+    [sm~="fcr"]{color:red}
+    [sm~="fcb"]{color:blue}
+    [sm~="fcg"]{color:green}
+    /* etc... */
+  }
+
+  @media (min-width:1280px){
+    [md~="bgcr"]{background-color:red}
+    [md~="bgcb"]{background-color:blue}
+    [md~="bgcg"]{background-color:green}
+    [md~="fcr"]{color:red}
+    [md~="fcb"]{color:blue}
+    [md~="fcg"]{color:green}
+    /* etc... */
+  }
+
+  @media (min-width:1440px){
+    [lg~="bgcr"]{background-color:red}
+    [lg~="bgcb"]{background-color:blue}
+    [lg~="bgcg"]{background-color:green}
+    [lg~="fcr"]{color:red}
+    [lg~="fcb"]{color:blue}
+    [lg~="fcg"]{color:green}
+    /* etc... */
+  }
+  ```
+
+</details><br>
+
+**[Refer to gr8-util for further documentation on generating custom utilities.](https://github.com/jongacnik/gr8-util)**
+
+## Postcss
+
+A [postcss](https://github.com/postcss/postcss) plugin is provided which simply wraps the javascript API for use directly within css.
+
+```bash
+$ postcss input.css -u gr8/postcss -o output.css
 ```
 
-**Refer to [gr8-util](https://github.com/jongacnik/gr8-util) for further documentation on generating custom utilities. Also take a look at the `utils` directory in this repository to review how the default gr8 utilities are constructed.**
+**input.css**
 
-## Philosophy
+```css
+@gr8 /*{
+  spacing: [0, 2, 4, 8, 16]
+}*/
+```
+**output.css**
 
-`gr8` has been developed and iterated on (ongoing), specifically for use within projects at [Folder Studio](http://folderstudio.com). It shares similarities with other functional css libraries like [tachyons](https://github.com/tachyons-css/tachyons) or [basscss](https://github.com/basscss/basscss), but diverges in it's minimalism and customizability. `gr8` provides no colors, no borders, no font-families, etc out of the box, but instead provides ways to rapidly define your own utilties for things like these using simple objects.
+```css
+.m0{margin:0}
+.m2{margin:2rem}
+.m4{margin:4rem}
+.m8{margin:8rem}
+.m16{margin:16rem}
+/* etc... */
+```
+
+### Details
+
+`@gr8/*{}*/` in css is no different than `gr8({})` in js
+
+Using block `/* comments */` lets us write options as plain javascript. These options are passed directly into `gr8`. This approach creates a consistent api whether using `gr8` from within js or within css. Idea for block comment syntax borrowed from [multiline](https://github.com/sindresorhus/multiline).
+
+## Proxies
+
+## Why
+
+`gr8` is developed and iterated on specifically for use within projects at [Folder Studio](http://folderstudio.com). It shares similarities with other functional css libraries like [tachyons](https://github.com/tachyons-css/tachyons) or [basscss](https://github.com/basscss/basscss), but diverges in its minimalism and customizability. `gr8` provides no colors, no borders, no font-families, etc out of the box, but instead provides ways to rapidly define your own utilities for things like these using simple objects. It facilitates creating coherent design systems without imposing one by default.
 
 ## Todo
 
 - [ ] Advanced documentation
+- [ ] Website
 
 ## See Also
 
 - [gr8-util](https://github.com/jongacnik/gr8-util)
-- ~~[gr8-tachyons]()~~
 
 ## License
 
