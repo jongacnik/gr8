@@ -44,9 +44,9 @@ test('breakpoint selector', function (t) {
 test('custom breakpoints', function (t) {
   var css = gr8({
     breakpoints: {
-      a: 'max-width:768px',
+      a: '(max-width:768px)',
       b: 1024,
-      c: 'orientation:landscape'
+      c: '(orientation:landscape)'
     }
   })
 

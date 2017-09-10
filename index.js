@@ -6,9 +6,9 @@ module.exports = gr8
 
 var defaults = {
   breakpoints: {
-    sm: 1024,
-    md: 1280,
-    lg: 1440
+    sm: 768,
+    md: 1024,
+    lg: 1280
   },
   breakpointSelector: 'attribute',
   utils: []
@@ -24,7 +24,7 @@ function gr8 (options) {
 
   Object.keys(options.breakpoints).forEach(function (key) {
     var selector = breakpointSelectorShortcut(options.breakpointSelector)(key)
-    cssString += `\n@media (${breakpointShortcut(options.breakpoints[key])}) {\n`
+    cssString += `\n@media ${breakpointShortcut(options.breakpoints[key])} {\n`
     cssString += defaultUtils(options, { selector: selector })
     cssString += customUtils(options.utils, { selector: selector })
     cssString += '\n}'
@@ -47,7 +47,7 @@ function customUtils (utils, options) {
 
 function breakpointShortcut (value) {
   return Number.isInteger(value)
-    ? `min-width:${value}px`
+    ? `(min-width:${value}px)`
     : value
 }
 

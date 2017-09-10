@@ -260,7 +260,7 @@
 .dev > * > * {outline:1px solid #51feff}
 .dev > * > * > * {outline:1px solid #ff0000}
 .dev > * > * > * * {outline:1px solid #00ff00}
-@media (min-width:1024px) {
+@media (min-width:768px) {
 [sm~="c1"]{width:8.33%}
 [sm~="c2"]{width:16.67%}
 [sm~="c3"]{width:25%}
@@ -520,7 +520,7 @@
 [sm~="dev"] > * > * > * {outline:1px solid #ff0000}
 [sm~="dev"] > * > * > * * {outline:1px solid #00ff00}
 }
-@media (min-width:1280px) {
+@media (min-width:1024px) {
 [md~="c1"]{width:8.33%}
 [md~="c2"]{width:16.67%}
 [md~="c3"]{width:25%}
@@ -780,7 +780,7 @@
 [md~="dev"] > * > * > * {outline:1px solid #ff0000}
 [md~="dev"] > * > * > * * {outline:1px solid #00ff00}
 }
-@media (min-width:1440px) {
+@media (min-width:1280px) {
 [lg~="c1"]{width:8.33%}
 [lg~="c2"]{width:16.67%}
 [lg~="c3"]{width:25%}
