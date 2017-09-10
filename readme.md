@@ -11,7 +11,9 @@
 
 <br />
 
-`gr8` is a customizable [**set**](#utilities) of functional css utilities, as well as a [**tool**](#custom-utilities-) for generating custom functional css utilities. Builds on top of [**gr8-util**](https://github.com/jongacnik/gr8-util).
+`gr8` is a customizable [**set**](#utilities) of functional css utilities, as well as a [**tool**](#custom-utilities-) for generating custom functional css utilities. 
+
+Builds on top of [**gr8-util**](https://github.com/jongacnik/gr8-util).
 
 ## Features
 
@@ -585,7 +587,7 @@ var css = gr8({
 
 ## Custom Utilities
 
-`gr8` is built on top of [**gr8-util**](https://github.com/jongacnik/gr8-util). This makes it easy to generate custom utilities. Pass an array of objects into the `utils` option, one for each custom utility. These are passed directly into `gr8-util`:
+`gr8` is built on top of [gr8-util](https://github.com/jongacnik/gr8-util). This makes it easy to generate custom utilities. Pass an array of objects into the `utils` option, one for each custom utility. These are passed directly into `gr8-util`:
 
 ```js
 var bgcolor = {
