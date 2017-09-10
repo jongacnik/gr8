@@ -35,4 +35,3 @@ exports.visibility = {
     'visible'
   ]
 }
-

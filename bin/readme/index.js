@@ -1,4 +1,5 @@
 var fs = require('fs')
+var path = require('path')
 var gr8utils = require('../../utils')
 
 var templates = {}
@@ -29,7 +30,7 @@ templates['utilitySections'] = Object.keys(gr8utils.utils).map(function (key) {
   ].join('\n')
 }).join('\n\n')
 
-var readme = fs.readFileSync(__dirname + '/index.md', 'utf8')
+var readme = fs.readFileSync(path.join(__dirname, '/index.md'), 'utf8')
 
 // d.i.y. {{ templates }}
 function tinyBars (str, data) {

@@ -77,19 +77,19 @@ test('values', function (t) {
     flexOrder: [99],
     opacity: [99],
     aspectRatio: [99],
-    textColumn: [99],
+    textColumn: [99]
   })
 
-  var hasAll = css.indexOf('.p99') >= 0
-    && css.indexOf('.fs99') >= 0
-    && css.indexOf('.lh99') >= 0
-    && css.indexOf('.w99') >= 0
-    && css.indexOf('.vw99') >= 0
-    && css.indexOf('.z99') >= 0
-    && css.indexOf('.xo99') >= 0
-    && css.indexOf('.op99') >= 0
-    && css.indexOf('.ar99') >= 0
-    && css.indexOf('.tc99') >= 0
+  var hasAll = css.indexOf('.p99') >= 0 &&
+    css.indexOf('.fs99') >= 0 &&
+    css.indexOf('.lh99') >= 0 &&
+    css.indexOf('.w99') >= 0 &&
+    css.indexOf('.vw99') >= 0 &&
+    css.indexOf('.z99') >= 0 &&
+    css.indexOf('.xo99') >= 0 &&
+    css.indexOf('.op99') >= 0 &&
+    css.indexOf('.ar99') >= 0 &&
+    css.indexOf('.tc99') >= 0
 
   t.ok(hasAll, 'custom values succesfully passed to gr8-util')
   t.end()

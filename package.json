@@ -6,10 +6,12 @@
   "devDependencies": {
     "colortape": "^0.1.2",
     "onchange": "^3.2.1",
+    "standard": "^10.0.3",
     "tape": "^4.8.0"
   },
   "scripts": {
-    "test": "node test.js | colortape",
+    "test": "standard && node test.js | colortape",
+    "lint": "standard --fix",
     "build-css": "node bin/dist.js",
     "build-readme": "node bin/readme/index.js",
     "watch-readme": "onchange 'bin/readme/' -- npm run build-readme",

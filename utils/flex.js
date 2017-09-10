@@ -17,7 +17,7 @@ exports.align = {
 }
 
 exports.direction = {
-  prop: { 
+  prop: {
     xd: 'flex-direction'
   },
   vals: [

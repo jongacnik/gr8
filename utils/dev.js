@@ -13,6 +13,6 @@ exports.dev = function (options) {
     `${selector('dev')} > * {outline:1px solid ${colors.blue}}`,
     `${selector('dev')} > * > * {outline:1px solid ${colors.teal}}`,
     `${selector('dev')} > * > * > * {outline:1px solid ${colors.red}}`,
-    `${selector('dev')} > * > * > * * {outline:1px solid ${colors.lime}}`,
+    `${selector('dev')} > * > * > * * {outline:1px solid ${colors.lime}}`
   ].join('\n')
 }
