@@ -31,12 +31,12 @@ exports.viewportHeight = function (options) {
 }
 
 exports.aspect = function (options) {
-  var selector = options.selector || (s => `.${s}`)
-  var values = Array.isArray(options.aspectRatio)
-    ? options.aspectRatio
-    : [options.aspectRatio]
-  var declaration = 'content:"";display:block;padding-top:'
-  return values.map(function (value) {
-    return `${selector('ar' + value)}:before{${declaration}${value + (value ? '%' : '')};}`
-  }).join('\n')
+  return {
+    prop: {
+      ar: 'padding-top'
+    },
+    vals: options.aspectRatio,
+    transform: v => v + '%;content:"";display:block',
+    tail: ':before'
+  }
 }
