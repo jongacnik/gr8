@@ -6,6 +6,7 @@ exports.overflow = {
   ],
   vals: [
     'hidden',
-    'scroll'
+    'scroll',
+    'visible'
   ]
 }
