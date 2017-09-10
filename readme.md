@@ -375,6 +375,8 @@ Builds on top of [**gr8-util**](https://github.com/jongacnik/gr8-util).
 .ust{user-select:text}
 .pen{pointer-events:none}
 .pea{pointer-events:auto}
+.vh{visibility:hidden}
+.vv{visibility:visible}
 ```
 
 </details>

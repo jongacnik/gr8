@@ -27,3 +27,12 @@ exports.pointerEvents = {
     'auto'
   ]
 }
+
+exports.visibility = {
+  prop: 'visibility',
+  vals: [
+    'hidden',
+    'visible'
+  ]
+}
+
