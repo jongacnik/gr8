@@ -1,49 +1,30 @@
 var fs = require('fs')
-var gr8 = require('../../src')
-var utils = require('../../src/utils')
-var lib = require('../../src/helpers')
-
-var css = gr8()
+var gr8utils = require('../../utils')
 
 var templates = {}
 
-templates['defaults'] = fs.readFileSync(__dirname + '/../../src/defaults.js', 'utf8')
-  .replace('module.exports = ', '').trim()
+templates['defaults'] = JSON.stringify(gr8utils.defaults, null, 2)
 
-templates['optionsDetails'] = fs.readFileSync(__dirname + '/options-table.md', 'utf8')
-
-var allKeys = lib.squish(utils, {
-  stopWhen: lib.isUtil
-})
-
-templates['utilityKeys'] = Object.keys(allKeys).map(function (key) {
+templates['utilityKeys'] = Object.keys(gr8utils.utils).map(function (key) {
   return '`' + key + '`'
 }).join(', ')
 
-templates['utilityIndex'] = Object.keys(utils).map(function (key) {
+templates['utilityIndex'] = Object.keys(gr8utils.utils).map(function (key) {
   return '- [' + key + '](#' + key + ')'
 }).join('\n')
 
-templates['utilitySections'] = Object.keys(utils).map(function (key) {
-  css.reset()
-  css.add(utils[key])
-  var subsections = !lib.isUtil(utils[key]) && !lib.isArr(utils[key])
-    ? Object.keys(utils[key]).map(subkey => '`' + key + '.' + subkey + '`').join(', ')
-    : '`' + key + '`'
-  var transform = (key) => {
-    return key === 'type' ? 'typography'
-      : key === 'misc' ? 'miscellaneous'
-      : key === 'dev' ? 'development'
-      : key
-  }
+templates['utilitySections'] = Object.keys(gr8utils.utils).map(function (key) {
+  var utils = {}
+  utils[key] = gr8utils.utils[key]
+  var css = gr8utils.generate(utils)
   return [
     `<details id="${key}">`,
-    `<summary>${transform(key)}</summary>`,
+    `<summary>${key}</summary>`,
     '',
     '```css',
-    css.toString() + '```',
+    css,
+    '```',
     '',
-    'Included Utilities: ' + subsections,
     '</details>'
   ].join('\n')
 }).join('\n\n')
@@ -67,3 +48,13 @@ fs.writeFile('readme.md', readme, function (err) {
 
   console.log('readme generated and saved to readme.md')
 })
+
+// ```html
+// <div class="c6 p2 fs1-5">subarashīdesu!</div>
+// ```
+
+// ```css
+// .c6{width:50%}
+// .p2{padding:2rem}
+// .fs1-5{font-size:1.5rem}
+// ```
