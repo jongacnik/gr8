@@ -1,4 +1,4 @@
-module.exports = {
+exports.overflow = {
   prop: [
     'overflow',
     'overflow-x',

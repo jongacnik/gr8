@@ -1,34 +1,41 @@
 {
   "name": "gr8",
-  "version": "2.1.8",
-  "description": "ⓖⓡ⑧ FUNctional CSS shorthand utilities",
-  "main": "dist/gr8.js",
+  "version": "3.0.0",
+  "description": "Functional css utilities",
+  "main": "index.js",
   "devDependencies": {
-    "browserify": "^14.3.0",
     "colortape": "^0.1.2",
     "onchange": "^3.2.1",
-    "tape": "^4.6.3",
-    "tape-run": "^3.0.0",
-    "uglify-js": "^3.0.0"
+    "standard": "^10.0.3",
+    "tape": "^4.8.0"
   },
   "scripts": {
-    "test": "node tests/index.js | colortape && browserify tests/browser.js | tape-run | colortape",
-    "dist-js": "browserify src/index.js -s gr8 | uglifyjs -m -c > dist/gr8.js",
-    "dist-css": "node bin/gnr8.js",
-    "dox": "node bin/dox/index.js",
-    "watch-dox": "onchange 'bin/dox/' -- npm run dox",
-    "dist": "npm run dist-js && npm run dist-css && npm run dox"
+    "test": "standard --fix && node test.js | colortape",
+    "build-css": "node bin/dist.js",
+    "build-readme": "node bin/readme/index.js",
+    "watch-readme": "onchange 'bin/readme/' -- npm run build-readme",
+    "dist": "npm run test && npm run build-css && npm run build-readme"
+  },
+  "standard": {
+    "ignore": [
+      "postcss.js"
+    ]
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jongacnik/gr8.git"
   },
-  "keywords": [],
+  "keywords": [
+    "functional",
+    "css",
+    "utilities"
+  ],
   "author": "Jon Gacnik <jon@folderstudio.com> (http://jongacnik.com)",
   "license": "MIT",
   "homepage": "https://github.com/jongacnik/gr8#readme",
   "dependencies": {
-    "object-squish": "^1.1.0",
-    "string-hash": "^1.1.3"
+    "gr8-util": "^1.0.0",
+    "object-values": "^1.0.0",
+    "xtend": "^4.0.1"
   }
 }

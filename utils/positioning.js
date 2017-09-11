@@ -1,6 +1,7 @@
 exports.position = {
-  prefix: 'ps',
-  prop: 'position',
+  prop: {
+    ps: 'position'
+  },
   vals: [
     'absolute',
     'relative',
@@ -19,8 +20,11 @@ exports.placement = {
   vals: 0
 }
 
-exports.zindex = {
-  option: 'zIndex',
-  prefix: 'z',
-  prop: 'z-index'
+exports.zindex = function (options) {
+  return {
+    prop: {
+      z: 'z-index'
+    },
+    vals: options.zIndex
+  }
 }

@@ -1,12 +1,16 @@
-exports.fontSize = {
-  option: 'fontSize',
-  prop: 'font-size',
-  unit: true
+exports.fontSize = function (options) {
+  return {
+    prop: 'font-size',
+    vals: options.fontSize,
+    unit: options.unit
+  }
 }
 
-exports.lineHeight = {
-  option: 'lineHeight',
-  prop: 'line-height'
+exports.lineHeight = function (options) {
+  return {
+    prop: 'line-height',
+    vals: options.lineHeight
+  }
 }
 
 exports.fontStyle = {
@@ -84,8 +88,11 @@ exports.whiteSpace = {
   ]
 }
 
-exports.textColumn = {
-  option: 'textColumns',
-  prefix: 'tc',
-  prop: 'columns'
+exports.textColumn = function (options) {
+  return {
+    prop: {
+      tc: 'columns'
+    },
+    vals: options.textColumn
+  }
 }

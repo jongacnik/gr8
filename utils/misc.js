@@ -1,6 +1,7 @@
 exports.cursor = {
-  prefix: 'cur',
-  prop: 'cursor',
+  prop: {
+    cur: 'cursor'
+  },
   vals: [
     'pointer',
     'default',
@@ -24,5 +25,13 @@ exports.pointerEvents = {
   vals: [
     'none',
     'auto'
+  ]
+}
+
+exports.visibility = {
+  prop: 'visibility',
+  vals: [
+    'hidden',
+    'visible'
   ]
 }
