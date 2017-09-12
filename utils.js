@@ -36,13 +36,25 @@ var utils = {
 }
 
 function gr8utils (options) {
-  return generate(utils, options)
+  return generate(filter(utils, options.exclude), options)
 }
 
 // public
 gr8utils.defaults = defaults
 gr8utils.utils = utils
 gr8utils.generate = generate
+
+function filter (utils, keys) {
+  if (!Array.isArray(keys)) return utils
+  var allKeys = Object.keys(utils)
+  keys.forEach(function (key) {
+    var isMatch = allKeys.indexOf(key) >= 0
+    if (isMatch) {
+      delete utils[key]
+    }
+  })
+  return utils
+}
 
 function generate (utils, options) {
   options = x(defaults, options)
