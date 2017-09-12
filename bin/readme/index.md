@@ -68,9 +68,10 @@ Generate utilities and return a string of css. `opts` accepts the following valu
 - `opts.breakpoints` **[Object]** values for breakpoint utilities
 - `opts.breakpointSelector` **[String | Function]** selector shortcut or css selector template function
 
-#### Custom Utilities Option
+#### Custom Utilities Options
 
 - `opts.utils` **[Array]** custom [gr8-util](https://github.com/jongacnik/gr8-util) utilities
+- `opts.exclude` **[Array]** keys of default utilities to exclude
 
 ## Value Options
 
@@ -234,7 +235,7 @@ var css = gr8({
 
 </details>
 
-## Custom Utilities Option
+## Custom Utilities Options
 
 [gr8-util](https://github.com/jongacnik/gr8-util) is a little function for generating functional css utilities. Given a plain object, concise css utilities are generated. All the utilities in `gr8` are built using this.
 
@@ -309,6 +310,12 @@ var css = gr8({
 </details><br>
 
 **[Refer to gr8-util for further documentation on generating custom utilities.](https://github.com/jongacnik/gr8-util)**
+
+### `opts.exclude`
+
+Use the `exclude` option to remove some of the default utilities. Accepts an array with any of the following values:
+
+{{ utilityKeys }}
 
 ## Proxies
 

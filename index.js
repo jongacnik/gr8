@@ -11,7 +11,8 @@ var defaults = {
     lg: 1280
   },
   breakpointSelector: 'attribute',
-  utils: []
+  utils: [],
+  exclude: []
 }
 
 function gr8 (options) {
