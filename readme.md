@@ -7,6 +7,9 @@
   <a href="https://github.com/feross/standard">
     <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="NPM version" />
   </a>
+  <a href="http://gr8.style">
+    <img src="https://img.shields.io/badge/website-gr8.style-ff69b4.svg?style=flat-square" alt="Website">
+  </a>
 </div>
 
 <br />
