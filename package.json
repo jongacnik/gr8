@@ -34,7 +34,7 @@
   "license": "MIT",
   "homepage": "https://github.com/jongacnik/gr8#readme",
   "dependencies": {
-    "gr8-util": "^1.0.0",
+    "gr8-util": "^1.0.1",
     "object-values": "^1.0.0",
     "xtend": "^4.0.1"
   }
