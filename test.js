@@ -110,3 +110,21 @@ test('custom util', function (t) {
 
   t.end()
 })
+
+test('custom raw util', function (t) {
+  var css = gr8({
+    utils: [
+      {
+        raw: {
+          'trans-center-x': 'left:50%;transform:translateX(-50%)',
+          'trans-center-y': 'top:50%;transform:translateY(-50%)'
+        }
+      }
+    ]
+  })
+
+  t.ok(css.indexOf('.trans-center-x{left:50%;transform:translateX(-50%)}') >= 0, 'custom raw utils succesfully generated')
+  t.ok(css.indexOf('[sm~="trans-center-x"]{left:50%;transform:translateX(-50%)}') >= 0, 'custom raw utils succesfully generated per breakpoint')
+
+  t.end()
+})
