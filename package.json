@@ -6,7 +6,7 @@
   "style": "dist/gr8.css",
   "devDependencies": {
     "colortape": "^0.1.2",
-    "onchange": "^3.2.1",
+    "onchange": "^4.0.0",
     "standard": "^11.0.0",
     "tape": "^4.8.0"
   },
